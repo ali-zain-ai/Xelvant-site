@@ -1,26 +1,233 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ═══════════════════════════════════════════════
+   XELVANT — Brand Design System
+   Primary: Obsidian Black & Gold
+   ═══════════════════════════════════════════════ */
+
+@theme {
+  /* Brand Colors (Obsidian & Gold) */
+  --color-primary: #C5A059;       /* Gold Accent */
+  --color-primary-dark: #8E6E3E;  /* Copper Deep */
+  --color-accent: #C5A059;        /* Fallback mapping to Gold */
+  --color-background: #050505;    /* Obsidian */
+  --color-surface: #0A0A0A;       /* Slightly lighter for cards */
+  --color-text: #ffffff;          /* White */
+  --color-muted: #9CA3AF;         /* Slate Gray / gray-400 */
+  --color-border: rgba(197, 160, 89, 0.1); /* Subtle Gold Border */
+  --color-glass: rgba(5, 5, 5, 0.85);
+  
+  /* Status Colors */
+  --color-green: #10B981;
+  --color-red: #EF4444;
+  --color-amber: #F59E0B;
+
+  /* Font Families */
+  --font-outfit: 'Cabinet Grotesk', sans-serif; /* Mapping existing references */
+  --font-inter: 'Satoshi', sans-serif;          /* Mapping existing references */
+  --font-cabinet: 'Cabinet Grotesk', sans-serif;
+  --font-satoshi: 'Satoshi', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Forcefully Hide Next.js Dev Badge/Indicator */
+nextjs-portal, 
+[data-nextjs-toast], 
+[data-nextjs-dialog-overlay], 
+[data-nextjs-dialog-banner],
+.nextjs-static-indicator-root {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ═══════════════════════════════════════════════
+   GLOBAL RESET & BASE
+   ═══════════════════════════════════════════════ */
+
+@layer base {
+  * {
+    @apply border-border;
   }
 }
 
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-satoshi);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-cabinet);
+}
+
+::selection {
+  background: rgba(197, 160, 89, 0.3);
+  color: #FFFFFF;
+}
+
+/* Explicit styling for select options to prevent white-on-white text issues in dark mode */
+select option {
+  background-color: #0A0A0A !important;
+  color: #ffffff !important;
+}
+
+/* Chrome/Safari Autofill color override for dark theme inputs */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px #0A0A0A !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-background); }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* ═══════════════════════════════════════════════
+   UTILITY CLASSES (New Design System)
+   ═══════════════════════════════════════════════ */
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #F9F1E0 0%, #C5A059 50%, #8E6E3E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Legacy support for components not yet updated */
+.gradient-text {
+  background: linear-gradient(135deg, #F9F1E0 0%, #C5A059 50%, #8E6E3E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-nav {
+  background: rgba(5, 5, 5, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at 50% -20%, rgba(197, 160, 89, 0.15) 0%, rgba(5, 5, 5, 0) 70%);
+}
+
+.gold-glow {
+  box-shadow: 0 0 40px rgba(197, 160, 89, 0.1);
+}
+
+.border-gold-subtle {
+  border: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.glass-card {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(197, 160, 89, 0.1);
+}
+
+/* Legacy support */
+.card-clean {
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-clean:hover {
+  border-color: rgba(197, 160, 89, 0.3);
+  box-shadow: 0 0 40px rgba(197, 160, 89, 0.1);
+  transform: translateY(-6px);
+}
+
+.section-padding {
+  padding: 6rem 1.5rem;
+}
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 10rem 4rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   ANIMATIONS & CURSOR
+   ═══════════════════════════════════════════════ */
+
+/* Custom Gold Cursor Styles */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(197, 160, 89, 0.5);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99998;
+  transition: width 0.2s, height 0.2s, border-color 0.2s, background-color 0.2s;
+}
+
+body.cursor-hover .cursor-dot {
+  width: 4px;
+  height: 4px;
+  background-color: #ffffff;
+}
+
+body.cursor-hover .cursor-ring {
+  width: 56px;
+  height: 56px;
+  border-color: var(--color-primary);
+  background-color: rgba(197, 160, 89, 0.08);
+  box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.mask-fade {
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
 }
