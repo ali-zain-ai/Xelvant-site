@@ -77,7 +77,7 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative pt-32 pb-20 md:pt-40 lg:pt-48 md:pb-32 min-h-screen flex items-center overflow-hidden"
+      className="relative pt-24 pb-16 md:pt-32 lg:pt-40 md:pb-20 min-h-screen flex items-center overflow-hidden"
       id="home"
     >
       {/* Base */}
@@ -107,7 +107,7 @@ export default function HeroSection() {
             animate="visible"
           >
             {/* Badge */}
-            <motion.div variants={fadeUpVariants} className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-primary/20 bg-[#0A0A0A]/50 backdrop-blur-xl mb-8 shadow-[0_0_15px_rgba(197,160,89,0.1)] group cursor-default">
+            <motion.div variants={fadeUpVariants} className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-primary/20 bg-[#0A0A0A]/50 backdrop-blur-xl mb-6 shadow-[0_0_15px_rgba(197,160,89,0.1)] group cursor-default">
               <span className="relative flex h-2 w-2">
                 <motion.span
                   className="absolute inline-flex h-full w-full rounded-full bg-primary"
@@ -128,7 +128,7 @@ export default function HeroSection() {
             {/* Headline */}
             <motion.h1
               variants={fadeUpVariants}
-              className="text-4xl md:text-[4rem] lg:text-[4.5rem] font-semibold tracking-tight mb-8 leading-[1.1] max-w-[95%]"
+              className="text-4xl md:text-[4rem] lg:text-[4.5rem] font-semibold tracking-tight mb-6 leading-[1.1] max-w-[95%]"
             >
               <span className="block text-white mb-1">Custom AI Built</span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E2C792] to-[#C5A059]">
@@ -137,7 +137,7 @@ export default function HeroSection() {
             </motion.h1>
 
             {/* Subtext */}
-            <motion.div variants={fadeUpVariants} className="mb-12 max-w-lg">
+            <motion.div variants={fadeUpVariants} className="mb-8 max-w-lg">
               <p className="text-[#888888] text-base md:text-lg font-normal leading-relaxed mb-4">
                 AI systems engineered for brands that move ahead of the market.
               </p>
@@ -183,7 +183,7 @@ export default function HeroSection() {
             variants={fadeLeftVariants}
             initial="hidden"
             animate="visible"
-            className="relative h-[600px] lg:h-[700px] w-full hidden lg:block"
+            className="relative h-[500px] lg:h-[600px] w-full hidden lg:block"
           >
             {/* Holographic rings */}
             <motion.div

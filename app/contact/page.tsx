@@ -104,74 +104,65 @@ export default function ContactPage() {
                 
                 <form className="relative z-10" onSubmit={(e) => e.preventDefault()}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
-                    <InputWrapper id="fullName" label="Full Name">
+                    <InputWrapper id="name" label="Name">
                       <input 
                         type="text" 
-                        id="fullName"
+                        id="name"
                         className="w-full bg-transparent px-5 py-4 text-white text-[15px] outline-none placeholder-[#444]"
-                        placeholder="John Doe"
-                        onFocus={() => setIsFocused('fullName')}
+                        placeholder="Your Name"
+                        onFocus={() => setIsFocused('name')}
                         onBlur={() => setIsFocused(null)}
                       />
                     </InputWrapper>
                     
-                    <InputWrapper id="companyName" label="Company Name">
+                    <InputWrapper id="email" label="Email">
                       <input 
-                        type="text" 
-                        id="companyName"
+                        type="email" 
+                        id="email"
                         className="w-full bg-transparent px-5 py-4 text-white text-[15px] outline-none placeholder-[#444]"
-                        placeholder="Acme Corp"
-                        onFocus={() => setIsFocused('companyName')}
+                        placeholder="you@company.com"
+                        onFocus={() => setIsFocused('email')}
                         onBlur={() => setIsFocused(null)}
                       />
                     </InputWrapper>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
-                    <InputWrapper id="email" label="Work Email">
+                    <InputWrapper id="interest" label="Interest">
                       <input 
-                        type="email" 
-                        id="email"
+                        type="text" 
+                        id="interest"
                         className="w-full bg-transparent px-5 py-4 text-white text-[15px] outline-none placeholder-[#444]"
-                        placeholder="john@acme.com"
-                        onFocus={() => setIsFocused('email')}
+                        placeholder="e.g. Predictive Analytics, AI Automation..."
+                        onFocus={() => setIsFocused('interest')}
                         onBlur={() => setIsFocused(null)}
                       />
                     </InputWrapper>
 
-                    <InputWrapper id="businessType" label="Business Type">
-                      <select 
-                        id="businessType"
-                        className="w-full bg-transparent px-5 py-4 text-[#888] text-[15px] outline-none appearance-none cursor-pointer"
-                        onFocus={() => setIsFocused('businessType')}
+                    <InputWrapper id="budget" label="Budget">
+                      <input 
+                        type="text" 
+                        id="budget"
+                        className="w-full bg-transparent px-5 py-4 text-white text-[15px] outline-none placeholder-[#444]"
+                        placeholder="e.g. $5k - $10k"
+                        onFocus={() => setIsFocused('budget')}
                         onBlur={() => setIsFocused(null)}
-                      >
-                        <option value="" disabled selected>Select an option</option>
-                        <option value="ecommerce">E-Commerce Brand</option>
-                        <option value="retail">Retail Chain</option>
-                        <option value="saas">SaaS / Tech</option>
-                        <option value="other">Other</option>
-                      </select>
-                      <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M1 1.5L6 6.5L11 1.5" stroke="#666" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
+                      />
                     </InputWrapper>
                   </div>
 
-                  <InputWrapper id="improve" label="What are you looking to improve?">
+                  <InputWrapper id="problem" label="Problem">
                     <input 
                       type="text" 
-                      id="improve"
+                      id="problem"
                       className="w-full bg-transparent px-5 py-4 text-white text-[15px] outline-none placeholder-[#444]"
-                      placeholder="e.g. Churn reduction, Predictive inventory..."
-                      onFocus={() => setIsFocused('improve')}
+                      placeholder="What is the main challenge you are facing right now?"
+                      onFocus={() => setIsFocused('problem')}
                       onBlur={() => setIsFocused(null)}
                     />
                   </InputWrapper>
 
-                  <InputWrapper id="message" label="Message (Optional)">
+                  <InputWrapper id="message" label="Message">
                     <textarea 
                       id="message"
                       rows={4}
