@@ -69,16 +69,16 @@ export default function Navbar() {
           className="flex items-center gap-3 group relative z-50"
         >
           <motion.div
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.03, filter: "drop-shadow(0 0 12px rgba(197,160,89,0.5))" }}
             transition={{ duration: 0.4 }}
             className="relative flex items-center"
           >
             <Image 
               src="/logo.png" 
               alt="Xelvant Logo" 
-              width={180} 
-              height={60} 
-              className="w-auto h-10 md:h-14 object-contain" 
+              width={160} 
+              height={48} 
+              className="w-auto h-8 md:h-10 object-contain transition-all duration-500" 
               priority
             />
           </motion.div>

@@ -11,14 +11,14 @@ const EASE_SPRING = { type: "spring", stiffness: 200, damping: 20 } as const;
 const EASE_LINEAR = "linear" as const;
 
 const rotatingLabels = [
-  "Churn Prediction",
+  "Churn Prediction Model",
   "Customer Intelligence",
   "Predictive Analytics",
   "Revenue Forecasting",
-  "Segmentation Engine",
-  "AI Automation",
-  "Growth Analytics",
+  "Segmentation Model",
+  "AI Workflow System",
   "Business Intelligence",
+  "Recommendation Engine",
 ];
 
 const containerVariants = {
@@ -121,7 +121,7 @@ export default function HeroSection() {
                 whileHover={{ color: "#E2C792" }}
                 transition={{ duration: 0.3 }}
               >
-                Intelligent E-commerce Engine
+                AI & Data Science Agency
               </motion.span>
             </motion.div>
 
@@ -130,19 +130,19 @@ export default function HeroSection() {
               variants={fadeUpVariants}
               className="text-3xl sm:text-4xl md:text-[4rem] lg:text-[4.5rem] font-semibold tracking-tight mb-6 leading-[1.1] max-w-[95%]"
             >
-              <span className="block text-white mb-1">Custom AI Built</span>
+              <span className="block text-white mb-1">AI & Data Science</span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E2C792] to-[#C5A059]">
-                For Serious Growth.
+                Built For Growth.
               </span>
             </motion.h1>
 
             {/* Subtext */}
             <motion.div variants={fadeUpVariants} className="mb-8 max-w-lg">
               <p className="text-[#888888] text-base md:text-lg font-normal leading-relaxed mb-4">
-                AI systems engineered for brands that move ahead of the market.
+                We help e-commerce brands automate operations, predict customer behavior, and make smarter business decisions using AI, machine learning, and data intelligence.
               </p>
               <p className="text-[#555555] text-[10px] md:text-xs uppercase tracking-[0.15em] font-medium">
-                Predict faster, automate smarter, and scale with precision.
+                From predictive analytics to intelligent automation — engineered for scalable growth.
               </p>
             </motion.div>
 
@@ -169,10 +169,10 @@ export default function HeroSection() {
               </Link>
 
               <Link
-                href="#solutions"
+                href="/services"
                 className="group w-full sm:w-auto px-9 py-4 bg-[#0A0A0A]/50 backdrop-blur-xl border border-white/10 hover:border-primary/50 hover:bg-[#111] text-white font-semibold rounded-full transition-all duration-500 active:scale-95 flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
               >
-                <span className="text-[15px] tracking-wide">View Architecture</span>
+                <span className="text-[15px] tracking-wide">Our Services</span>
                 <ChevronRight size={18} className="text-primary/70 group-hover:text-primary transition-colors group-hover:translate-x-1" />
               </Link>
             </motion.div>
@@ -232,7 +232,7 @@ export default function HeroSection() {
                 </div>
                 <div className="flex-1 text-center">
                   <span className="text-[9px] text-[#666] font-mono tracking-widest uppercase flex items-center justify-center gap-2">
-                    <TrendingUp size={10} className="text-primary" /> Predictive Revenue Engine
+                    <TrendingUp size={10} className="text-primary" /> ML Revenue Prediction Engine
                   </span>
                 </div>
               </div>
@@ -242,7 +242,7 @@ export default function HeroSection() {
                 <div className="grid grid-cols-2 gap-4 mb-6 relative z-10">
                   <div>
                     <div className="text-[10px] uppercase text-[#666] font-bold tracking-widest mb-1 flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary/80" /> Q4 Forecast
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary/80" /> Q4 ML Forecast
                     </div>
                     <div className="text-3xl font-light text-white flex items-baseline gap-1" style={{ fontFamily: "var(--font-clash)" }}>
                       $12.4<span className="text-lg text-primary">M</span>
@@ -261,7 +261,7 @@ export default function HeroSection() {
                 {/* Chart */}
                 <div className="h-32 w-full relative z-10 mt-4">
                   <div className="absolute inset-0 flex justify-between items-end pb-1 px-1 text-[8px] text-[#444] font-mono">
-                    <span>AUG</span><span>SEP</span><span>OCT</span><span className="text-primary/70">NOV (PRED)</span><span className="text-primary/70">DEC (PRED)</span>
+                    <span>TRAIN</span><span>VALIDATE</span><span>TEST</span><span className="text-primary/70">PREDICT</span><span className="text-primary/70">DEPLOY</span>
                   </div>
                   <svg viewBox="0 0 200 80" className="w-full h-full overflow-visible">
                     <path d="M0,20 L200,20 M0,40 L200,40 M0,60 L200,60" className="stroke-[#222] stroke-1" strokeDasharray="2 4" />
@@ -323,7 +323,7 @@ export default function HeroSection() {
               </div>
             </motion.div>
 
-            {/* Floating Widget 1: Segmentation */}
+            {/* Floating Widget 1: ML Segmentation Model */}
             <motion.div
               className="absolute top-10 -left-6 w-52 bg-[#0A0A0A]/90 backdrop-blur-2xl border border-white/5 rounded-xl p-4 shadow-2xl z-30 ring-1 ring-white/5"
               animate={{ y: [0, 12, 0], x: [0, -4, 0], rotate: [0, -0.5, 0] }}
@@ -334,7 +334,7 @@ export default function HeroSection() {
                   <div className="w-6 h-6 rounded-lg bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20">
                     <Users size={12} className="text-indigo-400" />
                   </div>
-                  <div className="text-[9px] uppercase text-[#888] font-bold tracking-widest">Segmentation</div>
+                  <div className="text-[9px] uppercase text-[#888] font-bold tracking-widest">ML Segmentation</div>
                 </div>
                 <motion.div
                   className="w-2 h-2 rounded-full bg-indigo-500"
@@ -345,9 +345,9 @@ export default function HeroSection() {
 
               <div className="space-y-3">
                 {[
-                  { label: "VIP Buyers", value: 42, color: "bg-indigo-500", textColor: "text-indigo-400" },
-                  { label: "Window Shoppers", value: 35, color: "bg-[#555]", textColor: "text-[#888]" },
-                  { label: "Churn Risk", value: 23, color: "bg-red-500", textColor: "text-red-500" },
+                  { label: "High-LTV Cluster", value: 42, color: "bg-indigo-500", textColor: "text-indigo-400" },
+                  { label: "At-Risk Cohort", value: 35, color: "bg-[#555]", textColor: "text-[#888]" },
+                  { label: "New Prospects", value: 23, color: "bg-primary", textColor: "text-primary" },
                 ].map((item, i) => (
                   <div key={item.label}>
                     <div className="flex justify-between text-[10px] mb-1">
@@ -367,7 +367,7 @@ export default function HeroSection() {
               </div>
             </motion.div>
 
-            {/* Floating Widget 2: Churn Alert */}
+            {/* Floating Widget 2: ML Churn Prediction */}
             <motion.div
               className="absolute top-20 -right-8 w-48 bg-[#0A0A0A]/90 backdrop-blur-2xl border border-red-500/10 rounded-xl p-4 shadow-2xl z-30 ring-1 ring-white/5"
               animate={{ y: [0, -12, 0], rotate: [0, 1.5, 0] }}
@@ -377,10 +377,10 @@ export default function HeroSection() {
                 <div className="w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center border border-red-500/20">
                   <ShieldAlert size={12} className="text-red-500" />
                 </div>
-                <div className="text-[9px] uppercase text-[#888] font-bold tracking-widest">Churn Alert</div>
+                <div className="text-[9px] uppercase text-[#888] font-bold tracking-widest">ML Churn Model</div>
               </div>
               <div className="text-2xl font-light text-white mb-1">
-                94.2<span className="text-xs text-[#666] tracking-wider uppercase ml-1">% Accuracy</span>
+                94.2<span className="text-xs text-[#666] tracking-wider uppercase ml-1">% Confidence</span>
               </div>
               <div className="text-[10px] text-red-400 mb-3 font-medium">High risk cohort identified</div>
 
@@ -397,7 +397,7 @@ export default function HeroSection() {
               </div>
             </motion.div>
 
-            {/* Floating Widget 3: Automation */}
+            {/* Floating Widget 3: AI Pipeline */}
             <motion.div
               className="absolute bottom-28 -right-4 w-40 bg-[#0A0A0A]/80 backdrop-blur-2xl border border-white/5 rounded-xl p-4 shadow-xl z-10 ring-1 ring-white/5"
               animate={{ y: [0, 8, 0], x: [0, 4, 0] }}
@@ -405,7 +405,7 @@ export default function HeroSection() {
             >
               <div className="flex items-center gap-2 mb-3">
                 <Network size={12} className="text-primary" />
-                <div className="text-[9px] uppercase text-[#888] font-bold tracking-widest">Automation</div>
+                <div className="text-[9px] uppercase text-[#888] font-bold tracking-widest">AI Pipeline</div>
               </div>
               <div className="relative h-16 w-full">
                 <svg className="absolute inset-0 w-full h-full stroke-[#333] stroke-1">

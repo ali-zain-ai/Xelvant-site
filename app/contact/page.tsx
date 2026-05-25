@@ -57,9 +57,9 @@ export default function ContactPage() {
                 transition={{ duration: 0.8, ease: EASE_CINEMATIC }}
                 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-6 leading-[1.1]"
               >
-                <span className="text-white block">Let’s Build</span>
+                <span className="text-white block">Let's Build</span>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E2C792] to-[#C5A059]">
-                  Smarter Systems.
+                  Smarter Intelligence.
                 </span>
               </motion.h1>
 
@@ -69,7 +69,7 @@ export default function ContactPage() {
                 transition={{ duration: 0.8, delay: 0.1, ease: EASE_CINEMATIC }}
                 className="text-[#888888] text-lg font-normal leading-relaxed mb-16"
               >
-                Tell us about your business goals and discover how AI intelligence can optimize growth, automation, and decision-making.
+                Tell us about your business goals and discover how AI, data science, and machine learning can optimize growth, automation, and decision-making.
               </motion.p>
 
               <motion.div

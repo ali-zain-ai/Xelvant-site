@@ -33,14 +33,14 @@ export default function Footer() {
                 <Image 
                   src="/logo.png" 
                   alt="Xelvant Logo" 
-                  width={200} 
-                  height={80} 
-                  className="w-auto h-12 md:h-16 object-contain" 
+                  width={180} 
+                  height={60} 
+                  className="w-auto h-10 md:h-12 object-contain" 
                 />
               </Link>
             </motion.div>
             <p className="text-muted text-sm max-w-xs mb-8 leading-relaxed">
-              Architecting the future of e-commerce intelligence. Custom AI systems for the modern digital brand.
+              AI & Data Science agency helping e-commerce brands grow through predictive analytics, machine learning, and intelligent automation.
             </p>
             <div className="flex gap-6">
               <a href="https://linkedin.com/company/xelvant" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white transition-colors duration-300">

@@ -3,15 +3,15 @@ import "./globals.css";
 import SmoothScrollProvider from "@/components/ui/SmoothScrollProvider";
 
 export const metadata: Metadata = {
-  title: "Xelvant | Custom AI Intelligence for E-commerce",
+  title: "Xelvant | AI & Data Science Agency for E-Commerce Growth",
   description:
-    "Custom AI systems built specifically for high-growth e-commerce brands. Predict churn, segment customers, and scale with precision using your own data.",
+    "We help e-commerce brands automate operations, predict customer behavior, and make smarter business decisions using AI, machine learning, and data intelligence.",
   keywords:
-    "ecommerce AI, custom intelligence, churn prediction, ML automation, data science ecommerce",
+    "AI agency, data science, machine learning, predictive analytics, business intelligence, e-commerce AI, churn prediction, customer segmentation, revenue forecasting, AI automation",
   openGraph: {
-    title: "Xelvant | Custom AI Intelligence for E-commerce",
+    title: "Xelvant | AI & Data Science Agency for E-Commerce Growth",
     description:
-      "Custom AI systems built specifically for high-growth e-commerce brands.",
+      "Predictive analytics, machine learning, and intelligent automation for modern e-commerce brands.",
     url: "https://xelvant.com",
     siteName: "Xelvant",
     type: "website",
@@ -19,11 +19,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Xelvant | Custom AI Intelligence for E-commerce",
+    title: "Xelvant | AI & Data Science Agency for E-Commerce Growth",
     description:
-      "Custom AI systems built specifically for high-growth e-commerce brands.",
+      "Predictive analytics, machine learning, and intelligent automation for modern e-commerce brands.",
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -34,11 +38,6 @@ export default function RootLayout({
       <head>
         {/* Fontshare Fonts for Obsidian & Gold Theme */}
         <link href="https://api.fontshare.com/v2/css?f[]=general-sans@600,500,400&f[]=satoshi@700,500,400,300&display=swap" rel="stylesheet" />
-        {/* Custom Xelvant Favicon (SVG) - Gold Theme */}
-        <link
-          rel="icon"
-          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23C5A059%22/><text y=%22.9em%22 x=%2250%%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-weight=%22bold%22 font-size=%2270%22 fill=%22%23050505%22>X</text></svg>"
-        />
         {/* JSON-LD Structured Data */}
         <script
           type="application/ld+json"
@@ -46,17 +45,20 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "Xelvant Intelligence",
+              name: "Xelvant",
               url: "https://xelvant.com",
               description:
-                "AI-powered e-commerce intelligence and automation company",
+                "AI & Data Science agency specializing in predictive analytics, machine learning, and business intelligence for e-commerce brands",
               foundingDate: "2026",
-              areaServed: ["Pakistan", "United Arab Emirates"],
+              areaServed: ["Pakistan", "United Arab Emirates", "Worldwide"],
               serviceType: [
-                "AI/ML Consulting",
-                "E-Commerce Analytics",
+                "AI & Data Science Consulting",
+                "Machine Learning Solutions",
+                "Predictive Analytics",
                 "Business Intelligence",
-                "Automation",
+                "E-Commerce AI Automation",
+                "Customer Intelligence",
+                "Revenue Forecasting",
               ],
             }),
           }}
