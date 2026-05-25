@@ -31,11 +31,11 @@ export default function Footer() {
             >
               <Link href="/" className="inline-block">
                 <Image 
-                  src="/logo.png" 
+                  src="/logo-transparent.png" 
                   alt="Xelvant Logo" 
-                  width={180} 
-                  height={60} 
-                  className="w-auto h-10 md:h-12 object-contain" 
+                  width={240} 
+                  height={80} 
+                  className="w-auto h-14 md:h-16 object-contain" 
                 />
               </Link>
             </motion.div>

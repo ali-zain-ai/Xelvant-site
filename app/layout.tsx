@@ -3,13 +3,13 @@ import "./globals.css";
 import SmoothScrollProvider from "@/components/ui/SmoothScrollProvider";
 
 export const metadata: Metadata = {
-  title: "Xelvant | AI & Data Science Agency for E-Commerce Growth",
+  title: "Xelvant",
   description:
     "We help e-commerce brands automate operations, predict customer behavior, and make smarter business decisions using AI, machine learning, and data intelligence.",
   keywords:
     "AI agency, data science, machine learning, predictive analytics, business intelligence, e-commerce AI, churn prediction, customer segmentation, revenue forecasting, AI automation",
   openGraph: {
-    title: "Xelvant | AI & Data Science Agency for E-Commerce Growth",
+    title: "Xelvant",
     description:
       "Predictive analytics, machine learning, and intelligent automation for modern e-commerce brands.",
     url: "https://xelvant.com",
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: "/logo-transparent.png",
+    apple: "/logo-transparent.png",
   },
 };
 

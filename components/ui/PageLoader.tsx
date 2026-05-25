@@ -34,11 +34,11 @@ export default function PageLoader() {
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
               <Image 
-                src="/logo.png" 
+                src="/logo-transparent.png" 
                 alt="Xelvant Loading Logo" 
-                width={200} 
-                height={80} 
-                className="w-auto h-12 md:h-16 object-contain filter drop-shadow-[0_0_15px_rgba(197,160,89,0.5)]" 
+                width={280} 
+                height={100} 
+                className="w-auto h-16 md:h-20 object-contain filter drop-shadow-[0_0_20px_rgba(197,160,89,0.6)]" 
                 priority
               />
             </motion.div>
