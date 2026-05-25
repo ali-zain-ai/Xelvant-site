@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { BRAND } from "@/lib/constants";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -67,13 +68,20 @@ export default function Navbar() {
           onClick={(e) => handleNavLinkClick(e, "/")}
           className="flex items-center gap-3 group relative z-50"
         >
-          <motion.span
-            className="text-xl font-bold tracking-widest uppercase text-white"
-            whileHover={{ color: "#C5A059" }}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.4 }}
+            className="relative flex items-center"
           >
-            {BRAND.name}
-          </motion.span>
+            <Image 
+              src="/logo.png" 
+              alt="Xelvant Logo" 
+              width={140} 
+              height={40} 
+              className="w-auto h-6 md:h-8 object-contain" 
+              priority
+            />
+          </motion.div>
         </Link>
 
         {/* Desktop Nav - Premium Pill */}
@@ -193,11 +201,11 @@ export default function Navbar() {
               transition={{ delay: 0.4, ease: EASE, duration: 0.5 }}
             >
               <Link
-                href="/audit"
+                href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="mt-8 px-12 py-4 bg-primary text-black text-lg font-black rounded-full hover:shadow-[0_0_40px_rgba(197,160,89,0.4)] transition-all active:scale-95"
               >
-                Get an Audit
+                Contact
               </Link>
             </motion.div>
           </motion.div>

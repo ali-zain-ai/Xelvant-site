@@ -85,14 +85,14 @@ export default function HeroSection() {
 
       {/* Cinematic glow layers */}
       <motion.div
-        className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-primary/15 via-transparent to-transparent -z-10 blur-[120px] opacity-70 rounded-full"
+        className="absolute top-0 right-0 w-[400px] md:w-[600px] lg:w-[800px] h-[400px] md:h-[600px] lg:h-[800px] bg-gradient-to-bl from-primary/15 via-transparent to-transparent -z-10 blur-[80px] md:blur-[120px] opacity-70 rounded-full"
         animate={{
           x: mousePosition.x * 20,
           y: mousePosition.y * 20,
         }}
         transition={{ duration: 2, ease: EASE_LINEAR }}
       />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full -z-10 -translate-x-1/2 translate-y-1/3" />
+      <div className="absolute bottom-0 left-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-primary/5 blur-[80px] md:blur-[120px] rounded-full -z-10 -translate-x-1/2 translate-y-1/3" />
 
       {/* Grain */}
       <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.025] mix-blend-overlay -z-10 pointer-events-none" />
@@ -128,7 +128,7 @@ export default function HeroSection() {
             {/* Headline */}
             <motion.h1
               variants={fadeUpVariants}
-              className="text-4xl md:text-[4rem] lg:text-[4.5rem] font-semibold tracking-tight mb-6 leading-[1.1] max-w-[95%]"
+              className="text-3xl sm:text-4xl md:text-[4rem] lg:text-[4.5rem] font-semibold tracking-tight mb-6 leading-[1.1] max-w-[95%]"
             >
               <span className="block text-white mb-1">Custom AI Built</span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E2C792] to-[#C5A059]">
@@ -149,7 +149,7 @@ export default function HeroSection() {
             {/* Buttons */}
             <motion.div variants={fadeUpVariants} className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
               <Link
-                href="/audit"
+                href="/contact"
                 className="group relative w-full sm:w-auto px-9 py-4 bg-gradient-to-br from-[#E2C792] to-[#C5A059] text-[#050505] font-black rounded-full overflow-hidden transition-all duration-500 shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:shadow-[0_0_45px_rgba(197,160,89,0.5)] active:scale-95 flex items-center justify-center gap-2"
               >
                 <motion.div
@@ -158,7 +158,7 @@ export default function HeroSection() {
                   whileHover={{ x: "100%" }}
                   transition={{ duration: 0.6, ease: EASE_CINEMATIC }}
                 />
-                <span className="relative z-10 tracking-wide text-[15px]">Get an Audit</span>
+                <span className="relative z-10 tracking-wide text-[15px]">Contact</span>
                 <motion.div
                   className="relative z-10"
                   whileHover={{ x: 3 }}

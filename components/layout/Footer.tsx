@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Globe, Mail } from "lucide-react";
+import Image from "next/image";
 import { BRAND } from "@/lib/constants";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -28,7 +29,15 @@ export default function Footer() {
               transition={{ duration: 0.6, ease: EASE }}
               className="flex items-center gap-3 mb-8"
             >
-              <span className="text-xl font-bold uppercase tracking-widest text-white">Xelvant</span>
+              <Link href="/" className="inline-block">
+                <Image 
+                  src="/logo.png" 
+                  alt="Xelvant Logo" 
+                  width={160} 
+                  height={48} 
+                  className="w-auto h-8 md:h-10 object-contain" 
+                />
+              </Link>
             </motion.div>
             <p className="text-muted text-sm max-w-xs mb-8 leading-relaxed">
               Architecting the future of e-commerce intelligence. Custom AI systems for the modern digital brand.
@@ -57,7 +66,7 @@ export default function Footer() {
             <h5 className="text-white font-bold mb-6 text-lg">Company</h5>
             <ul className="space-y-4 text-sm text-muted">
               <li><Link href="/#methodology" className="hover:text-primary transition-colors duration-300">Methodology</Link></li>
-              <li><Link href="/audit" className="hover:text-primary transition-colors duration-300">Request Audit</Link></li>
+              <li><Link href="/contact" className="hover:text-primary transition-colors duration-300">Contact Sales</Link></li>
             </ul>
           </div>
 

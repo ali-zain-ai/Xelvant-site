@@ -60,9 +60,9 @@ export default function ServicesPage() {
     <div className="bg-[#020202] min-h-screen selection:bg-primary/30 selection:text-white">
       <Navbar />
 
-      <main className="pt-40 pb-20 md:pt-48 md:pb-32 overflow-hidden relative">
+      <main className="pt-32 md:pt-40 pb-16 md:pb-20 overflow-hidden relative">
         {/* Background Effects */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-primary/10 via-transparent to-transparent -z-10 blur-[120px] opacity-60 rounded-full translate-x-1/4 -translate-y-1/4" />
+        <div className="absolute top-0 right-0 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-gradient-to-bl from-primary/10 via-transparent to-transparent -z-10 blur-[80px] md:blur-[120px] opacity-60 rounded-full translate-x-1/4 -translate-y-1/4" />
         <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.025] mix-blend-overlay -z-10 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6">
@@ -84,7 +84,7 @@ export default function ServicesPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: EASE_CINEMATIC }}
-              className="text-4xl md:text-6xl lg:text-[4.5rem] font-semibold tracking-tight mb-8 leading-[1.1]"
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-[4.5rem] font-semibold tracking-tight mb-8 leading-[1.1]"
             >
               <span className="text-white">AI Intelligence Built For </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E2C792] to-[#C5A059]">

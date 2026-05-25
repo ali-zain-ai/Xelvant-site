@@ -40,10 +40,10 @@ export default function ContactPage() {
     <div className="bg-[#020202] min-h-screen selection:bg-primary/30 selection:text-white">
       <Navbar />
 
-      <main className="pt-40 pb-20 overflow-hidden relative min-h-screen flex items-center">
+      <main className="pt-32 md:pt-40 pb-16 md:pb-20 overflow-hidden relative min-h-screen flex items-center">
         {/* Background Effects */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-primary/10 via-transparent to-transparent -z-10 blur-[120px] opacity-60 rounded-full translate-x-1/3 -translate-y-1/3" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full -z-10 -translate-x-1/2 translate-y-1/3" />
+        <div className="absolute top-0 right-0 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-gradient-to-bl from-primary/10 via-transparent to-transparent -z-10 blur-[80px] md:blur-[120px] opacity-60 rounded-full translate-x-1/3 -translate-y-1/3" />
+        <div className="absolute bottom-0 left-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-primary/5 blur-[80px] md:blur-[120px] rounded-full -z-10 -translate-x-1/2 translate-y-1/3" />
         <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.025] mix-blend-overlay -z-10 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
