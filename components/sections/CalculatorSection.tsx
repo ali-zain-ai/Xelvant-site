@@ -5,18 +5,18 @@ import { motion } from "framer-motion";
 import { TrendingUp, DollarSign, ArrowRight, Sparkles, Clock } from "lucide-react";
 import Link from "next/link";
 
-export default function CalculatorSection() {
-  const [revenue, setRevenue] = useState(250000); // default $250k monthly
-  const [churn, setChurn] = useState(15); // default 15% churn
+const EASE = [0.16, 1, 0.3, 1] as const;
 
-  // Calculations
+export default function CalculatorSection() {
+  const [revenue, setRevenue] = useState(250000);
+  const [churn, setChurn] = useState(15);
+
   const annualRevenue = revenue * 12;
   const yearlyChurnLoss = annualRevenue * (churn / 100);
-  const projectedRecovery = yearlyChurnLoss * 0.18; // conservative 18% recovery with custom AI
-  const timeSaved = 14; // 14 hours/week on manual reporting
-  const ltvIncrease = annualRevenue * 0.082; // average 8.2% increase in LTV
+  const projectedRecovery = yearlyChurnLoss * 0.18;
+  const timeSaved = 14;
+  const ltvIncrease = annualRevenue * 0.082;
 
-  // Formatting helpers
   const formatCurrency = (val: number) => {
     if (val >= 1000000) return `$${(val / 1000000).toFixed(1)}M`;
     if (val >= 1000) return `$${(val / 1000).toFixed(0)}K`;
@@ -24,14 +24,18 @@ export default function CalculatorSection() {
   };
 
   return (
-    <section className="py-32 bg-[#080808] border-y border-white/5 relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <section className="section-padding bg-[#080808] border-y border-white/5 relative overflow-hidden">
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: EASE }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="text-center max-w-3xl mx-auto mb-20"
+        >
           <span className="text-[10px] uppercase tracking-[0.3em] text-primary font-bold mb-4 inline-block">
             ROI Projection
           </span>
@@ -41,13 +45,18 @@ export default function CalculatorSection() {
           <p className="text-muted text-lg">
             Drag the sliders below representing your current business metrics to estimate the annual financial impact of deploying a custom Xelvant intelligence model.
           </p>
-        </div>
+        </motion.div>
 
         {/* Calculator Card */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
-          {/* Sliders Container */}
-          <div className="lg:col-span-7 glass-card rounded-[32px] p-8 md:p-12 border-gold-subtle flex flex-col justify-between space-y-10">
+          {/* Sliders */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="lg:col-span-7 glass-card rounded-[32px] p-8 md:p-12 border-gold-subtle flex flex-col justify-between space-y-10"
+          >
             <div>
               <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
                 <Sparkles size={18} className="text-primary" /> Store Parameters
@@ -55,20 +64,19 @@ export default function CalculatorSection() {
               <p className="text-muted text-sm mb-10">Input your operational metrics. We benchmark these values against similar verticals.</p>
             </div>
 
-            {/* Slider 1: Monthly Revenue */}
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <label className="text-xs uppercase tracking-widest font-black text-muted">Monthly Revenue</label>
                 <span className="text-xl font-bold text-white">{formatCurrency(revenue)}</span>
               </div>
-              <input 
-                type="range" 
-                min={20000} 
-                max={2000000} 
+              <input
+                type="range"
+                min={20000}
+                max={2000000}
                 step={10000}
-                value={revenue} 
+                value={revenue}
                 onChange={(e) => setRevenue(Number(e.target.value))}
-                className="w-full h-1.5 bg-white/5 rounded-lg appearance-none cursor-pointer accent-primary border border-white/5 outline-none"
+                className="w-full h-1.5 bg-white/5 rounded-lg appearance-none cursor-pointer accent-primary border border-white/5 outline-none transition-all duration-300"
               />
               <div className="flex justify-between text-[10px] text-muted font-bold">
                 <span>$20K</span>
@@ -78,20 +86,19 @@ export default function CalculatorSection() {
               </div>
             </div>
 
-            {/* Slider 2: Churn Rate */}
             <div className="space-y-4 pt-4">
               <div className="flex justify-between items-center">
                 <label className="text-xs uppercase tracking-widest font-black text-muted">Estimated Churn / Drop-Off</label>
                 <span className="text-xl font-bold text-white">{churn}%</span>
               </div>
-              <input 
-                type="range" 
-                min={5} 
-                max={45} 
+              <input
+                type="range"
+                min={5}
+                max={45}
                 step={1}
-                value={churn} 
+                value={churn}
                 onChange={(e) => setChurn(Number(e.target.value))}
-                className="w-full h-1.5 bg-white/5 rounded-lg appearance-none cursor-pointer accent-primary border border-white/5 outline-none"
+                className="w-full h-1.5 bg-white/5 rounded-lg appearance-none cursor-pointer accent-primary border border-white/5 outline-none transition-all duration-300"
               />
               <div className="flex justify-between text-[10px] text-muted font-bold">
                 <span>5% (Healthy)</span>
@@ -100,16 +107,20 @@ export default function CalculatorSection() {
               </div>
             </div>
 
-            {/* Subtext info */}
             <p className="text-xs text-muted/60 leading-relaxed pt-6 border-t border-white/5">
               * Calculations are based on Xelvant brand case-study averages (14% - 22% churn reclamation rates observed in fashion, cosmetics, and electronics sectors).
             </p>
-          </div>
+          </motion.div>
 
-          {/* Results Container */}
-          <div className="lg:col-span-5 bg-surface border border-white/5 rounded-[32px] p-8 md:p-12 hover:border-primary/20 transition-colors duration-500 flex flex-col justify-between relative overflow-hidden">
-            {/* Ambient Card Glow */}
-            <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 rounded-full blur-[50px] pointer-events-none"></div>
+          {/* Results */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="lg:col-span-5 bg-surface border border-white/5 rounded-[32px] p-8 md:p-12 hover:border-primary/20 transition-colors duration-700 flex flex-col justify-between relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 rounded-full blur-[50px] pointer-events-none" />
 
             <div className="space-y-8">
               <div>
@@ -118,13 +129,18 @@ export default function CalculatorSection() {
                 </span>
               </div>
 
-              {/* Stat 1: Recoverable revenue */}
               <div className="space-y-1">
                 <span className="text-xs uppercase tracking-widest font-bold text-muted">Recoverable Revenue</span>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl md:text-5xl font-black text-white text-gradient-gold">
+                  <motion.span
+                    key={projectedRecovery}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, ease: EASE }}
+                    className="text-4xl md:text-5xl font-black text-white text-gradient-gold"
+                  >
                     {formatCurrency(projectedRecovery)}
-                  </span>
+                  </motion.span>
                   <span className="text-xs text-muted">/ yr</span>
                 </div>
                 <p className="text-xs text-muted leading-relaxed">
@@ -132,7 +148,6 @@ export default function CalculatorSection() {
                 </p>
               </div>
 
-              {/* Grid of minor stats */}
               <div className="grid grid-cols-2 gap-6 pt-6 border-t border-white/5">
                 <div className="space-y-1">
                   <span className="text-[10px] uppercase tracking-widest font-bold text-muted">LTV Increase</span>
@@ -153,21 +168,17 @@ export default function CalculatorSection() {
               </div>
             </div>
 
-            {/* CTA action */}
             <div className="pt-8 mt-8 border-t border-white/5">
-              <Link 
-                href="/audit" 
+              <Link
+                href="/audit"
                 className="w-full py-4 bg-primary hover:bg-primary-dark text-black font-black text-md rounded-full transition-all flex items-center justify-center gap-2 hover:shadow-[0_0_30px_rgba(197,160,89,0.3)] transform hover:scale-[1.02] active:scale-95 cursor-pointer"
               >
                 Claim Recoverable Revenue
                 <ArrowRight size={18} />
               </Link>
             </div>
-
-          </div>
-
+          </motion.div>
         </div>
-
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import SmoothScrollProvider from "@/components/ui/SmoothScrollProvider";
 
 export const metadata: Metadata = {
   title: "Xelvant | Custom AI Intelligence for E-commerce",
@@ -62,7 +63,9 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased bg-background">
-        {children}
+        <SmoothScrollProvider>
+          {children}
+        </SmoothScrollProvider>
       </body>
     </html>
   );

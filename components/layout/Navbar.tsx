@@ -1,164 +1,208 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { BRAND } from "@/lib/constants";
+
+const EASE = [0.16, 1, 0.3, 1] as const;
+const EASE_SPRING = { type: "spring" as const, stiffness: 300, damping: 30 };
+
+const navLinks = [
+  { name: "Home", href: "/", id: "home" },
+  { name: "Services", href: "/services", id: "services" },
+  { name: "Case Studies", href: "/case-studies", id: "case-studies" },
+  { name: "Contact", href: "/contact", id: "contact" },
+];
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-
-  // Handle Scroll effect for glassmorphism
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const navRef = useRef<HTMLElement>(null);
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-
-      // Determine active section based on scroll position
-      const sections = ["home", "solutions", "proof", "contact"];
-      let current = "home";
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          // If the top of the section is within the top 200px of the viewport
-          if (rect.top <= 200) {
-            current = section;
-          }
-        }
-      }
-      setActiveSection(current);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    // Trigger once on mount
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Home", href: "/#home", id: "home" },
-    { name: "Services", href: "/#solutions", id: "solutions" },
-    { name: "Case Studies", href: "/#proof", id: "proof" },
-    { name: "Contact", href: "/#contact", id: "contact" },
-  ];
-
-  const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, id: string) => {
-    if (href.startsWith("/#") && pathname === "/") {
+  const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href === "/" && pathname === "/") {
       e.preventDefault();
-      
-      if (id === "home") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }
-      setActiveSection(id);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
+  const linkVariants = {
+    initial: { opacity: 0, y: -10 },
+    animate: (i: number) => ({
+      opacity: 1, y: 0,
+      transition: { delay: 0.1 + i * 0.05, ease: EASE, duration: 0.6 }
+    }),
+  };
+
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "glass-nav py-4 shadow-[0_4px_30px_rgba(0,0,0,0.5)]" : "bg-transparent py-6"
+    <motion.nav
+      ref={navRef}
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 will-change-transform ${
+        isScrolled
+          ? "glass-nav py-3 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+          : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        
-        {/* LOGO AREA */}
-        <Link 
-          href="/" 
-          onClick={(e) => handleNavLinkClick(e, "/#home", "home")}
+        {/* Logo */}
+        <Link
+          href="/"
+          onClick={(e) => handleNavLinkClick(e, "/")}
           className="flex items-center gap-3 group relative z-50"
         >
-          <span className="text-xl font-bold tracking-widest uppercase text-white group-hover:text-primary transition-colors duration-500">
+          <motion.span
+            className="text-xl font-bold tracking-widest uppercase text-white"
+            whileHover={{ color: "#C5A059" }}
+            transition={{ duration: 0.4 }}
+          >
             {BRAND.name}
-          </span>
+          </motion.span>
         </Link>
 
-        {/* DESKTOP LINKS - Premium Pill Navbar */}
-        <div className="hidden md:flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 backdrop-blur-md shadow-[0_0_20px_rgba(0,0,0,0.2)]">
-          {navLinks.map((link) => {
-            const isActive = activeSection === link.id;
+        {/* Desktop Nav - Premium Pill */}
+        <div className="hidden md:flex items-center gap-2 bg-[#0A0A0A]/40 border border-white/[0.04] rounded-full px-3 py-1.5 backdrop-blur-2xl shadow-[0_0_20px_rgba(0,0,0,0.4)]">
+          {navLinks.map((link, index) => {
+            const isActive = pathname === link.href;
+            const isHovered = hoveredIndex === index;
+
             return (
               <Link
                 key={link.name}
                 href={link.href}
-                onClick={(e) => handleNavLinkClick(e, link.href, link.id)}
-                className={`relative px-5 py-2 text-sm font-medium transition-all duration-500 rounded-full group ${
-                  isActive ? "text-primary bg-primary/10" : "text-muted hover:text-white"
-                }`}
+                onClick={(e) => handleNavLinkClick(e, link.href)}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className="relative px-5 py-2 text-[13px] tracking-wide font-normal transition-colors duration-500 rounded-full group"
               >
-                <span className="relative z-10">{link.name}</span>
-                {/* Subtle gold glow on hover */}
-                <div className="absolute inset-0 rounded-full bg-primary/0 group-hover:bg-primary/5 transition-colors duration-500 z-0" />
-                <div className="absolute inset-x-4 -bottom-0.5 h-px bg-primary/0 group-hover:bg-primary/50 transition-colors duration-500 shadow-[0_0_8px_rgba(197,160,89,0.5)] opacity-0 group-hover:opacity-100" />
+                <motion.span
+                  className="relative z-10"
+                  animate={{
+                    color: isActive ? "#C5A059" : isHovered ? "#ffffff" : "#9CA3AF",
+                  }}
+                  transition={{ duration: 0.4, ease: EASE }}
+                >
+                  {link.name}
+                </motion.span>
+
+                {/* Active indicator */}
+                {isActive && (
+                  <motion.div
+                    layoutId="activeNav"
+                    className="absolute inset-0 rounded-full bg-primary/[0.08] border border-primary/[0.15]"
+                    transition={EASE_SPRING}
+                  />
+                )}
+
+                {/* Hover glow */}
+                <motion.div
+                  className="absolute inset-0 rounded-full bg-white/[0.03]"
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  animate={{
+                    opacity: isHovered && !isActive ? 1 : 0,
+                    scale: isHovered && !isActive ? 1 : 0.85,
+                  }}
+                  transition={{ duration: 0.3, ease: EASE }}
+                />
+
+                {/* Bottom line on hover */}
+                <motion.div
+                  className="absolute inset-x-4 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent"
+                  initial={{ opacity: 0, scaleX: 0 }}
+                  animate={{
+                    opacity: isHovered ? 1 : 0,
+                    scaleX: isHovered ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.4, ease: EASE }}
+                />
               </Link>
             );
           })}
         </div>
 
-        {/* DESKTOP CTA */}
-        <div className="hidden md:block group">
-          <Link
-            href="/audit"
-            className="relative px-7 py-2.5 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-primary/30 text-white text-sm font-bold rounded-full overflow-hidden inline-block transition-all duration-500 shadow-[0_0_15px_rgba(197,160,89,0.1)] hover:shadow-[0_0_30px_rgba(197,160,89,0.3)] hover:border-primary"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <span className="relative z-10 group-hover:text-primary transition-colors duration-300">Get an Audit</span>
-          </Link>
-        </div>
+        {/* Desktop CTA removed as requested */}
 
-        {/* MOBILE MENU TOGGLE */}
+        {/* Mobile Toggle */}
         <button
-          className="md:hidden text-white relative z-50 p-2 hover:text-primary transition-colors"
+          className="md:hidden text-white relative z-50 p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          <motion.div
+            animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
+            transition={{ duration: 0.3, ease: EASE }}
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </motion.div>
         </button>
       </div>
 
-      {/* MOBILE FULLSCREEN MENU */}
-      <div
-        className={`fixed inset-0 bg-background/98 backdrop-blur-2xl z-40 transition-all duration-500 ease-in-out md:hidden flex flex-col justify-center items-center gap-8 ${
-          isMobileMenuOpen
-            ? "opacity-100 pointer-events-auto translate-y-0"
-            : "opacity-0 pointer-events-none -translate-y-full"
-        }`}
-      >
-        {navLinks.map((link, index) => {
-          const isActive = activeSection === link.id;
-          return (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={(e) => {
-                setIsMobileMenuOpen(false);
-                handleNavLinkClick(e, link.href, link.id);
-              }}
-              className={`text-3xl font-extrabold tracking-tight transition-all duration-500 hover:scale-105 ${
-                isActive ? "text-primary" : "text-white hover:text-primary/80"
-              }`}
-              style={{ transitionDelay: `${index * 50}ms` }}
+      {/* Mobile Fullscreen Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(32px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            transition={{ duration: 0.5, ease: EASE }}
+            className="fixed inset-0 bg-background/98 backdrop-blur-2xl z-40 md:hidden flex flex-col justify-center items-center gap-8"
+          >
+            {navLinks.map((link, index) => {
+              const isActive = pathname === link.href;
+              return (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + index * 0.08, ease: EASE, duration: 0.5 }}
+                >
+                  <Link
+                    href={link.href}
+                    onClick={(e) => {
+                      setIsMobileMenuOpen(false);
+                      handleNavLinkClick(e, link.href);
+                    }}
+                    className={`text-3xl font-extrabold tracking-tight transition-colors duration-500 ${
+                      isActive ? "text-primary" : "text-white"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
+              );
+            })}
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, ease: EASE, duration: 0.5 }}
             >
-              {link.name}
-            </Link>
-          );
-        })}
-        
-        <Link
-          href="/audit"
-          onClick={() => setIsMobileMenuOpen(false)}
-          className="mt-8 px-12 py-4 bg-primary text-black text-lg font-black rounded-full hover:shadow-[0_0_30px_rgba(197,160,89,0.4)] transition-all active:scale-95"
-        >
-          Get an Audit
-        </Link>
-      </div>
-    </nav>
+              <Link
+                href="/audit"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="mt-8 px-12 py-4 bg-primary text-black text-lg font-black rounded-full hover:shadow-[0_0_40px_rgba(197,160,89,0.4)] transition-all active:scale-95"
+              >
+                Get an Audit
+              </Link>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 }

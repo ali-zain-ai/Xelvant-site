@@ -7,7 +7,6 @@ export default function CustomCursor() {
   const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Only on desktop with fine pointer
     if (typeof window === "undefined") return;
     const mq = window.matchMedia("(pointer: fine)");
     if (!mq.matches) return;
@@ -18,22 +17,23 @@ export default function CustomCursor() {
 
     let mouseX = 0, mouseY = 0;
     let ringX = 0, ringY = 0;
+    let rafId: number;
 
     const onMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
       dot.style.left = `${mouseX - 4}px`;
       dot.style.top = `${mouseY - 4}px`;
-      document.documentElement.style.setProperty('--cursor-x', `${mouseX}px`);
-      document.documentElement.style.setProperty('--cursor-y', `${mouseY}px`);
+      document.documentElement.style.setProperty("--cursor-x", `${mouseX}px`);
+      document.documentElement.style.setProperty("--cursor-y", `${mouseY}px`);
     };
 
     const animate = () => {
-      ringX += (mouseX - ringX) * 0.15;
-      ringY += (mouseY - ringY) * 0.15;
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
       ring.style.left = `${ringX - 16}px`;
       ring.style.top = `${ringY - 16}px`;
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
     };
 
     const onMouseOver = (e: MouseEvent) => {
@@ -47,12 +47,11 @@ export default function CustomCursor() {
       document.body.classList.remove("cursor-hover");
     };
 
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseover", onMouseOver);
-    document.addEventListener("mouseout", onMouseOut);
-    animate();
+    document.addEventListener("mousemove", onMouseMove, { passive: true });
+    document.addEventListener("mouseover", onMouseOver, { passive: true });
+    document.addEventListener("mouseout", onMouseOut, { passive: true });
+    rafId = requestAnimationFrame(animate);
 
-    // Hide default cursor
     document.body.style.cursor = "none";
     const style = document.createElement("style");
     style.textContent = "a, button, [role='button'] { cursor: none !important; }";
@@ -62,6 +61,7 @@ export default function CustomCursor() {
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseover", onMouseOver);
       document.removeEventListener("mouseout", onMouseOut);
+      cancelAnimationFrame(rafId);
       document.body.style.cursor = "";
       style.remove();
     };
@@ -72,12 +72,12 @@ export default function CustomCursor() {
       <div ref={dotRef} className="cursor-dot hidden md:block" />
       <div ref={ringRef} className="cursor-ring hidden md:block" />
       <div className="fixed inset-0 pointer-events-none z-[99997] mix-blend-screen opacity-30">
-        <div 
+        <div
           className="w-[300px] h-[300px] rounded-full bg-amber-500/10 blur-[100px]"
-          style={{ 
-            position: 'fixed',
-            left: 'calc(var(--cursor-x) - 150px)',
-            top: 'calc(var(--cursor-y) - 150px)',
+          style={{
+            position: "fixed",
+            left: "calc(var(--cursor-x) - 150px)",
+            top: "calc(var(--cursor-y) - 150px)",
           }}
         />
       </div>

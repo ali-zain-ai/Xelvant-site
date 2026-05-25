@@ -3,16 +3,17 @@
 import { motion } from "framer-motion";
 import { TIMELINE } from "@/lib/constants";
 
+const EASE = [0.16, 1, 0.3, 1] as const;
+
 export default function HowItWorksSection() {
   return (
     <section id="how-it-works" className="relative section-padding bg-dark overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: EASE }}
           className="text-center mb-24"
         >
           <span className="text-xs font-mono text-purple uppercase tracking-[0.2em]">Operational Deployment</span>
@@ -24,30 +25,31 @@ export default function HowItWorksSection() {
           </p>
         </motion.div>
 
-        {/* Timeline Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {TIMELINE.map((step, i) => (
             <motion.div
               key={step.day}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.15 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: i * 0.15, ease: EASE }}
               className="relative group"
             >
-              <div className="glass-card p-10 h-full flex flex-col justify-between border-border/5">
+              <div className="glass-card p-10 h-full flex flex-col justify-between border-border/5 transition-all duration-500 group-hover:border-primary/20">
                 <div className="space-y-6">
                   <div className="flex justify-between items-start">
                     <span className="text-[10px] font-mono text-purple font-bold tracking-widest uppercase">
                       {step.day}
                     </span>
-                    <div className="w-1.5 h-1.5 rounded-full bg-purple/20 group-hover:bg-purple/60 transition-colors duration-500" />
+                    <motion.div
+                      className="w-1.5 h-1.5 rounded-full bg-purple/20 group-hover:bg-purple/60 transition-colors duration-500"
+                    />
                   </div>
-                  
+
                   <h3 className="font-clash font-semibold text-xl text-text tracking-tight">
                     {step.title}
                   </h3>
-                  
+
                   <p className="text-muted text-sm font-satoshi leading-relaxed">
                     {step.description}
                   </p>
@@ -66,12 +68,11 @@ export default function HowItWorksSection() {
           ))}
         </div>
 
-        {/* Ownership Note */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 1, delay: 0.5, ease: EASE }}
           className="mt-20 p-8 rounded-2xl border border-border/10 bg-navy/20 text-center"
         >
           <p className="text-muted font-satoshi text-sm max-w-3xl mx-auto leading-relaxed">
