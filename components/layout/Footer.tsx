@@ -33,9 +33,9 @@ export default function Footer() {
                 <Image 
                   src="/logo.png" 
                   alt="Xelvant Logo" 
-                  width={160} 
-                  height={48} 
-                  className="w-auto h-8 md:h-10 object-contain" 
+                  width={200} 
+                  height={80} 
+                  className="w-auto h-12 md:h-16 object-contain" 
                 />
               </Link>
             </motion.div>

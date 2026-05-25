@@ -76,9 +76,9 @@ export default function Navbar() {
             <Image 
               src="/logo.png" 
               alt="Xelvant Logo" 
-              width={140} 
-              height={40} 
-              className="w-auto h-6 md:h-8 object-contain" 
+              width={180} 
+              height={60} 
+              className="w-auto h-10 md:h-14 object-contain" 
               priority
             />
           </motion.div>
