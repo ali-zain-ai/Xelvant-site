@@ -23,9 +23,7 @@
   --color-amber: #F59E0B;
 
   /* Font Families */
-  --font-outfit: 'Cabinet Grotesk', sans-serif; /* Mapping existing references */
-  --font-inter: 'Satoshi', sans-serif;          /* Mapping existing references */
-  --font-cabinet: 'Cabinet Grotesk', sans-serif;
+  --font-general: 'General Sans', sans-serif;
   --font-satoshi: 'Satoshi', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
@@ -66,7 +64,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-cabinet);
+  font-family: var(--font-general);
 }
 
 ::selection {

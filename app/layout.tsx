@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Fontshare Fonts for Obsidian & Gold Theme */}
-        <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700,500,400&amp;f[]=satoshi@700,500,400,300&amp;display=swap" rel="stylesheet" />
+        <link href="https://api.fontshare.com/v2/css?f[]=general-sans@600,500,400&f[]=satoshi@700,500,400,300&display=swap" rel="stylesheet" />
         {/* Custom Xelvant Favicon (SVG) - Gold Theme */}
         <link
           rel="icon"
