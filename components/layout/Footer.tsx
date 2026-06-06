@@ -40,7 +40,7 @@ export default function Footer() {
               </Link>
             </motion.div>
             <p className="text-muted text-sm max-w-xs mb-8 leading-relaxed">
-              E-commerce data science agency. We build churn prediction, segmentation, and LTV models for D2C brands that want to stop guessing and start acting on their data.
+              We turn your raw data into predictable revenue. Stop guessing, fix your revenue leaks, and scale your brand with absolute confidence.
             </p>
             <div className="flex gap-6">
               <a href="https://linkedin.com/company/xelvant" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white transition-colors duration-300">

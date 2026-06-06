@@ -69,7 +69,7 @@ export default function ContactPage() {
                 transition={{ duration: 0.8, delay: 0.1, ease: EASE_CINEMATIC }}
                 className="text-[#888888] text-lg font-normal leading-relaxed mb-16"
               >
-                Tell us what you're struggling with. We'll look at your data together and build a system that tells you exactly what to do next to grow your business.
+                We don't do guesswork. We audit your data, identify exactly where you are losing revenue, and deploy the systems to fix it.
               </motion.p>
 
               <motion.div
