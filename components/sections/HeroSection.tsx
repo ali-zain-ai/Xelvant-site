@@ -128,9 +128,9 @@ export default function HeroSection() {
             {/* Headline */}
             <motion.h1
               variants={fadeUpVariants}
-              className="text-3xl sm:text-4xl md:text-[4rem] lg:text-[4.5rem] font-semibold tracking-tight mb-6 leading-[1.1] max-w-[95%]"
+              className="text-3xl sm:text-4xl md:text-[4rem] lg:text-[4.5rem] font-semibold tracking-tight mb-6 leading-[1.1] w-full"
             >
-              <span className="block text-white mb-1">Your E-Commerce</span>
+              <span className="block text-white mb-1 whitespace-nowrap">Your E-Commerce</span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E2C792] to-[#C5A059]">
                 Intelligence
               </span>
@@ -140,9 +140,6 @@ export default function HeroSection() {
             <motion.div variants={fadeUpVariants} className="mb-8 max-w-lg">
               <p className="text-[#888888] text-base md:text-lg font-normal leading-relaxed mb-4">
                 Every brand tracks what happened. We tell you what happens next
-              </p>
-              <p className="text-[#555555] text-[10px] md:text-xs uppercase tracking-[0.15em] font-medium">
-                From predictive analytics to intelligent automation — engineered for scalable growth.
               </p>
             </motion.div>
 
