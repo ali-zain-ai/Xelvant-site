@@ -77,7 +77,7 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative pt-24 pb-16 md:pt-32 lg:pt-40 md:pb-20 min-h-screen flex items-center overflow-hidden"
+      className="relative pt-20 pb-16 md:pt-24 lg:pt-28 md:pb-20 min-h-screen flex items-center overflow-hidden"
       id="home"
     >
       {/* Base */}
@@ -121,7 +121,7 @@ export default function HeroSection() {
                 whileHover={{ color: "#E2C792" }}
                 transition={{ duration: 0.3 }}
               >
-                AI & Data Science Agency
+                E-Commerce Intelligence Agency
               </motion.span>
             </motion.div>
 

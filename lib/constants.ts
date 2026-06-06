@@ -45,43 +45,43 @@ export interface ServiceItem {
 
 export const SERVICES: ServiceItem[] = [
   {
-    title: "Predictive Analytics",
-    description: "Use AI-powered forecasting models to predict trends, customer behavior, and future business performance.",
+    title: "Revenue Forecasting",
+    description: "Know exactly what your revenue will look like next month based on actual customer buying patterns, not guesswork.",
     iconName: "LineChart",
     iconColor: "text-primary",
     delay: 0.1,
   },
   {
-    title: "Customer Segmentation",
-    description: "Identify high-value customer groups and optimize targeting using intelligent segmentation systems.",
+    title: "High-Value Customer Targeting",
+    description: "Identify your most profitable buyers and understand exactly when and what they are most likely to buy next.",
     iconName: "Users",
     iconColor: "text-indigo-400",
     delay: 0.2,
   },
   {
-    title: "Churn Prediction & Retention",
-    description: "Detect customer churn risks early and improve retention using predictive AI systems.",
+    title: "Churn Prevention",
+    description: "Identify which customers are about to leave for a competitor and automatically trigger actions to keep them.",
     iconName: "ShieldAlert",
     iconColor: "text-red-500",
     delay: 0.3,
   },
   {
-    title: "Business Intelligence",
-    description: "Transform raw business data into actionable insights and decision-making systems.",
+    title: "Executive Dashboards",
+    description: "See the exact health of your entire business in one place. Real-time numbers without the spreadsheets.",
     iconName: "BarChart3",
     iconColor: "text-primary",
     delay: 0.4,
   },
   {
-    title: "AI Workflow Automation",
-    description: "Automate repetitive business operations using intelligent AI-powered workflows.",
+    title: "Automated Operations",
+    description: "Replace repetitive manual work with automated systems that run your business flawlessly 24/7.",
     iconName: "Network",
     iconColor: "text-primary",
     delay: 0.5,
   },
   {
-    title: "Operational Intelligence",
-    description: "Monitor and optimize operations using real-time analytics and automation systems.",
+    title: "Inventory Insights",
+    description: "Always know exactly what to stock, when to restock, and how to avoid costly dead inventory.",
     iconName: "Zap",
     iconColor: "text-amber-400",
     delay: 0.6,
@@ -89,11 +89,11 @@ export const SERVICES: ServiceItem[] = [
 ];
 
 export const SERVICE_FEATURES = [
-  "AI-first approach",
-  "Data-driven systems",
-  "Modern automation expertise",
-  "Scalable solutions",
-  "Enterprise-grade thinking",
+  "Revenue-first approach",
+  "Actionable insights",
+  "Time-saving automation",
+  "Scalable systems",
+  "Clear ROI focus",
   "E-commerce specialization",
 ];
 

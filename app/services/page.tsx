@@ -40,7 +40,7 @@ export default function ServicesPage() {
             >
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-primary">
-                Advanced Capabilities — AI & Data Science
+                Advanced Capabilities — Profit Optimization
               </span>
             </motion.div>
 
@@ -50,7 +50,7 @@ export default function ServicesPage() {
               transition={{ duration: 0.8, delay: 0.1, ease: EASE_CINEMATIC }}
               className="text-3xl sm:text-4xl md:text-6xl lg:text-[4.5rem] font-semibold tracking-tight mb-8 leading-[1.1]"
             >
-              <span className="text-white">AI & Data Science For </span>
+              <span className="text-white">Profit-Driven Intelligence For </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E2C792] to-[#C5A059]">
                 Modern E-Commerce.
               </span>
@@ -62,7 +62,7 @@ export default function ServicesPage() {
               transition={{ duration: 0.8, delay: 0.2, ease: EASE_CINEMATIC }}
               className="text-[#888888] text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto"
             >
-              Helping brands leverage machine learning, predictive analytics, and intelligent automation to drive measurable growth.
+              Helping brands uncover hidden revenue, stop customer churn, and scale operations predictably.
             </motion.p>
           </div>
 

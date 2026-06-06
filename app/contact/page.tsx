@@ -10,9 +10,9 @@ const EASE_CINEMATIC = [0.16, 1, 0.3, 1] as const;
 
 const trustItems = [
   { icon: <Clock size={16} />, title: "Response within 24 hours" },
-  { icon: <Workflow size={16} />, title: "Tailored AI solutions" },
-  { icon: <Shield size={16} />, title: "Enterprise-focused approach" },
-  { icon: <Target size={16} />, title: "Modern e-commerce expertise" }
+  { icon: <Workflow size={16} />, title: "Tailored to your business" },
+  { icon: <Shield size={16} />, title: "100% data security" },
+  { icon: <Target size={16} />, title: "Actionable, clear insights" }
 ];
 
 export default function ContactPage() {
@@ -57,9 +57,9 @@ export default function ContactPage() {
                 transition={{ duration: 0.8, ease: EASE_CINEMATIC }}
                 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-6 leading-[1.1]"
               >
-                <span className="text-white block">Let's Build</span>
+                <span className="text-white block">Let's Fix Your</span>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E2C792] to-[#C5A059]">
-                  Smarter Intelligence.
+                  Revenue Leaks.
                 </span>
               </motion.h1>
 
@@ -69,7 +69,7 @@ export default function ContactPage() {
                 transition={{ duration: 0.8, delay: 0.1, ease: EASE_CINEMATIC }}
                 className="text-[#888888] text-lg font-normal leading-relaxed mb-16"
               >
-                Tell us about your business goals and discover how AI, data science, and machine learning can optimize growth, automation, and decision-making.
+                Tell us what you're struggling with. We'll look at your data together and build a system that tells you exactly what to do next to grow your business.
               </motion.p>
 
               <motion.div
