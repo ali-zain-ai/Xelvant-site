@@ -4,56 +4,20 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { LineChart, Users, ShieldAlert, BarChart3, Network, Zap, CheckCircle2 } from "lucide-react";
+import { SERVICES, SERVICE_FEATURES } from "@/lib/constants";
+import type { ReactNode } from "react";
 
 const EASE_CINEMATIC = [0.16, 1, 0.3, 1] as const;
 
-const services = [
-  {
-    title: "Predictive Analytics",
-    description: "Use AI-powered forecasting models to predict trends, customer behavior, and future business performance.",
-    icon: <LineChart size={24} className="text-primary" />,
-    delay: 0.1,
-  },
-  {
-    title: "Customer Segmentation",
-    description: "Identify high-value customer groups and optimize targeting using intelligent segmentation systems.",
-    icon: <Users size={24} className="text-indigo-400" />,
-    delay: 0.2,
-  },
-  {
-    title: "Churn Prediction & Retention",
-    description: "Detect customer churn risks early and improve retention using predictive AI systems.",
-    icon: <ShieldAlert size={24} className="text-red-500" />,
-    delay: 0.3,
-  },
-  {
-    title: "Business Intelligence",
-    description: "Transform raw business data into actionable insights and decision-making systems.",
-    icon: <BarChart3 size={24} className="text-primary" />,
-    delay: 0.4,
-  },
-  {
-    title: "AI Workflow Automation",
-    description: "Automate repetitive business operations using intelligent AI-powered workflows.",
-    icon: <Network size={24} className="text-primary" />,
-    delay: 0.5,
-  },
-  {
-    title: "Operational Intelligence",
-    description: "Monitor and optimize operations using real-time analytics and automation systems.",
-    icon: <Zap size={24} className="text-amber-400" />,
-    delay: 0.6,
-  }
-];
-
-const features = [
-  "AI-first approach",
-  "Data-driven systems",
-  "Modern automation expertise",
-  "Scalable solutions",
-  "Enterprise-grade thinking",
-  "E-commerce specialization"
-];
+/* Map icon names from constants to actual Lucide components */
+const iconMap: Record<string, ReactNode> = {
+  LineChart: <LineChart size={24} className="text-primary" />,
+  Users: <Users size={24} className="text-indigo-400" />,
+  ShieldAlert: <ShieldAlert size={24} className="text-red-500" />,
+  BarChart3: <BarChart3 size={24} className="text-primary" />,
+  Network: <Network size={24} className="text-primary" />,
+  Zap: <Zap size={24} className="text-amber-400" />,
+};
 
 export default function ServicesPage() {
   return (
@@ -102,9 +66,9 @@ export default function ServicesPage() {
             </motion.p>
           </div>
 
-          {/* Services Grid */}
+          {/* Services Grid — driven by constants */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24 md:mb-32">
-            {services.map((service, index) => (
+            {SERVICES.map((service, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -116,7 +80,7 @@ export default function ServicesPage() {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 
                 <div className="w-14 h-14 bg-[#0A0A0A] border border-white/10 rounded-xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:border-primary/40 transition-all duration-500 relative z-10 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
-                  {service.icon}
+                  {iconMap[service.iconName]}
                 </div>
                 
                 <h3 className="text-2xl font-semibold text-white mb-4 relative z-10">{service.title}</h3>
@@ -131,7 +95,7 @@ export default function ServicesPage() {
             ))}
           </div>
 
-          {/* Why Xelvant Section */}
+          {/* Why Xelvant Section — features driven by constants */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -145,10 +109,10 @@ export default function ServicesPage() {
               <div>
                 <h2 className="text-3xl md:text-5xl font-semibold text-white mb-6 tracking-tight">Why Xelvant?</h2>
                 <p className="text-[#888] text-lg leading-relaxed mb-8">
-                  We don’t build generic software. We engineer proprietary intelligence systems designed to give e-commerce brands an unfair advantage in the market. 
+                  We don't build generic software. We engineer proprietary intelligence systems designed to give e-commerce brands an unfair advantage in the market. 
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {features.map((feature, idx) => (
+                  {SERVICE_FEATURES.map((feature, idx) => (
                     <motion.div 
                       key={idx}
                       initial={{ opacity: 0, x: -10 }}

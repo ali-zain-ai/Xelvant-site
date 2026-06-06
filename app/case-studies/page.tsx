@@ -5,37 +5,9 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { ArrowUpRight, TrendingUp, Activity, BarChart3 } from "lucide-react";
 import Link from "next/link";
+import { CASE_STUDIES } from "@/lib/constants";
 
 const EASE_CINEMATIC = [0.16, 1, 0.3, 1] as const;
-
-const caseStudies = [
-  {
-    type: "Fashion E-Commerce Brand",
-    results: [
-      "28% increase in retention",
-      "AI churn prediction implementation",
-      "Customer segmentation optimization",
-      "Automated reporting workflows"
-    ],
-    highlightMetric: "+28%",
-    highlightLabel: "Retention Uplift",
-    chartColor: "from-indigo-500/20 to-transparent",
-    lineColor: "stroke-indigo-400"
-  },
-  {
-    type: "Health & Wellness Store",
-    results: [
-      "34% operational efficiency improvement",
-      "Predictive inventory insights",
-      "Automated analytics dashboards",
-      "AI workflow automation"
-    ],
-    highlightMetric: "+34%",
-    highlightLabel: "Efficiency Gain",
-    chartColor: "from-primary/20 to-transparent",
-    lineColor: "stroke-primary"
-  }
-];
 
 export default function CaseStudiesPage() {
   return (
@@ -72,9 +44,9 @@ export default function CaseStudiesPage() {
             </motion.p>
           </div>
 
-          {/* Case Studies Container */}
+          {/* Case Studies Container — driven by constants */}
           <div className="space-y-12 md:space-y-24 mb-24 md:mb-32">
-            {caseStudies.map((study, index) => (
+            {CASE_STUDIES.map((study, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 40 }}

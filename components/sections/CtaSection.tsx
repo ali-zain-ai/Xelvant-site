@@ -35,7 +35,7 @@ export default function CtaSection() {
           className="inline-block"
         >
           <Link
-            href="/audit"
+            href="/contact"
             className="inline-flex items-center gap-3 px-12 py-5 bg-gradient-to-br from-primary to-primary-dark text-black font-black text-lg rounded-full shadow-[0_0_20px_rgba(197,160,89,0.2)] hover:shadow-[0_0_50px_rgba(197,160,89,0.5)] transition-shadow duration-500"
           >
             Book Your Audit
