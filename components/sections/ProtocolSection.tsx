@@ -8,20 +8,20 @@ const EASE_SPRING = { type: "spring" as const, stiffness: 200, damping: 15 };
 const steps = [
   {
     num: "01",
-    title: "Audit & Integrity",
-    desc: "We begin by auditing your current data stack to ensure high-fidelity inputs. No AI can fix broken data collection.",
-    circleClass: "bg-white text-black",
+    title: "Audit",
+    desc: "We connect to your data, clean what is broken, and identify exactly what your current setup can and cannot tell you. This step decides everything that comes after it.",
+    circleClass: "bg-white/10 text-white border border-white/20",
   },
   {
     num: "02",
-    title: "Custom Engineering",
-    desc: "Our data scientists architect proprietary models specifically for your customer behavior patterns and vertical nuances.",
-    circleClass: "bg-amber-500 text-black",
+    title: "Model",
+    desc: "We build a prediction model on your actual customer data. Churn risk, segment profiles, delivery flags — whichever problem costs you the most revenue right now gets solved first.",
+    circleClass: "bg-white/10 text-white border border-white/20",
   },
   {
     num: "03",
-    title: "Deployment & Scale",
-    desc: "We integrate intelligence directly into your workflow, providing the training and support to turn insights into profit.",
+    title: "Deploy",
+    desc: "You receive a working dashboard your team opens every day. It shows which customers need attention, which segments to target, and where your operations are slipping — before the damage shows up in your numbers.",
     circleClass: "bg-white/10 text-white border border-white/20",
   },
 ];
@@ -58,7 +58,7 @@ export default function ProtocolSection() {
             The Protocol
           </motion.span>
           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 text-white">
-            How Intelligence is Built.
+            The Xelvant Process
           </h2>
           <p className="text-muted text-lg max-w-xl mx-auto">
             Three phases from raw data to business dominance.

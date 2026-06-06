@@ -14,8 +14,8 @@ export default function Home() {
       <main className="bg-background">
         <HeroSection />
         <ProtocolSection />
-        <FaqSection />
         <CtaSection />
+        <FaqSection />
       </main>
       <Footer />
     </>

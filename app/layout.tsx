@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/ui/SmoothScrollProvider";
-import CustomCursor from "@/components/ui/CustomCursor";
 
 export const metadata: Metadata = {
   title: "Xelvant",
@@ -66,7 +65,6 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased bg-background">
-        <CustomCursor />
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>

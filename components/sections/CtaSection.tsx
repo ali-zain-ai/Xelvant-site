@@ -21,11 +21,11 @@ export default function CtaSection() {
         className="max-w-4xl mx-auto px-6 text-center relative z-10"
       >
         <h2 className="text-4xl md:text-7xl font-extrabold tracking-tighter mb-8 text-white">
-          Ready to outperform?
+          Want to know what your data is actually telling you?
         </h2>
 
         <p className="text-muted text-lg md:text-xl mb-12">
-          Stop guessing. Start knowing. Schedule a high-level data audit with our executive team.
+          Book a free 30-minute call. We look at your data together and identify the single biggest revenue leak in your business.
         </p>
 
         <motion.div

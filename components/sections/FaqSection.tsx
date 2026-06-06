@@ -13,24 +13,28 @@ interface FaqItem {
 
 const FAQS: FaqItem[] = [
   {
-    question: "How does Xelvant differ from off-the-shelf marketing tools?",
-    answer: "Standard SaaS platforms use generic rules and statistical averages that apply to everyone. Xelvant builds custom machine learning models trained exclusively on your brand's historical customer journeys. This allows us to predict behaviors (like exit intent) with up to 94% precision, tailored specifically to your audience vertical.",
+    question: "Do I need a data team or technical staff to work with you?",
+    answer: "Not at all. We act as your entire data and engineering team. You just need to grant us access to your existing platforms, and we handle the pipeline architecture, machine learning models, and deployment end-to-end.",
   },
   {
-    question: "Do we have to replace Shopify, Klaviyo, or our active CRM?",
+    question: "Do we have to change any of our existing tools like Shopify or Klaviyo?",
     answer: "No. Xelvant acts as an intelligence overlay, not a replacement. We connect directly to your existing platforms (Shopify Plus, Klaviyo, Meta, Salesforce, etc.) via secure API channels, compute predictive behaviors in our models, and pipe the actionable intelligence back into your current tools dynamically.",
   },
   {
-    question: "How long does the ingestion and model deployment take?",
-    answer: "Our standard integration lifecycle takes 2 to 4 weeks. Week 1 is dedicated to data stack auditing and secure pipeline mapping. Week 2-3 involves training the machine learning models on your custom datasets. Week 4 focuses on deploying live trigger systems and syncing them with Klaviyo/Meta Ads.",
+    question: "How long before we see actual results from the model?",
+    answer: "Our standard integration lifecycle takes 2 to 4 weeks. Week 1 is dedicated to data stack auditing and secure pipeline mapping. Week 2-3 involves training the machine learning models on your custom datasets. Week 4 focuses on deploying live trigger systems and syncing them with Klaviyo/Meta Ads, at which point you will start seeing actionable insights.",
   },
   {
-    question: "How secure is our customer data with your system?",
-    answer: "Data security is our primary architecture pillar. All pipelines use 256-bit encryption in transit and at rest. We utilize read-only tokens to sync behavioral schemas, conform to SOC2 guidelines, and never store, share, or monetize any of your brand's unique customer intelligence data.",
+    question: "What data do you need from us to get started?",
+    answer: "We primarily need access to your transactional data, customer behavior logs, and marketing platforms (e.g. Shopify, Klaviyo, Meta). We utilize read-only tokens to sync behavioral schemas, conform to SOC2 guidelines, and never store, share, or monetize any of your brand's unique customer intelligence data.",
   },
   {
-    question: "What is your pricing and engagement model?",
-    answer: "We charge a transparent, flat monthly engineering retainer based on the scale of your store and active customer models. We do not charge variable commissions or take percentage cuts of your store revenue, meaning 100% of the reclaimed churn revenue remains in your company's accounts.",
+    question: "How is this different from just using a Shopify analytics app?",
+    answer: "Standard SaaS apps use generic rules and statistical averages that apply to everyone. Xelvant builds custom machine learning models trained exclusively on your brand's historical customer journeys. This allows us to predict behaviors (like exit intent or churn) with high precision, tailored specifically to your audience vertical.",
+  },
+  {
+    question: "What happens after the model is built — do you disappear or stay involved?",
+    answer: "We stay fully involved. We charge a flat monthly engineering retainer based on the scale of your active customer models. This ensures your models are continuously monitored, retrained with new data, and optimized for performance. We act as your ongoing operational intelligence partner.",
   },
 ];
 

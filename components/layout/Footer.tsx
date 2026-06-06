@@ -40,7 +40,7 @@ export default function Footer() {
               </Link>
             </motion.div>
             <p className="text-muted text-sm max-w-xs mb-8 leading-relaxed">
-              AI & Data Science agency helping e-commerce brands grow through predictive analytics, machine learning, and intelligent automation.
+              E-commerce data science agency. We build churn prediction, segmentation, and LTV models for D2C brands that want to stop guessing and start acting on their data.
             </p>
             <div className="flex gap-6">
               <a href="https://linkedin.com/company/xelvant" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white transition-colors duration-300">
@@ -56,17 +56,18 @@ export default function Footer() {
             <h5 className="text-white font-bold mb-6 text-lg">Intelligence</h5>
             <ul className="space-y-4 text-sm text-muted">
               <li><Link href="/services" className="hover:text-primary transition-colors duration-300">Churn Prediction</Link></li>
-              <li><Link href="/services" className="hover:text-primary transition-colors duration-300">Segmentation</Link></li>
+              <li><Link href="/services" className="hover:text-primary transition-colors duration-300">Customer Segmentation</Link></li>
               <li><Link href="/services" className="hover:text-primary transition-colors duration-300">Custom Dashboards</Link></li>
-              <li><Link href="/services" className="hover:text-primary transition-colors duration-300">LTV Growth</Link></li>
+              <li><Link href="/services" className="hover:text-primary transition-colors duration-300">LTV Modeling</Link></li>
             </ul>
           </div>
 
           <div>
             <h5 className="text-white font-bold mb-6 text-lg">Company</h5>
             <ul className="space-y-4 text-sm text-muted">
-              <li><Link href="/#methodology" className="hover:text-primary transition-colors duration-300">Methodology</Link></li>
-              <li><Link href="/contact" className="hover:text-primary transition-colors duration-300">Contact Sales</Link></li>
+              <li><Link href="/#methodology" className="hover:text-primary transition-colors duration-300">How We Work</Link></li>
+              <li><Link href="/#about" className="hover:text-primary transition-colors duration-300">About</Link></li>
+              <li><Link href="/case-studies" className="hover:text-primary transition-colors duration-300">Case Studies</Link></li>
             </ul>
           </div>
 
@@ -88,7 +89,7 @@ export default function Footer() {
           className="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-white/5"
         >
           <div className="text-muted text-[10px] uppercase tracking-widest font-bold mb-4 md:mb-0">
-            &copy; {currentYear} XELVANT INTELLIGENCE AGENCY. ALL RIGHTS RESERVED.
+            &copy; {currentYear} Xelvant. All Rights Reserved.
           </div>
           <div className="flex gap-8 text-[10px] uppercase tracking-widest font-bold text-muted">
             <span className="flex items-center gap-2">
