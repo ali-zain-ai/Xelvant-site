@@ -1,59 +1,29 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import { useEffect } from "react";
 
-const EASE = [0.16, 1, 0.3, 1] as const;
+// Duration the overlay stays visible (ms)
+const LOADER_DURATION = 1200;
 
 export default function PageLoader() {
-  const [loading, setLoading] = useState(true);
-
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1200);
+    const overlay = document.getElementById("page-overlay");
+    if (!overlay) return;
+
+    const timer = setTimeout(() => {
+      // Fade the static overlay out
+      overlay.style.opacity = "0";
+      overlay.style.pointerEvents = "none";
+
+      // Remove from DOM after fade completes
+      setTimeout(() => {
+        overlay.remove();
+      }, 520);
+    }, LOADER_DURATION);
+
     return () => clearTimeout(timer);
   }, []);
 
-  return (
-    <AnimatePresence>
-      {loading && (
-        <motion.div
-          className="fixed inset-0 z-[100000] flex flex-col items-center justify-center bg-background"
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: EASE }}
-        >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, ease: EASE }}
-            className="flex flex-col items-center gap-6"
-          >
-            <motion.div
-              className="flex items-center justify-center mb-4"
-              animate={{ scale: [1, 1.05, 1], opacity: [0.8, 1, 0.8] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <Image 
-                src="/logo-transparent.png" 
-                alt="Xelvant Loading Logo" 
-                width={280} 
-                height={100} 
-                className="w-auto h-16 md:h-20 object-contain filter drop-shadow-[0_0_20px_rgba(197,160,89,0.6)]" 
-                priority
-              />
-            </motion.div>
-
-            <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden mt-4">
-              <motion.div
-                className="h-full bg-primary"
-                initial={{ x: "-100%" }}
-                animate={{ x: "0%" }}
-                transition={{ duration: 1, ease: EASE }}
-              />
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+  // Nothing to render — the static overlay in layout.tsx handles the visual
+  return null;
 }

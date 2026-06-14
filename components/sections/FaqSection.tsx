@@ -2,118 +2,147 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import { Plus } from "lucide-react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-interface FaqItem {
-  question: string;
-  answer: string;
-}
-
-const FAQS: FaqItem[] = [
+const FAQS = [
   {
-    question: "Do I need a data team or technical staff to work with you?",
-    answer: "Not at all. We act as your entire data and engineering team. You just need to grant us access to your existing platforms, and we handle the pipeline architecture, machine learning models, and deployment end-to-end.",
+    q: "What data access is required?",
+    a: "We need read-only API access to your Shopify store (orders, customers, products), your email platform (Klaviyo, Mailchimp, etc.), and optionally your ad accounts. Setup takes under 30 minutes on your end. We never modify, export, or share your data.",
   },
   {
-    question: "Do we have to change any of our existing tools like Shopify or Klaviyo?",
-    answer: "No. Xelvant acts as an intelligence overlay, not a replacement. We connect directly to your existing platforms (Shopify Plus, Klaviyo, Meta, Salesforce, etc.) via secure API channels, compute predictive behaviors in our models, and pipe the actionable intelligence back into your current tools dynamically.",
+    q: "How secure is the process?",
+    a: "All connections use official read-only API tokens — we have zero ability to change any settings, orders, or customer records. Your data is used solely to perform the analysis and is never stored beyond the engagement or shared with third parties.",
   },
   {
-    question: "How long before we see actual results from the model?",
-    answer: "Our standard integration lifecycle takes 2 to 4 weeks. Week 1 is dedicated to data stack auditing and secure pipeline mapping. Week 2-3 involves training the machine learning models on your custom datasets. Week 4 focuses on deploying live trigger systems and syncing them with Klaviyo/Meta Ads, at which point you will start seeing actionable insights.",
+    q: "How long does the audit take?",
+    a: "From access to delivery is 14 days. Day 1–2 is connection setup. Day 3–10 is deep analysis. Day 11–14 is audit writing and delivery. Most clients see their first data findings within 72 hours of access.",
   },
   {
-    question: "What data do you need from us to get started?",
-    answer: "We primarily need access to your transactional data, customer behavior logs, and marketing platforms (e.g. Shopify, Klaviyo, Meta). We utilize read-only tokens to sync behavioral schemas, conform to SOC2 guidelines, and never store, share, or monetize any of your brand's unique customer intelligence data.",
+    q: "Who is this designed for?",
+    a: "Shopify and DTC brands doing between $2M and $30M per year with at least 12 months of customer data. If you're earlier-stage, the audit may not surface enough patterns to be actionable. We'll let you know on a call if it's not the right fit.",
   },
   {
-    question: "How is this different from just using a Shopify analytics app?",
-    answer: "Standard SaaS apps use generic rules and statistical averages that apply to everyone. Xelvant builds custom machine learning models trained exclusively on your brand's historical customer journeys. This allows us to predict behaviors (like exit intent or churn) with high precision, tailored specifically to your audience vertical.",
+    q: "Do you implement the recommendations?",
+    a: "The audit itself focuses on analysis and the action plan. Implementation support is available as an ongoing engagement for clients who want us to work alongside their team. We can discuss scope after your audit delivery.",
   },
   {
-    question: "What happens after the model is built — do you disappear or stay involved?",
-    answer: "We stay fully involved. We charge a flat monthly engineering retainer based on the scale of your active customer models. This ensures your models are continuously monitored, retrained with new data, and optimized for performance. We act as your ongoing operational intelligence partner.",
+    q: "What happens after the audit?",
+    a: "You receive your four deliverables and a 60-minute walkthrough call. You're free to implement independently — the documents are yours to keep. Ongoing support is optional, not required.",
+  },
+  {
+    q: "What does an engagement typically cost?",
+    a: "The revenue audit is free. If you continue with an ongoing engagement — monthly analysis, forecasting, and strategy — pricing starts at $3,500/month with no long-term commitment. We'll discuss what's right for your stage after the audit.",
   },
 ];
 
 export default function FaqSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  const toggleFaq = (idx: number) => {
-    setActiveIndex((prev) => (prev === idx ? null : idx));
-  };
+  const toggle = (i: number) => setActiveIndex((p) => (p === i ? null : i));
 
   return (
-    <section className="section-padding bg-background relative overflow-hidden" id="faq">
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+    <section id="faq" className="py-24 md:py-28 px-5 sm:px-6 lg:px-10 border-t border-white/5">
+      <div className="mx-auto max-w-4xl">
 
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: EASE }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-20"
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: EASE }}
+          className="text-center mb-14"
         >
-          <span className="text-[10px] uppercase tracking-[0.3em] text-primary font-bold mb-4 inline-block">
-            Frequently Asked Questions
-          </span>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 text-white">
-            Client Queries <span className="text-gradient-gold italic">Answered.</span>
+          <div
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] mb-6"
+            style={{ background: "rgba(255,255,255,0.03)", color: "var(--muted-foreground)" }}
+          >
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--primary)" }} />
+            Common questions
+          </div>
+
+          <h2
+            className="font-display tracking-tight"
+            style={{
+              fontFamily: "'Instrument Serif', Georgia, serif",
+              fontSize: "clamp(36px, 5vw, 60px)",
+              lineHeight: 1.02,
+            }}
+          >
+            Frequently Asked{" "}
+            <span className="text-gradient-gold italic">Questions</span>
           </h2>
-          <p className="text-muted text-lg max-w-xl mx-auto">
-            Everything you need to know about integrating custom intelligence into your e-commerce organization.
+
+          <p
+            className="mt-5 text-base md:text-lg max-w-xl mx-auto"
+            style={{ color: "var(--muted-foreground)" }}
+          >
+            Answers to the questions we hear most often before a brand books their audit.
           </p>
         </motion.div>
 
-        {/* FAQ Items */}
-        <div className="space-y-4">
-          {FAQS.map((faq, idx) => {
-            const isOpen = activeIndex === idx;
+        {/* Accordion */}
+        <div>
+          {FAQS.map((faq, i) => {
+            const isOpen = activeIndex === i;
             return (
               <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: idx * 0.1, ease: EASE }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="rounded-2xl border border-white/5 bg-white/5 overflow-hidden transition-all duration-500 hover:border-primary/20"
+                viewport={{ once: false, amount: 0.1 }}
+                transition={{ duration: 0.6, ease: EASE, delay: i * 0.05 }}
+                className="border-b border-white/5"
               >
                 <button
-                  onClick={() => toggleFaq(idx)}
-                  className="w-full p-6 text-left flex justify-between items-center gap-4 focus:outline-none cursor-pointer group"
+                  onClick={() => toggle(i)}
+                  className="w-full flex items-center justify-between gap-6 py-6 text-left"
+                  style={{ background: "none", border: "none", cursor: "pointer" }}
                 >
-                  <span className="text-md md:text-lg font-bold text-white group-hover:text-primary transition-colors duration-300 flex items-center gap-3">
-                    <HelpCircle size={18} className="text-primary/70 shrink-0" />
-                    {faq.question}
+                  <span
+                    className="font-display text-base md:text-lg leading-snug"
+                    style={{
+                      fontFamily: "'Instrument Serif', Georgia, serif",
+                      color: isOpen ? "var(--foreground)" : "rgba(250,250,250,0.8)",
+                      transition: "color 0.3s",
+                    }}
+                  >
+                    {faq.q}
                   </span>
                   <motion.div
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.4, ease: EASE }}
-                    className={`w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 ${
-                      isOpen ? "text-primary border-primary/20" : "text-white/50"
-                    }`}
+                    animate={{ rotate: isOpen ? 45 : 0 }}
+                    transition={{ duration: 0.3, ease: EASE }}
+                    className="shrink-0 grid place-items-center"
+                    style={{
+                      width: "32px",
+                      height: "32px",
+                      borderRadius: "50%",
+                      border: `1px solid ${isOpen ? "rgba(238,188,74,0.4)" : "rgba(255,255,255,0.12)"}`,
+                      background: isOpen ? "rgba(238,188,74,0.08)" : "transparent",
+                      color: isOpen ? "var(--primary)" : "rgba(255,255,255,0.4)",
+                      transition: "all 0.3s",
+                    }}
                   >
-                    <ChevronDown size={16} />
+                    <Plus size={14} />
                   </motion.div>
                 </button>
 
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
+                      key="answer"
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.4, ease: EASE }}
+                      style={{ overflow: "hidden" }}
                     >
-                      <div className="px-6 pb-6 pt-2 border-t border-white/5">
-                        <p className="text-muted text-sm md:text-md leading-relaxed">
-                          {faq.answer}
-                        </p>
-                      </div>
+                      <p
+                        className="text-sm md:text-base leading-relaxed pb-6 max-w-3xl"
+                        style={{ color: "var(--muted-foreground)" }}
+                      >
+                        {faq.a}
+                      </p>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -121,6 +150,7 @@ export default function FaqSection() {
             );
           })}
         </div>
+
       </div>
     </section>
   );

@@ -3,31 +3,22 @@ import "./globals.css";
 import SmoothScrollProvider from "@/components/ui/SmoothScrollProvider";
 
 export const metadata: Metadata = {
-  title: "Xelvant",
-  description:
-    "We help e-commerce brands automate operations, predict customer behavior, and make smarter business decisions using AI, machine learning, and data intelligence.",
-  keywords:
-    "AI agency, data science, machine learning, predictive analytics, business intelligence, e-commerce AI, churn prediction, customer segmentation, revenue forecasting, AI automation",
+  title: "Xelvant — Find the hidden profit inside your Shopify store",
+  description: "Xelvant helps Shopify and DTC brands uncover churn, weak cohorts, and missed repeat purchases — then turns it into a simple action plan that increases profit. Book a free Revenue Audit.",
+  keywords: "e-commerce analytics, Shopify data science, DTC revenue optimization, churn prediction, customer LTV, revenue audit",
   openGraph: {
-    title: "Xelvant",
-    description:
-      "Predictive analytics, machine learning, and intelligent automation for modern e-commerce brands.",
+    title: "Xelvant — Find the hidden profit inside your Shopify store",
+    description: "We do the analysis and tell you what to fix. A simple, ranked plan to grow profit for Shopify and DTC brands doing $2M–$30M.",
     url: "https://xelvant.com",
     siteName: "Xelvant",
     type: "website",
-    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Xelvant | AI & Data Science Agency for E-Commerce Growth",
-    description:
-      "Predictive analytics, machine learning, and intelligent automation for modern e-commerce brands.",
+    title: "Xelvant — Your Revenue Intelligence Partner",
+    description: "Xelvant finds the hidden revenue leaks costing your Shopify store thousands.",
   },
   robots: { index: true, follow: true },
-  icons: {
-    icon: "/logo-transparent.png",
-    apple: "/logo-transparent.png",
-  },
 };
 
 export default function RootLayout({
@@ -36,9 +27,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Fontshare Fonts for Obsidian & Gold Theme */}
-        <link href="https://api.fontshare.com/v2/css?f[]=general-sans@600,500,400&f[]=satoshi@700,500,400,300&display=swap" rel="stylesheet" />
-        {/* JSON-LD Structured Data */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -47,24 +41,80 @@ export default function RootLayout({
               "@type": "Organization",
               name: "Xelvant",
               url: "https://xelvant.com",
-              description:
-                "AI & Data Science agency specializing in predictive analytics, machine learning, and business intelligence for e-commerce brands",
-              foundingDate: "2026",
-              areaServed: ["Pakistan", "United Arab Emirates", "Worldwide"],
-              serviceType: [
-                "AI & Data Science Consulting",
-                "Machine Learning Solutions",
-                "Predictive Analytics",
-                "Business Intelligence",
-                "E-Commerce AI Automation",
-                "Customer Intelligence",
-                "Revenue Forecasting",
-              ],
+              description: "E-commerce revenue intelligence for Shopify & DTC brands.",
             }),
           }}
         />
       </head>
-      <body className="antialiased bg-background">
+      <body>
+        {/*
+          Static overlay injected directly into HTML — renders BEFORE any JS loads.
+          This prevents the logo/navbar flash that occurs during React hydration.
+          The PageLoader component removes this overlay once the app is ready.
+        */}
+        <div
+          id="page-overlay"
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 999999,
+            background: "#09090b",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "32px",
+            transition: "opacity 0.5s ease",
+          }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo-transparent.png"
+            alt="Xelvant"
+            style={{
+              height: "64px",
+              width: "auto",
+              objectFit: "contain",
+              filter: "drop-shadow(0 0 24px rgba(238,188,74,0.5))",
+              animation: "xv-pulse 2s ease-in-out infinite",
+            }}
+          />
+          {/* Progress bar — pure CSS animation, no JS needed */}
+          <div
+            style={{
+              width: "160px",
+              height: "3px",
+              background: "rgba(255,255,255,0.08)",
+              borderRadius: "2px",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              id="page-overlay-bar"
+              style={{
+                height: "100%",
+                width: "100%",
+                background: "#eebc4a",
+                borderRadius: "2px",
+                transformOrigin: "left center",
+                animation: "xv-bar 1.1s cubic-bezier(0.16,1,0.3,1) forwards",
+              }}
+            />
+          </div>
+          <style>{`
+            @keyframes xv-pulse {
+              0%, 100% { opacity: 0.85; transform: scale(1); }
+              50%       { opacity: 1;    transform: scale(1.04); }
+            }
+            @keyframes xv-bar {
+              from { transform: scaleX(0); }
+              to   { transform: scaleX(1); }
+            }
+          `}</style>
+        </div>
+
+        {/* NOTE: Static overlay above is intentionally rendered before JS loads */}
+
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>
@@ -72,4 +122,3 @@ export default function RootLayout({
     </html>
   );
 }
-

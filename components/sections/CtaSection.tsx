@@ -1,58 +1,112 @@
 "use client";
 
-import { Calendar } from "lucide-react";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowRight, Lock, ShieldCheck, Clock } from "lucide-react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: false, amount: 0.2 },
+  transition: { duration: 0.7, ease: EASE, delay },
+});
 
 export default function CtaSection() {
   return (
-    <section id="contact" className="section-padding bg-background relative overflow-hidden">
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,var(--color-primary)_0%,transparent_50%)]" />
-      </div>
+    <section
+      id="cta"
+      className="relative py-28 md:py-36 px-5 sm:px-6 lg:px-10 border-t border-white/5 overflow-hidden"
+    >
+      {/* Gold ambient glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 60% at 50% 100%, rgba(238,188,74,0.10) 0%, transparent 70%)",
+        }}
+      />
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: EASE }}
-        viewport={{ once: true, margin: "-100px" }}
-        className="max-w-4xl mx-auto px-6 text-center relative z-10"
-      >
-        <h2 className="text-4xl md:text-7xl font-extrabold tracking-tighter mb-8 text-white">
-          Want to know what your data is actually telling you?
-        </h2>
+      <div className="relative mx-auto max-w-4xl text-center">
 
-        <p className="text-muted text-lg md:text-xl mb-12">
-          Book a free 30-minute call. We look at your data together and identify the single biggest revenue leak in your business.
-        </p>
+        <motion.div {...fadeUp(0)} className="flex justify-center mb-8">
+          <div
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em]"
+            style={{ background: "rgba(255,255,255,0.03)", color: "var(--muted-foreground)" }}
+          >
+            <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: "var(--primary)" }} />
+            Free Revenue Audit — No Obligation
+          </div>
+        </motion.div>
 
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          className="inline-block"
+        <motion.h2
+          {...fadeUp(0.06)}
+          className="font-display tracking-tight"
+          style={{
+            fontFamily: "'Instrument Serif', Georgia, serif",
+            fontSize: "clamp(36px, 6vw, 72px)",
+            lineHeight: 1.02,
+          }}
         >
+          Your Next Growth Opportunity Might Already Be{" "}
+          <span className="text-gradient-gold italic">Hidden In Your Data</span>
+        </motion.h2>
+
+        <motion.p
+          {...fadeUp(0.12)}
+          className="mt-7 text-base md:text-lg mx-auto max-w-2xl leading-relaxed"
+          style={{ color: "var(--muted-foreground)" }}
+        >
+          Get a free revenue audit and uncover the highest-impact opportunities
+          inside your Shopify store — before your competitors find them first.
+        </motion.p>
+
+        <motion.div {...fadeUp(0.18)}>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-3 px-12 py-5 bg-gradient-to-br from-primary to-primary-dark text-black font-black text-lg rounded-full shadow-[0_0_20px_rgba(197,160,89,0.2)] hover:shadow-[0_0_50px_rgba(197,160,89,0.5)] transition-shadow duration-500"
+            className="group mt-10 inline-flex items-center gap-2 rounded-full px-9 py-4 text-base font-semibold transition"
+            style={{
+              background: "var(--primary)",
+              color: "var(--primary-foreground)",
+              boxShadow: "0 12px 40px -10px rgba(238,188,74,0.55)",
+            }}
           >
-            Book Your Audit
-            <Calendar size={24} />
+            Get My Free Revenue Audit
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" aria-hidden />
           </Link>
         </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-8 text-muted/60 text-xs uppercase tracking-widest"
+        {/* Supporting guarantees */}
+        <motion.div
+          {...fadeUp(0.24)}
+          className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
         >
-          Limited to 2 new brand partners per month.
+          {[
+            { Icon: Lock,         text: "Read-only access" },
+            { Icon: ShieldCheck,  text: "No obligation" },
+            { Icon: Clock,        text: "Results in 14 days" },
+          ].map(({ Icon, text }, i) => (
+            <span
+              key={i}
+              className="flex items-center gap-2 text-xs md:text-sm"
+              style={{ color: "var(--muted-foreground)" }}
+            >
+              <Icon size={14} style={{ color: "var(--primary)" }} aria-hidden />
+              {text}
+            </span>
+          ))}
+        </motion.div>
+
+        {/* Capacity note */}
+        <motion.p
+          {...fadeUp(0.30)}
+          className="mt-8 text-xs"
+          style={{ color: "rgba(255,255,255,0.3)" }}
+        >
+          We take on a limited number of new audits each month. Replies within 24 hours.
         </motion.p>
-      </motion.div>
+
+      </div>
     </section>
   );
 }

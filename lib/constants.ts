@@ -16,10 +16,11 @@ export const BRAND = {
 };
 
 export const NAVIGATION = [
-  { name: "Home", href: "/", id: "home" },
-  { name: "Services", href: "/services", id: "services" },
-  { name: "Case Studies", href: "/case-studies", id: "case-studies" },
-  { name: "Contact", href: "/contact", id: "contact" },
+  { name: "Problem",      href: "/#problem",       id: "problem" },
+  { name: "How it works", href: "/#how-it-works",  id: "how-it-works" },
+  { name: "Results",      href: "/#results",        id: "results" },
+  { name: "Why Xelv",    href: "/#why-xelv",       id: "why-xelv" },
+  { name: "FAQ",          href: "/#faq",            id: "faq" },
 ];
 
 export const HERO_METRICS = [
