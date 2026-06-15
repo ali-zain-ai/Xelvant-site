@@ -11,7 +11,6 @@ import DeliverablesSection    from "@/components/sections/DeliverablesSection";
 import HowItWorksSection      from "@/components/sections/HowItWorksSection";
 import CaseStudySection       from "@/components/sections/CaseStudySection";
 import WhyTrustSection        from "@/components/sections/WhyTrustSection";
-import TestimonialsSection    from "@/components/sections/TestimonialsSection";
 import FaqSection             from "@/components/sections/FaqSection";
 import CtaSection             from "@/components/sections/CtaSection";
 
@@ -44,9 +43,6 @@ export default function Home() {
 
         {/* 8. Why trust — Why should I trust you? */}
         <WhyTrustSection />
-
-        {/* 9. Testimonials — Social validation */}
-        <TestimonialsSection />
 
         {/* 10. FAQ — Objection handling */}
         <FaqSection />

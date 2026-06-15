@@ -30,7 +30,7 @@ const results = [
 
 export default function CaseStudySection() {
   return (
-    <section id="results" className="py-24 md:py-28 px-5 sm:px-6 lg:px-10 border-t border-white/5">
+    <section id="results" className="py-16 md:py-28 px-5 sm:px-6 lg:px-10 border-t border-white/5">
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
@@ -47,7 +47,7 @@ export default function CaseStudySection() {
             className="font-display leading-[1.02] tracking-tight"
             style={{
               fontFamily: "'Instrument Serif', Georgia, serif",
-              fontSize: "clamp(36px, 5vw, 64px)",
+              fontSize: "clamp(28px, 5vw, 64px)",
             }}
           >
             What We Found For{" "}
@@ -115,19 +115,19 @@ export default function CaseStudySection() {
           </motion.div>
 
           {/* Right: results */}
-          <motion.div {...fadeUp(0.16)} className="lg:col-span-2 flex flex-col gap-4">
+          <motion.div {...fadeUp(0.16)} className="lg:col-span-2 grid grid-cols-3 lg:grid-cols-1 gap-3 md:gap-4">
 
             {results.map((r, i) => (
               <div
                 key={i}
-                className="card-premium flex-1 p-7 flex flex-col items-center justify-center text-center"
+                className="card-premium p-4 md:p-7 flex flex-col items-center justify-center text-center"
                 style={{ boxShadow: i === 0 ? "0 0 0 1px rgba(238,188,74,0.2)" : undefined }}
               >
                 <p
                   className="font-display leading-none mb-2"
                   style={{
                     fontFamily: "'Instrument Serif', Georgia, serif",
-                    fontSize: "clamp(40px, 5vw, 60px)",
+                    fontSize: "clamp(28px, 5vw, 60px)",
                     color: "var(--primary)",
                   }}
                 >

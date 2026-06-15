@@ -56,7 +56,7 @@ function Cell({ value }: { value: boolean | string }) {
 
 export default function WhyTrustSection() {
   return (
-    <section id="why-xelv" className="py-24 md:py-28 px-5 sm:px-6 lg:px-10 border-t border-white/5">
+    <section id="why-xelv" className="py-16 md:py-28 px-5 sm:px-6 lg:px-10 border-t border-white/5">
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
@@ -73,7 +73,7 @@ export default function WhyTrustSection() {
             className="font-display leading-[1.02] tracking-tight"
             style={{
               fontFamily: "'Instrument Serif', Georgia, serif",
-              fontSize: "clamp(36px, 5vw, 64px)",
+              fontSize: "clamp(28px, 5vw, 64px)",
             }}
           >
             Why Shopify Brands{" "}
@@ -111,22 +111,29 @@ export default function WhyTrustSection() {
             <div className="card-premium overflow-hidden">
               {/* Table header */}
               <div
-                className="grid grid-cols-3 text-[10px] uppercase tracking-[0.18em] px-5 py-3 border-b border-white/5"
-                style={{ background: "rgba(255,255,255,0.02)", color: "var(--muted-foreground)" }}
+                className="grid items-center px-4 md:px-5 py-3 border-b border-white/5"
+                style={{
+                  gridTemplateColumns: "1fr 60px 60px",
+                  background: "rgba(255,255,255,0.02)",
+                  color: "var(--muted-foreground)",
+                }}
               >
-                <span className="col-span-1">Attribute</span>
-                <span className="text-center" style={{ color: "var(--primary)" }}>Xelv</span>
-                <span className="text-center">Typical Agency</span>
+                <span className="text-[10px] uppercase tracking-[0.18em]">Attribute</span>
+                <span className="text-[10px] uppercase tracking-[0.18em] text-center" style={{ color: "var(--primary)" }}>Xelv</span>
+                <span className="text-[10px] uppercase tracking-[0.18em] text-center">Agency</span>
               </div>
 
               {/* Rows */}
               {comparison.map((row, i) => (
                 <div
                   key={i}
-                  className="grid grid-cols-3 items-center px-5 py-3.5 border-b border-white/5 last:border-0 text-sm"
-                  style={{ background: i % 2 === 0 ? "transparent" : "rgba(255,255,255,0.01)" }}
+                  className="grid items-center px-4 md:px-5 py-3 md:py-3.5 border-b border-white/5 last:border-0"
+                  style={{
+                    gridTemplateColumns: "1fr 60px 60px",
+                    background: i % 2 === 0 ? "transparent" : "rgba(255,255,255,0.01)",
+                  }}
                 >
-                  <span className="text-sm" style={{ color: "rgba(250,250,250,0.8)" }}>
+                  <span className="text-xs md:text-sm pr-2" style={{ color: "rgba(250,250,250,0.8)" }}>
                     {row.attribute}
                   </span>
                   <span className="flex justify-center">

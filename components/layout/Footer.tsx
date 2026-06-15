@@ -17,57 +17,45 @@ export default function Footer() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, ease: EASE }}
-      style={{
-        background: "#050505",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
-        paddingTop: "80px",
-        paddingBottom: "40px",
-      }}
+      className="border-t border-white/5 pt-16 md:pt-20 pb-10 px-5 sm:px-6 lg:px-10"
+      style={{ background: "#050505" }}
     >
-      <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 32px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: "60px", marginBottom: "80px" }} className="grid-cols-2 md:grid-cols-4">
+      <div className="mx-auto max-w-7xl">
+        {/* Grid: 1-col mobile → 2-col tablet → 4-col desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-14 mb-14 md:mb-20">
 
           {/* Brand column */}
-          <div>
-            <Link href="/" style={{ display: "inline-block", marginBottom: "28px" }}>
+          <div className="sm:col-span-2 lg:col-span-1">
+            <Link href="/" className="inline-block mb-6">
               <Image
                 src="/logo-transparent.png"
                 alt="Xelvant Logo"
                 width={200}
                 height={60}
                 className="w-auto object-contain"
-                style={{ height: "48px" }}
+                style={{ height: "40px" }}
               />
             </Link>
             <p
-              style={{
-                fontFamily: "'Inter', system-ui, sans-serif",
-                fontSize: "14px",
-                fontWeight: 300,
-                color: "#A0A0A0",
-                lineHeight: 1.7,
-                maxWidth: "280px",
-                marginBottom: "28px",
-              }}
+              className="text-sm leading-relaxed mb-6 max-w-xs"
+              style={{ color: "var(--muted-foreground)", fontWeight: 300 }}
             >
               We turn your raw data into predictable revenue. Stop guessing, fix your revenue leaks, and scale your brand with absolute confidence.
             </p>
-            <div style={{ display: "flex", gap: "16px" }}>
+            <div className="flex gap-4">
               <a
                 href="https://linkedin.com/company/xelvant"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: "#555", transition: "color 0.3s" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#E0B84D")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#555")}
+                className="transition-colors duration-300"
+                style={{ color: "#555" }}
               >
                 <Globe size={20} />
               </a>
               <a
                 href={`mailto:${BRAND.email}`}
-                style={{ color: "#555", transition: "color 0.3s" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#E0B84D")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#555")}
+                className="transition-colors duration-300"
+                style={{ color: "#555" }}
               >
                 <Mail size={20} />
               </a>
@@ -76,27 +64,16 @@ export default function Footer() {
 
           {/* Intelligence */}
           <div>
-            <h5
-              style={{
-                fontFamily: "'Inter', system-ui, sans-serif",
-                fontSize: "11px",
-                fontWeight: 700,
-                color: "#FFFFFF",
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-                marginBottom: "24px",
-              }}
-            >
+            <h5 className="text-[11px] font-bold uppercase tracking-[0.15em] text-white mb-5">
               Intelligence
             </h5>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "14px" }}>
+            <ul className="flex flex-col gap-3">
               {["Churn Prediction", "Customer Segmentation", "Custom Dashboards", "LTV Modeling"].map((item) => (
                 <li key={item}>
                   <Link
                     href="/#services"
-                    style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "13px", fontWeight: 300, color: "#A0A0A0", textDecoration: "none", transition: "color 0.3s" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#E0B84D")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "#A0A0A0")}
+                    className="text-[13px] transition-colors duration-300 hover:text-[var(--primary)]"
+                    style={{ color: "var(--muted-foreground)", fontWeight: 300 }}
                   >
                     {item}
                   </Link>
@@ -107,20 +84,10 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h5
-              style={{
-                fontFamily: "'Inter', system-ui, sans-serif",
-                fontSize: "11px",
-                fontWeight: 700,
-                color: "#FFFFFF",
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-                marginBottom: "24px",
-              }}
-            >
+            <h5 className="text-[11px] font-bold uppercase tracking-[0.15em] text-white mb-5">
               Company
             </h5>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "14px" }}>
+            <ul className="flex flex-col gap-3">
               {[
                 { label: "How We Work", href: "/#how-it-works" },
                 { label: "Case Studies", href: "/case-studies" },
@@ -129,9 +96,8 @@ export default function Footer() {
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "13px", fontWeight: 300, color: "#A0A0A0", textDecoration: "none", transition: "color 0.3s" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#E0B84D")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "#A0A0A0")}
+                    className="text-[13px] transition-colors duration-300 hover:text-[var(--primary)]"
+                    style={{ color: "var(--muted-foreground)", fontWeight: 300 }}
                   >
                     {item.label}
                   </Link>
@@ -142,20 +108,10 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h5
-              style={{
-                fontFamily: "'Inter', system-ui, sans-serif",
-                fontSize: "11px",
-                fontWeight: 700,
-                color: "#FFFFFF",
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-                marginBottom: "24px",
-              }}
-            >
+            <h5 className="text-[11px] font-bold uppercase tracking-[0.15em] text-white mb-5">
               Legal
             </h5>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "14px" }}>
+            <ul className="flex flex-col gap-3">
               {[
                 { label: "Privacy Policy", href: "/privacy" },
                 { label: "Terms of Service", href: "/terms" },
@@ -163,9 +119,8 @@ export default function Footer() {
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: "13px", fontWeight: 300, color: "#A0A0A0", textDecoration: "none", transition: "color 0.3s" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#E0B84D")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "#A0A0A0")}
+                    className="text-[13px] transition-colors duration-300 hover:text-[var(--primary)]"
+                    style={{ color: "var(--muted-foreground)", fontWeight: 300 }}
                   >
                     {item.label}
                   </Link>
@@ -177,36 +132,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div
-          style={{
-            borderTop: "1px solid rgba(255,255,255,0.06)",
-            paddingTop: "32px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: "16px",
-          }}
-        >
-          <p
-            style={{
-              fontFamily: "'Inter', system-ui, sans-serif",
-              fontSize: "12px",
-              color: "#444",
-              margin: 0,
-            }}
-          >
+        <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p className="text-xs" style={{ color: "#444" }}>
             © {currentYear} Xelvant. All rights reserved.
           </p>
-          <p
-            style={{
-              fontFamily: "'Inter', system-ui, sans-serif",
-              fontSize: "12px",
-              color: "#333",
-              margin: 0,
-            }}
-          >
-            Revenue Intelligence for Shopify & DTC Brands
+          <p className="text-xs" style={{ color: "#333" }}>
+            Revenue Intelligence for Shopify &amp; DTC Brands
           </p>
         </div>
 

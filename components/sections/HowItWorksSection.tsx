@@ -52,7 +52,7 @@ const steps = [
 
 export default function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="py-24 md:py-28 px-5 sm:px-6 lg:px-10 border-t border-white/5">
+    <section id="how-it-works" className="py-16 md:py-28 px-5 sm:px-6 lg:px-10 border-t border-white/5">
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
@@ -69,7 +69,7 @@ export default function HowItWorksSection() {
             className="font-display leading-[1.02] tracking-tight"
             style={{
               fontFamily: "'Instrument Serif', Georgia, serif",
-              fontSize: "clamp(36px, 5vw, 64px)",
+              fontSize: "clamp(28px, 5vw, 64px)",
             }}
           >
             How It Works

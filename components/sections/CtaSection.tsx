@@ -16,14 +16,14 @@ export default function CtaSection() {
   return (
     <section
       id="cta"
-      className="relative py-28 md:py-36 px-5 sm:px-6 lg:px-10 border-t border-white/5 overflow-hidden"
+      className="relative py-20 md:py-36 px-5 sm:px-6 lg:px-10 border-t border-white/5 overflow-hidden"
     >
-      {/* Gold ambient glow */}
+      {/* Gold ambient glow — heavily feathered so it dissolves into the black */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 70% 60% at 50% 100%, rgba(238,188,74,0.10) 0%, transparent 70%)",
+            "radial-gradient(ellipse 55% 45% at 50% 50%, rgba(238,188,74,0.07) 0%, rgba(238,188,74,0.03) 40%, transparent 70%)",
         }}
       />
 
@@ -44,7 +44,7 @@ export default function CtaSection() {
           className="font-display tracking-tight"
           style={{
             fontFamily: "'Instrument Serif', Georgia, serif",
-            fontSize: "clamp(36px, 6vw, 72px)",
+            fontSize: "clamp(28px, 6vw, 72px)",
             lineHeight: 1.02,
           }}
         >

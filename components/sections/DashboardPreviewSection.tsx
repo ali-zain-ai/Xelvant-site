@@ -92,7 +92,7 @@ function RevenueMetric({ active }: { active: boolean }) {
   const pctDisplay = (pct / 10).toFixed(1);
 
   return (
-    <p className="font-display text-4xl mt-1" style={{ fontFamily: "'Instrument Serif', Georgia, serif" }}>
+    <p className="font-display text-3xl md:text-4xl mt-1" style={{ fontFamily: "'Instrument Serif', Georgia, serif" }}>
       {active ? display : "$0.00M"}{" "}
       <span className="text-lg align-middle" style={{ color: "var(--primary)" }}>
         ↑ {active ? pctDisplay : "0.0"}%
@@ -155,11 +155,11 @@ export default function DashboardPreviewSection() {
           </div>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 mt-4 md:mt-5">
 
             {/* Revenue Forecast — 2 cols */}
             <motion.div
-              className="lg:col-span-2 rounded-xl border border-white/5 p-5"
+              className="md:col-span-2 lg:col-span-2 rounded-xl border border-white/5 p-4 md:p-5"
               style={{ background: "rgba(0,0,0,0.4)" }}
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -176,7 +176,7 @@ export default function DashboardPreviewSection() {
               </div>
 
               {/* Chart */}
-              <svg viewBox="0 0 600 180" className="mt-4 w-full h-40">
+              <svg viewBox="0 0 600 200" className="mt-4 w-full h-44">
                 <defs>
                   <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
                     <stop offset="0%" stopColor="#eebc4a" stopOpacity="0.35" />
@@ -184,23 +184,48 @@ export default function DashboardPreviewSection() {
                   </linearGradient>
                   <clipPath id="chart-clip">
                     <motion.rect
-                      x="0" y="0" height="180"
+                      x="40" y="0" height="170"
                       initial={{ width: 0 }}
-                      animate={isInView ? { width: 600 } : { width: 0 }}
+                      animate={isInView ? { width: 560 } : { width: 0 }}
                       transition={{ duration: 1.5, ease: EASE, delay: 0.3 }}
                     />
                   </clipPath>
                 </defs>
 
-                {/* Grid lines */}
-                {[30, 60, 90, 120, 150, 180].map(y => (
-                  <line key={y} x1="0" x2="600" y1={y} y2={y} stroke="white" strokeOpacity="0.04" />
+                {/* Y-axis labels */}
+                {[
+                  { y: 30,  label: "$2.0M" },
+                  { y: 60,  label: "$1.8M" },
+                  { y: 90,  label: "$1.6M" },
+                  { y: 120, label: "$1.4M" },
+                  { y: 150, label: "$1.2M" },
+                ].map((tick) => (
+                  <g key={tick.y}>
+                    <text x="35" y={tick.y + 3} textAnchor="end" fill="white" fillOpacity="0.25" fontSize="9" fontFamily="monospace">
+                      {tick.label}
+                    </text>
+                    <line x1="40" x2="600" y1={tick.y} y2={tick.y} stroke="white" strokeOpacity="0.04" />
+                  </g>
+                ))}
+
+                {/* X-axis month labels */}
+                {[
+                  { x: 40,  label: "Apr" },
+                  { x: 132, label: "May" },
+                  { x: 224, label: "Jun" },
+                  { x: 316, label: "Jul" },
+                  { x: 408, label: "Aug" },
+                  { x: 540, label: "Sep" },
+                ].map((tick) => (
+                  <text key={tick.label} x={tick.x} y={190} textAnchor="middle" fill="white" fillOpacity="0.25" fontSize="9" fontFamily="monospace">
+                    {tick.label}
+                  </text>
                 ))}
 
                 {/* Gradient fill — clipped to animate left-to-right */}
                 <g clipPath="url(#chart-clip)">
                   <motion.path
-                    d="M0,140 C60,120 110,128 160,110 C220,90 260,100 310,80 C360,60 400,68 450,55 L450,180 L0,180 Z"
+                    d="M40,150 C90,135 130,140 175,125 C230,108 270,115 320,98 C370,80 410,86 450,72 L450,170 L40,170 Z"
                     fill="url(#g1)"
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -210,7 +235,7 @@ export default function DashboardPreviewSection() {
 
                 {/* Historical line — draws left-to-right via pathLength */}
                 <motion.path
-                  d="M0,140 C60,120 110,128 160,110 C220,90 260,100 310,80 C360,60 400,68 450,55"
+                  d="M40,150 C90,135 130,140 175,125 C230,108 270,115 320,98 C370,80 410,86 450,72"
                   fill="none"
                   stroke="white"
                   strokeOpacity="0.7"
@@ -223,7 +248,7 @@ export default function DashboardPreviewSection() {
 
                 {/* Forecast dashed line */}
                 <motion.path
-                  d="M450,55 C490,48 530,38 600,20"
+                  d="M450,72 C490,62 530,48 590,32"
                   fill="none"
                   stroke="#eebc4a"
                   strokeWidth="2.5"
@@ -236,12 +261,39 @@ export default function DashboardPreviewSection() {
 
                 {/* Now marker dot */}
                 <motion.circle
-                  cx="450" cy="55" r="4" fill="#eebc4a"
+                  cx="450" cy="72" r="4" fill="#eebc4a"
                   initial={{ opacity: 0, scale: 0 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.4, ease: EASE, delay: 1.65 }}
-                  style={{ transformOrigin: "450px 55px" }}
+                  style={{ transformOrigin: "450px 72px" }}
                 />
+
+                {/* "Today" label */}
+                <motion.g
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.4, ease: EASE, delay: 1.7 }}
+                >
+                  <line x1="450" x2="450" y1="72" y2="170" stroke="#eebc4a" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="3,3" />
+                  <rect x="430" y="162" width="40" height="16" rx="3" fill="rgba(238,188,74,0.15)" />
+                  <text x="450" y="173" textAnchor="middle" fill="#eebc4a" fontSize="8" fontFamily="monospace" fontWeight="600">
+                    Today
+                  </text>
+                </motion.g>
+
+                {/* Mini legend */}
+                <motion.g
+                  initial={{ opacity: 0 }}
+                  animate={isInView ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.4, ease: EASE, delay: 1.8 }}
+                >
+                  {/* Historical */}
+                  <line x1="490" x2="510" y1="15" y2="15" stroke="white" strokeOpacity="0.7" strokeWidth="2" />
+                  <text x="515" y="18" fill="white" fillOpacity="0.4" fontSize="8" fontFamily="sans-serif">Historical</text>
+                  {/* Forecast */}
+                  <line x1="490" x2="510" y1="28" y2="28" stroke="#eebc4a" strokeWidth="2" strokeDasharray="4,3" />
+                  <text x="515" y="31" fill="#eebc4a" fillOpacity="0.6" fontSize="8" fontFamily="sans-serif">Forecast</text>
+                </motion.g>
               </svg>
             </motion.div>
 
@@ -289,7 +341,7 @@ export default function DashboardPreviewSection() {
 
             {/* Growth Opportunities — 2 col */}
             <motion.div
-              className="lg:col-span-2 rounded-xl border border-white/5 p-5"
+              className="md:col-span-2 lg:col-span-2 rounded-xl border border-white/5 p-4 md:p-5"
               style={{ background: "rgba(0,0,0,0.4)" }}
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}

@@ -42,7 +42,7 @@ export default function FaqSection() {
   const toggle = (i: number) => setActiveIndex((p) => (p === i ? null : i));
 
   return (
-    <section id="faq" className="py-24 md:py-28 px-5 sm:px-6 lg:px-10 border-t border-white/5">
+    <section id="faq" className="py-16 md:py-28 px-5 sm:px-6 lg:px-10 border-t border-white/5">
       <div className="mx-auto max-w-4xl">
 
         {/* Header */}
@@ -65,7 +65,7 @@ export default function FaqSection() {
             className="font-display tracking-tight"
             style={{
               fontFamily: "'Instrument Serif', Georgia, serif",
-              fontSize: "clamp(36px, 5vw, 60px)",
+              fontSize: "clamp(28px, 5vw, 60px)",
               lineHeight: 1.02,
             }}
           >

@@ -48,7 +48,7 @@ const deliverables = [
 
 export default function DeliverablesSection() {
   return (
-    <section id="deliverables" className="py-24 md:py-28 px-5 sm:px-6 lg:px-10 border-t border-white/5">
+    <section id="deliverables" className="py-16 md:py-28 px-5 sm:px-6 lg:px-10 border-t border-white/5">
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
@@ -65,7 +65,7 @@ export default function DeliverablesSection() {
             className="font-display leading-[1.02] tracking-tight"
             style={{
               fontFamily: "'Instrument Serif', Georgia, serif",
-              fontSize: "clamp(36px, 5vw, 64px)",
+              fontSize: "clamp(28px, 5vw, 64px)",
             }}
           >
             Here&apos;s What You&apos;ll{" "}
@@ -87,7 +87,7 @@ export default function DeliverablesSection() {
           {deliverables.map((d, i) => (
             <motion.div key={i} {...fadeUp(i * 0.08)}>
               <div
-                className="card-premium h-full p-7 md:p-8 cursor-default"
+                className="card-premium h-full p-5 md:p-8 cursor-default"
                 style={{ transition: "border-color 0.4s" }}
                 onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(238,188,74,0.35)")}
                 onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}

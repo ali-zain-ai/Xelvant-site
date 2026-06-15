@@ -126,21 +126,6 @@ export default function HeroSection() {
           </div>
         </FadeUp>
 
-        {/* Trust bar */}
-        <FadeUp delay={0.24}>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-            {trustItems.map((item, i) => (
-              <span
-                key={i}
-                className="flex items-center gap-2 text-xs md:text-sm"
-                style={{ color: "rgba(250,250,250,0.7)" }}
-              >
-                <CheckCircle size={14} style={{ color: "var(--primary)" }} aria-hidden />
-                {item}
-              </span>
-            ))}
-          </div>
-        </FadeUp>
 
       </div>
     </section>

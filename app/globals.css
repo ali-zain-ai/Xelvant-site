@@ -103,3 +103,25 @@ nextjs-portal,
 .nextjs-static-indicator-root {
   display: none !important;
 }
+
+/* ═══════════════════════════════════════════════
+   MOBILE-FIRST RESPONSIVE OVERRIDES
+   ═══════════════════════════════════════════════ */
+
+/* Smaller grid on mobile so it doesn't look too "zoomed out" */
+@media (max-width: 640px) {
+  body {
+    background-size: 32px 32px;
+  }
+
+  /* Tighter section padding on mobile */
+  section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Cards: tighter padding on mobile */
+  .card-premium {
+    padding: 16px;
+  }
+}
