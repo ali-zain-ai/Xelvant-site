@@ -26,7 +26,7 @@ const problems = [
     stat: "3×",
     statLabel: "cheaper to retain than acquire",
     body:
-      "While you're focused on new customers, your repeat purchase rate is quietly eroding — draining lifetime value you already earned.",
+      "While you're focused on new customers, your repeat purchase rate is quietly eroding, draining lifetime value you already earned.",
   },
   {
     Icon: DollarSign,
@@ -34,7 +34,7 @@ const problems = [
     stat: "$47k",
     statLabel: "average undetected monthly leak",
     body:
-      "Abandoned carts, drop-off points, underperforming bundles — these micro-losses add up to a significant number you'll never see in a standard dashboard.",
+      "Abandoned carts, drop-off points, underperforming bundles. These micro-losses add up to a significant number you'll never see in a standard dashboard.",
   },
   {
     Icon: AlertTriangle,
@@ -50,7 +50,7 @@ const problems = [
     stat: "2.8×",
     statLabel: "higher LTV with one more purchase",
     body:
-      "Getting a customer to buy twice is the single highest-leverage growth action — yet most brands have no system to make it happen consistently.",
+      "Getting a customer to buy twice is the single highest-leverage growth action, yet most brands have no system to make it happen consistently.",
   },
 ];
 

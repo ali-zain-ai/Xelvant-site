@@ -155,7 +155,7 @@ export const TIMELINE = [
   {
     day: "Day 7",
     title: "Operational Handover",
-    description: "Full system walkthrough and training. No monthly SaaS dependency—you own the logic.",
+    description: "Full system walkthrough and training. No monthly SaaS dependency. You own the logic.",
   },
 ];
 

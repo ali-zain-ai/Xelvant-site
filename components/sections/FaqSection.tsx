@@ -13,7 +13,7 @@ const FAQS = [
   },
   {
     q: "How secure is the process?",
-    a: "All connections use official read-only API tokens — we have zero ability to change any settings, orders, or customer records. Your data is used solely to perform the analysis and is never stored beyond the engagement or shared with third parties.",
+    a: "All connections use official read-only API tokens. We have zero ability to change any settings, orders, or customer records. Your data is used solely to perform the analysis and is never stored beyond the engagement or shared with third parties.",
   },
   {
     q: "How long does the audit take?",
@@ -29,11 +29,11 @@ const FAQS = [
   },
   {
     q: "What happens after the audit?",
-    a: "You receive your four deliverables and a 60-minute walkthrough call. You're free to implement independently — the documents are yours to keep. Ongoing support is optional, not required.",
+    a: "You receive your four deliverables and a 60-minute walkthrough call. You're free to implement independently. The documents are yours to keep. Ongoing support is optional, not required.",
   },
   {
     q: "What does an engagement typically cost?",
-    a: "The revenue audit is free. If you continue with an ongoing engagement — monthly analysis, forecasting, and strategy — pricing starts at $3,500/month with no long-term commitment. We'll discuss what's right for your stage after the audit.",
+    a: "The revenue audit is free. If you continue with an ongoing engagement (monthly analysis, forecasting, and strategy), pricing starts at $3,500/month with no long-term commitment. We'll discuss what's right for your stage after the audit.",
   },
 ];
 

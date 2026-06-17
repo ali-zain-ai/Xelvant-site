@@ -1,6 +1,5 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import PageLoader from "@/components/ui/PageLoader";
 
 // Sections — ordered by conversion psychology
 import HeroSection            from "@/components/sections/HeroSection";
@@ -15,7 +14,6 @@ import CtaSection             from "@/components/sections/CtaSection";
 export default function Home() {
   return (
     <>
-      <PageLoader />
       <Navbar />
       <main>
         {/* 1. Hero — What is this? Why should I care? */}

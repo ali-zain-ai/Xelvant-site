@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/ui/SmoothScrollProvider";
+import PageLoader from "@/components/ui/PageLoader";
 
 export const metadata: Metadata = {
-  title: "Xelvant — Find the hidden profit inside your Shopify store",
-  description: "Xelvant helps Shopify and DTC brands uncover churn, weak cohorts, and missed repeat purchases — then turns it into a simple action plan that increases profit. Book a free Revenue Audit.",
+  title: "Xelvant | Find the hidden profit inside your Shopify store",
+  description: "Xelvant helps Shopify and DTC brands uncover churn, weak cohorts, and missed repeat purchases, then turns it into a simple action plan that increases profit. Book a free Revenue Audit.",
   keywords: "e-commerce analytics, Shopify data science, DTC revenue optimization, churn prediction, customer LTV, revenue audit",
   openGraph: {
-    title: "Xelvant — Find the hidden profit inside your Shopify store",
+    title: "Xelvant | Find the hidden profit inside your Shopify store",
     description: "We do the analysis and tell you what to fix. A simple, ranked plan to grow profit for Shopify and DTC brands doing $2M–$30M.",
     url: "https://xelvant.com",
     siteName: "Xelvant",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Xelvant — Your Revenue Intelligence Partner",
+    title: "Xelvant | Your Revenue Intelligence Partner",
     description: "Xelvant finds the hidden revenue leaks costing your Shopify store thousands.",
   },
   robots: { index: true, follow: true },
@@ -25,7 +26,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -46,7 +47,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {/*
           Static overlay injected directly into HTML — renders BEFORE any JS loads.
           This prevents the logo/navbar flash that occurs during React hydration.
@@ -115,6 +116,7 @@ export default function RootLayout({
 
         {/* NOTE: Static overlay above is intentionally rendered before JS loads */}
 
+        <PageLoader />
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>

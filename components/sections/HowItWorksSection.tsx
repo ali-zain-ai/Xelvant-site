@@ -27,7 +27,7 @@ const steps = [
     title: "Revenue Intelligence Analysis",
     desc: "Deep investigation into customer behavior and revenue patterns.",
     detail:
-      "Our analysis covers purchase frequency, cohort retention, churn indicators, LTV distribution, product performance, and revenue leak points — all mapped to dollar impact.",
+      "Our analysis covers purchase frequency, cohort retention, churn indicators, LTV distribution, product performance, and revenue leak points. All mapped to dollar impact.",
     duration: "Day 3–10",
   },
   {
@@ -36,7 +36,7 @@ const steps = [
     title: "Audit Delivery",
     desc: "Receive findings and growth opportunities.",
     detail:
-      "You receive a clear, plain-English presentation of everything we found — revenue leaks, retention patterns, growth opportunities — with supporting data for every finding.",
+      "You receive a clear, plain-English presentation of everything we found: revenue leaks, retention patterns, growth opportunities, with supporting data for every finding.",
     duration: "Day 11–14",
   },
   {

@@ -45,7 +45,7 @@ export default function FitSection() {
               fontSize: "clamp(36px, 5vw, 60px)",
             }}
           >
-            Who this is for — and{" "}
+            Who this is for, and{" "}
             <span className="text-gradient-gold italic">who it isn&apos;t</span>.
           </h2>
           <p

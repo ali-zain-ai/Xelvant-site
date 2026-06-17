@@ -35,7 +35,7 @@ export default function CtaSection() {
             style={{ background: "rgba(255,255,255,0.03)", color: "var(--muted-foreground)" }}
           >
             <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: "var(--primary)" }} />
-            Free Revenue Audit — No Obligation
+            Free Revenue Audit. No Obligation
           </div>
         </motion.div>
 
@@ -58,7 +58,7 @@ export default function CtaSection() {
           style={{ color: "var(--muted-foreground)" }}
         >
           Get a free revenue audit and uncover the highest-impact opportunities
-          inside your Shopify store — before your competitors find them first.
+          inside your Shopify store before your competitors find them first.
         </motion.p>
 
         <motion.div {...fadeUp(0.18)}>

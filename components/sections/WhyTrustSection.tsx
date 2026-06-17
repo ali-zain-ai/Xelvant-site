@@ -14,7 +14,7 @@ const fadeUp = (delay = 0) => ({
 const reasons = [
   {
     title: "Revenue-first mindset",
-    body: "Every recommendation we make is tied to a measurable revenue outcome — not marketing metrics or vanity numbers.",
+    body: "Every recommendation we make is tied to a measurable revenue outcome, not marketing metrics or vanity numbers.",
   },
   {
     title: "Read-only data access",
@@ -22,7 +22,7 @@ const reasons = [
   },
   {
     title: "No long-term contracts",
-    body: "Work with us month-to-month. We earn continued work by delivering results — not by locking you into a 12-month retainer.",
+    body: "Work with us month-to-month. We earn continued work by delivering results, not by locking you into a 12-month retainer.",
   },
   {
     title: "Actionable recommendations",
@@ -34,7 +34,7 @@ const reasons = [
   },
   {
     title: "Transparent process",
-    body: "You know exactly what we're analyzing, when you'll receive it, and what it will cover — before we start.",
+    body: "You know exactly what we're analyzing, when you'll receive it, and what it will cover before we start.",
   },
 ];
 

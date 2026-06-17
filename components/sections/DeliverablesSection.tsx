@@ -18,7 +18,7 @@ const deliverables = [
     title: "Revenue Leak Report",
     desc: "See exactly where revenue is being lost.",
     detail:
-      "A clear, visual breakdown of every point in your customer journey where money is leaking — with estimated monthly impact in dollars so you can prioritize by size of the opportunity.",
+      "A clear, visual breakdown of every point in your customer journey where money is leaking, with estimated monthly impact in dollars so you can prioritize by size of the opportunity.",
   },
   {
     Icon: UserCheck,
@@ -26,7 +26,7 @@ const deliverables = [
     title: "Customer Retention Analysis",
     desc: "Understand why customers stop buying.",
     detail:
-      "A deep look at your repeat purchase patterns, cohort drop-off rates, and the specific behavioral signals that predict whether a customer will buy again — or disappear.",
+      "A deep look at your repeat purchase patterns, cohort drop-off rates, and the specific behavioral signals that predict whether a customer will buy again or disappear.",
   },
   {
     Icon: Map,
@@ -34,7 +34,7 @@ const deliverables = [
     title: "Growth Opportunity Map",
     desc: "Discover the highest-impact growth opportunities.",
     detail:
-      "A ranked list of specific, data-backed opportunities to grow revenue without increasing ad spend — from repeat purchase triggers to underserved customer segments.",
+      "A ranked list of specific, data-backed opportunities to grow revenue without increasing ad spend, from repeat purchase triggers to underserved customer segments.",
   },
   {
     Icon: ListOrdered,
@@ -77,7 +77,7 @@ export default function DeliverablesSection() {
             style={{ color: "var(--muted-foreground)" }}
           >
             This is not a sales call. You leave with four tangible, revenue-focused
-            documents built specifically for your store — yours to keep regardless of
+            documents built specifically for your store. Yours to keep regardless of
             whether you continue working with us.
           </p>
         </motion.div>

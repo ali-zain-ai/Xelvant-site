@@ -97,7 +97,7 @@ export default function ContactPage() {
                 style={{ color: "var(--muted-foreground)" }}
               >
                 Tell us about your store. We&apos;ll analyze your data and show you
-                exactly where revenue is hiding — no contracts, no commitment.
+                exactly where revenue is hiding. No contracts, no commitment.
               </p>
             </FadeUp>
           </div>
@@ -294,7 +294,7 @@ export default function ContactPage() {
                   <div className="space-y-4">
                     {[
                       { Icon: Clock, text: "Response within 24 hours" },
-                      { Icon: ShieldCheck, text: "Read-only access — we never touch your store" },
+                      { Icon: ShieldCheck, text: "Read-only access only. We never touch your store" },
                       { Icon: Lock, text: "Your data stays private and encrypted" },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-3">
@@ -310,21 +310,6 @@ export default function ContactPage() {
                       </div>
                     ))}
                   </div>
-                </div>
-
-                {/* Direct contact */}
-                <div className="card-premium p-6">
-                  <p className="text-[11px] uppercase tracking-[0.15em] font-semibold mb-3" style={{ color: "var(--muted-foreground)" }}>
-                    Prefer email?
-                  </p>
-                  <a
-                    href="mailto:ops@xelvant.ai"
-                    className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-300 hover:text-[var(--primary)]"
-                    style={{ color: "rgba(250,250,250,0.8)" }}
-                  >
-                    <Mail size={14} style={{ color: "var(--primary)" }} aria-hidden />
-                    ops@xelvant.ai
-                  </a>
                 </div>
 
               </div>

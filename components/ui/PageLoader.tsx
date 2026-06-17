@@ -15,9 +15,9 @@ export default function PageLoader() {
       overlay.style.opacity = "0";
       overlay.style.pointerEvents = "none";
 
-      // Remove from DOM after fade completes
+      // Hide after fade — don't remove from DOM to avoid hydration issues
       setTimeout(() => {
-        overlay.remove();
+        overlay.style.display = "none";
       }, 520);
     }, LOADER_DURATION);
 
