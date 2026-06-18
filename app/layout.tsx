@@ -19,6 +19,11 @@ export const metadata: Metadata = {
     title: "Xelvant | Your Revenue Intelligence Partner",
     description: "Xelvant finds the hidden revenue leaks costing your Shopify store thousands.",
   },
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   robots: { index: true, follow: true },
 };
 
