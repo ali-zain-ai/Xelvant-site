@@ -1,173 +1,330 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
+import {
+  Link2, Search, FileText, Rocket, ArrowRight,
+} from "lucide-react";
+
+const EASE = [0.16, 1, 0.3, 1] as const;
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 0.7, ease: EASE, delay },
+});
+
+/* ── Case Studies ── */
+const caseStudies = [
+  {
+    tag: "Health & Wellness · Shopify Plus",
+    problem: "Growth had stalled despite increasing ad spend. Repeat purchase rate was declining and the founder could not identify why.",
+    found: [
+      "37% of first-time buyers never made a second purchase",
+      "Email automations were underperforming by 4x versus industry benchmark",
+      "Their best-selling product was attracting low-LTV buyers who never returned",
+    ],
+    recommended: "Retention sequence targeting customers at their natural repurchase window, lifecycle email optimization with behavior-based triggers, and product-level journey fixes to attract higher-LTV buyers.",
+    metrics: [
+      { value: "+18%", label: "Repeat purchases" },
+      { value: "$31K", label: "Monthly leak closed" },
+      { value: "90 days", label: "Time to results" },
+    ],
+  },
+  {
+    tag: "Fashion & Apparel · Shopify",
+    problem: "Customer acquisition costs kept rising while revenue stayed flat. The brand had no visibility into which products drove long-term value.",
+    found: [
+      "Top 3 SKUs by volume were generating the lowest LTV customers",
+      "Cart abandonment rate was 22% above category average",
+      "Discount-driven buyers had a 73% single-purchase rate",
+    ],
+    recommended: "Product-level LTV analysis feeding into ad targeting, cart recovery sequence redesign with urgency-based timing, and a loyalty program targeting high-intent repeat buyers.",
+    metrics: [
+      { value: "+24%", label: "Customer LTV" },
+      { value: "$19K", label: "Monthly revenue recovered" },
+      { value: "60 days", label: "Time to first results" },
+    ],
+  },
+  {
+    tag: "Home & Kitchen · Amazon + Shopify",
+    problem: "Strong Amazon sales but almost zero repeat purchases. DTC channel was underperforming with no clear diagnosis of why.",
+    found: [
+      "Amazon-to-DTC migration rate was under 2%",
+      "Post-purchase email open rates were 11% (benchmark: 35%+)",
+      "Bundling strategy was cannibalizing higher-margin individual SKUs",
+    ],
+    recommended: "Cross-channel customer journey mapping, post-purchase sequence rebuild with product education content, and bundle restructuring based on margin-per-unit analysis.",
+    metrics: [
+      { value: "+41%", label: "DTC repeat rate" },
+      { value: "$27K", label: "Monthly margin improvement" },
+      { value: "75 days", label: "Time to measurable impact" },
+    ],
+  },
+];
+
+/* ── Process Steps ── */
+const processSteps = [
+  { Icon: Link2, step: "01", title: "Connect Data", duration: "Day 1-2" },
+  { Icon: Search, step: "02", title: "Analyze", duration: "Day 3-10" },
+  { Icon: FileText, step: "03", title: "Deliver Findings", duration: "Day 11-14" },
+  { Icon: Rocket, step: "04", title: "Action Plan", duration: "Day 14" },
+];
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { ArrowUpRight, TrendingUp, Activity, BarChart3 } from "lucide-react";
-import Link from "next/link";
-import { CASE_STUDIES } from "@/lib/constants";
-
-const EASE_CINEMATIC = [0.16, 1, 0.3, 1] as const;
 
 export default function CaseStudiesPage() {
   return (
-    <div className="bg-[#020202] min-h-screen selection:bg-primary/30 selection:text-white">
+    <>
       <Navbar />
+      <main className="min-h-screen">
 
-      <main className="pt-32 md:pt-40 pb-16 md:pb-20 overflow-hidden relative">
-        {/* Background Effects */}
-        <div className="absolute top-0 left-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-gradient-to-br from-primary/5 via-transparent to-transparent -z-10 blur-[80px] md:blur-[120px] opacity-50 rounded-full -translate-x-1/2 -translate-y-1/4" />
-        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.025] mix-blend-overlay -z-10 pointer-events-none" />
+        {/* ─── 4.1  Hero / Intro ─── */}
+        <section className="relative pt-32 pb-16 px-5 sm:px-6 lg:px-10">
+          <div
+            className="absolute inset-x-0 top-0 pointer-events-none -z-10"
+            style={{
+              height: "600px",
+              background:
+                "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(238,188,74,0.12) 0%, transparent 70%)",
+            }}
+          />
+          <div className="mx-auto max-w-4xl text-center">
+            <motion.div {...fadeUp(0)}>
+              <div
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] mb-6"
+                style={{ background: "rgba(255,255,255,0.03)", color: "var(--muted-foreground)" }}
+              >
+                <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--primary)" }} />
+                Case Studies
+              </div>
+            </motion.div>
 
-        <div className="max-w-7xl mx-auto px-6">
-          {/* Hero Section */}
-          <div className="text-center max-w-4xl mx-auto mb-24 md:mb-32">
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: EASE_CINEMATIC }}
-              className="text-3xl sm:text-4xl md:text-6xl lg:text-[4.5rem] font-semibold tracking-tight mb-8 leading-[1.1]"
+              {...fadeUp(0.06)}
+              className="font-display tracking-tight"
+              style={{
+                fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+                fontSize: "clamp(32px, 5.5vw, 68px)",
+                lineHeight: 1.05,
+              }}
             >
-              <span className="text-white">Real Intelligence. </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E2C792] to-[#C5A059]">
-                Real Business Impact.
-              </span>
+              Real analyses,{" "}
+              <span className="text-gradient-gold italic">real results</span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: EASE_CINEMATIC }}
-              className="text-[#888888] text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto"
+              {...fadeUp(0.12)}
+              className="mx-auto mt-6 max-w-2xl text-base sm:text-lg leading-relaxed"
+              style={{ color: "var(--muted-foreground)" }}
             >
-              See how AI-driven systems help brands automate, optimize, and scale smarter.
+              These are demonstration analyses built on real e-commerce data benchmarks. Every finding, metric, and recommendation follows the exact methodology we use with live client stores.
             </motion.p>
           </div>
+        </section>
 
-          {/* Case Studies Container — driven by constants */}
-          <div className="space-y-12 md:space-y-24 mb-24 md:mb-32">
-            {CASE_STUDIES.map((study, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, ease: EASE_CINEMATIC }}
-                className="group flex flex-col lg:flex-row gap-8 lg:gap-16 items-center bg-[#070707]/50 backdrop-blur-xl border border-white/5 rounded-3xl p-6 lg:p-12 hover:bg-[#0a0a0a]/80 hover:border-primary/20 transition-all duration-700"
-              >
-                {/* Visual Dashboard Side */}
-                <div className="w-full lg:w-1/2 relative">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.02] to-transparent rounded-2xl" />
-                  
-                  {/* Abstract Dashboard Card */}
-                  <div className="relative bg-[#0A0A0A] border border-white/10 rounded-2xl overflow-hidden shadow-2xl p-6 ring-1 ring-white/5 group-hover:shadow-[0_0_40px_rgba(197,160,89,0.1)] transition-shadow duration-700">
-                    <div className="flex justify-between items-center mb-8 border-b border-white/5 pb-4">
-                      <div className="text-[10px] uppercase text-[#666] font-bold tracking-widest flex items-center gap-2">
-                        <Activity size={12} className={study.lineColor.replace('stroke-', 'text-')} />
-                        Performance Metrics
-                      </div>
-                      <div className="px-2 py-0.5 bg-[#111] rounded text-[9px] text-[#888] font-mono">Q4 DATA</div>
-                    </div>
-                    
-                    {/* Big Metric */}
-                    <div className="mb-8">
-                      <div className="text-[11px] text-[#888] uppercase tracking-wider font-semibold mb-2">{study.highlightLabel}</div>
-                      <div className="text-5xl font-light text-white tracking-tight flex items-baseline gap-2">
-                        {study.highlightMetric}
-                        <TrendingUp size={24} className={study.lineColor.replace('stroke-', 'text-')} />
-                      </div>
-                    </div>
-
-                    {/* Chart Area */}
-                    <div className="h-32 w-full relative">
-                      <svg viewBox="0 0 200 80" className="w-full h-full overflow-visible">
-                        <path d="M0,20 L200,20 M0,40 L200,40 M0,60 L200,60" className="stroke-[#222] stroke-1" strokeDasharray="2 4" />
-                        <motion.path 
-                          d="M0,70 Q50,60 100,40 T200,10" 
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                          className={study.lineColor}
-                          initial={{ pathLength: 0 }}
-                          whileInView={{ pathLength: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1.5, delay: 0.2, ease: EASE_CINEMATIC }}
-                        />
-                        <motion.circle 
-                          cx="200" cy="10" r="4" 
-                          className={`fill-[#0A0A0A] stroke-2 ${study.lineColor}`}
-                          initial={{ scale: 0 }}
-                          whileInView={{ scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.5, delay: 1.5, type: "spring" }}
-                        />
-                      </svg>
-                      <div className={`absolute inset-0 bg-gradient-to-t ${study.chartColor} pointer-events-none opacity-20`} />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] to-transparent pointer-events-none" />
-                    </div>
-                  </div>
-
-                  {/* Floating Elements */}
-                  <motion.div 
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -right-4 top-10 bg-[#111] border border-white/10 rounded-xl p-3 shadow-xl flex items-center gap-3 backdrop-blur-md"
+        {/* ─── 4.2 + 4.3  Case Study Cards ─── */}
+        <section className="py-16 md:py-24 px-5 sm:px-6 lg:px-10 border-t border-white/5">
+          <div className="mx-auto max-w-7xl space-y-6">
+            {caseStudies.map((cs, i) => (
+              <motion.div key={i} {...fadeUp(0.08 * (i + 1))}>
+                <div className="card-premium overflow-hidden">
+                  {/* Metrics strip */}
+                  <div
+                    className="grid grid-cols-3 border-b border-white/5"
+                    style={{ background: "rgba(238,188,74,0.04)" }}
                   >
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center bg-white/5 ${study.lineColor.replace('stroke-', 'text-')}`}>
-                      <BarChart3 size={14} />
-                    </div>
-                    <div>
-                      <div className="text-[9px] uppercase tracking-wider text-[#666] font-bold">Status</div>
-                      <div className="text-xs text-white font-medium">Optimized</div>
-                    </div>
-                  </motion.div>
-                </div>
-
-                {/* Text Side */}
-                <div className="w-full lg:w-1/2">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-[#111] mb-6">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
-                    <span className="text-[10px] uppercase tracking-widest font-bold text-[#888]">Client Profile</span>
-                  </div>
-                  
-                  <h2 className="text-3xl md:text-4xl font-semibold text-white mb-8 tracking-tight">
-                    {study.type}
-                  </h2>
-
-                  <div className="space-y-4 mb-8">
-                    {study.results.map((result, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <div className={`mt-1 w-5 h-5 rounded-full flex items-center justify-center bg-white/5 border border-white/10 ${study.lineColor.replace('stroke-', 'text-')}`}>
-                          <ArrowUpRight size={12} />
-                        </div>
-                        <p className="text-[#A1A1AA] text-[15px] leading-relaxed">
-                          {result}
+                    {cs.metrics.map((m, j) => (
+                      <div
+                        key={j}
+                        className="py-5 px-6 text-center"
+                        style={{ borderRight: j < 2 ? "1px solid rgba(255,255,255,0.05)" : undefined }}
+                      >
+                        <p
+                          className="font-display leading-none mb-1"
+                          style={{
+                            fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+                            fontSize: "clamp(24px, 4vw, 40px)",
+                            color: "var(--primary)",
+                          }}
+                        >
+                          {m.value}
+                        </p>
+                        <p className="text-xs md:text-sm" style={{ color: "rgba(250,250,250,0.7)" }}>
+                          {m.label}
                         </p>
                       </div>
                     ))}
                   </div>
 
-                  <Link href="/contact" className="inline-flex items-center gap-2 text-[13px] uppercase tracking-widest font-bold text-primary hover:text-primary-light transition-colors group/btn">
-                    Read Full Case Study
-                    <ArrowUpRight size={14} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                  </Link>
+                  {/* Body */}
+                  <div className="p-6 md:p-8">
+                    {/* Tag */}
+                    <p
+                      className="text-[10px] uppercase tracking-[0.22em] mb-5"
+                      style={{ color: "var(--primary)" }}
+                    >
+                      {cs.tag}
+                    </p>
+
+                    {/* Problem */}
+                    <h3
+                      className="font-display leading-snug mb-6"
+                      style={{
+                        fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+                        fontSize: "clamp(18px, 2.5vw, 26px)",
+                      }}
+                    >
+                      {cs.problem}
+                    </h3>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {/* What we found */}
+                      <div>
+                        <p
+                          className="text-[10px] uppercase tracking-[0.22em] mb-4"
+                          style={{ color: "var(--muted-foreground)" }}
+                        >
+                          What we found
+                        </p>
+                        <ul className="space-y-2.5">
+                          {cs.found.map((f, k) => (
+                            <li key={k} className="flex items-start gap-2.5 text-sm" style={{ color: "rgba(250,250,250,0.8)" }}>
+                              <span
+                                className="mt-2 h-1 w-1 rounded-full shrink-0"
+                                style={{ background: "var(--primary)" }}
+                              />
+                              {f}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* What we recommended */}
+                      <div>
+                        <p
+                          className="text-[10px] uppercase tracking-[0.22em] mb-4"
+                          style={{ color: "var(--muted-foreground)" }}
+                        >
+                          What we recommended
+                        </p>
+                        <p className="text-sm leading-relaxed" style={{ color: "rgba(250,250,250,0.7)" }}>
+                          {cs.recommended}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             ))}
-          </div>
 
-          {/* Coming Soon Label */}
-          <div className="text-center pb-12">
-            <div className="inline-flex items-center justify-center px-6 py-2 rounded-full border border-white/5 bg-[#050505]">
-              <span className="text-xs text-[#666] font-medium tracking-wide">
-                More case studies coming soon.
-              </span>
+            {/* ─── 4.5  "Your store could be next" CTA card ─── */}
+            <motion.div {...fadeUp(0.35)}>
+              <div
+                className="card-premium overflow-hidden text-center py-14 px-8"
+                style={{
+                  borderColor: "rgba(238,188,74,0.25)",
+                  background: "rgba(238,188,74,0.03)",
+                }}
+              >
+                <h3
+                  className="font-display tracking-tight mb-3"
+                  style={{
+                    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+                    fontSize: "clamp(24px, 4vw, 40px)",
+                  }}
+                >
+                  Your store could be{" "}
+                  <span className="text-gradient-gold italic">next</span>
+                </h3>
+                <p className="text-base mb-8 max-w-lg mx-auto" style={{ color: "var(--muted-foreground)" }}>
+                  We will analyze your data and show you exactly where revenue is hiding. Free. No obligation.
+                </p>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-semibold transition hover:opacity-90"
+                  style={{
+                    background: "var(--primary)",
+                    color: "var(--primary-foreground)",
+                    boxShadow: "0 10px 40px -10px rgba(238,188,74,0.5)",
+                  }}
+                >
+                  Book Your Free Audit
+                  <ArrowRight size={16} />
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ─── 4.4  Process Strip ─── */}
+        <section className="py-16 md:py-20 px-5 sm:px-6 lg:px-10 border-t border-white/5">
+          <div className="mx-auto max-w-7xl">
+            <motion.div {...fadeUp(0)} className="text-center mb-12">
+              <h2
+                className="font-display tracking-tight"
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+                  fontSize: "clamp(24px, 4vw, 44px)",
+                }}
+              >
+                How would this work{" "}
+                <span className="text-gradient-gold italic">for you</span>?
+              </h2>
+            </motion.div>
+
+            <div className="relative">
+              <div
+                className="hidden lg:block absolute top-7 left-0 right-0 h-px"
+                style={{ background: "linear-gradient(to right, transparent, rgba(238,188,74,0.3), transparent)" }}
+              />
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
+                {processSteps.map((s, i) => (
+                  <motion.div key={i} {...fadeUp(0.06 * (i + 1))}>
+                    <div className="text-center lg:text-left">
+                      <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
+                        <div
+                          className="relative z-10 grid place-items-center h-14 w-14 rounded-2xl shrink-0"
+                          style={{
+                            background: "rgba(238,188,74,0.1)",
+                            boxShadow: "0 0 0 1px rgba(238,188,74,0.25)",
+                            color: "var(--primary)",
+                          }}
+                        >
+                          <s.Icon size={22} aria-hidden />
+                        </div>
+                        <div>
+                          <p
+                            className="font-mono text-[10px] uppercase tracking-widest"
+                            style={{ color: "var(--primary)" }}
+                          >
+                            Step {s.step}
+                          </p>
+                          <p className="text-[11px]" style={{ color: "var(--muted-foreground)" }}>
+                            {s.duration}
+                          </p>
+                        </div>
+                      </div>
+                      <h3
+                        className="font-display leading-tight"
+                        style={{
+                          fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+                          fontSize: "clamp(18px, 2vw, 22px)",
+                        }}
+                      >
+                        {s.title}
+                      </h3>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        </section>
 
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }

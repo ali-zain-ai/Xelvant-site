@@ -43,7 +43,7 @@ export default function CtaSection() {
           {...fadeUp(0.06)}
           className="font-display tracking-tight"
           style={{
-            fontFamily: "'Instrument Serif', Georgia, serif",
+            fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
             fontSize: "clamp(28px, 6vw, 72px)",
             lineHeight: 1.02,
           }}
@@ -84,7 +84,7 @@ export default function CtaSection() {
           {[
             { Icon: Lock,         text: "Read-only access" },
             { Icon: ShieldCheck,  text: "No obligation" },
-            { Icon: Clock,        text: "Results in 14 days" },
+            { Icon: Clock,        text: "Fast turnaround" },
           ].map(({ Icon, text }, i) => (
             <span
               key={i}

@@ -31,7 +31,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
         <script
@@ -73,7 +73,7 @@ export default function RootLayout({
             src="/logo-transparent.png"
             alt="Xelvant"
             style={{
-              height: "64px",
+              height: "72px",
               width: "auto",
               objectFit: "contain",
               filter: "drop-shadow(0 0 24px rgba(238,188,74,0.5))",

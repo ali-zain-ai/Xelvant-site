@@ -1,57 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TrendingDown, Users, AlertTriangle, RefreshCcw, DollarSign } from "lucide-react";
+import { UserX, RefreshCcw, SearchX, ShieldAlert, Sparkles } from "lucide-react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: false, amount: 0.2 },
+  viewport: { once: true, margin: "-60px" },
   transition: { duration: 0.7, ease: EASE, delay },
 });
 
-const problems = [
-  {
-    Icon: RefreshCcw,
-    title: "Customers Not Returning",
-    stat: "67%",
-    statLabel: "of first-time buyers never return",
-    body:
-      "You paid to acquire them. They bought once. Then disappeared. And your acquisition costs never got the chance to pay back.",
-  },
-  {
-    Icon: TrendingDown,
-    title: "Retention Silently Declining",
-    stat: "3×",
-    statLabel: "cheaper to retain than acquire",
-    body:
-      "While you're focused on new customers, your repeat purchase rate is quietly eroding, draining lifetime value you already earned.",
-  },
-  {
-    Icon: DollarSign,
-    title: "Revenue Leaking Every Month",
-    stat: "$47k",
-    statLabel: "average undetected monthly leak",
-    body:
-      "Abandoned carts, drop-off points, underperforming bundles. These micro-losses add up to a significant number you'll never see in a standard dashboard.",
-  },
-  {
-    Icon: AlertTriangle,
-    title: "Churn Risks Going Unnoticed",
-    stat: "90 days",
-    statLabel: "before most brands notice",
-    body:
-      "Your highest-value customers are showing exit signals weeks before they leave. By the time it shows in revenue, it's already too late to win them back cheaply.",
-  },
-  {
-    Icon: Users,
-    title: "Missed Repeat Purchases",
-    stat: "2.8×",
-    statLabel: "higher LTV with one more purchase",
-    body:
-      "Getting a customer to buy twice is the single highest-leverage growth action, yet most brands have no system to make it happen consistently.",
-  },
+const cards = [
+  { Icon: UserX,       title: "Customer Churn",              desc: "Identify customers before they stop buying." },
+  { Icon: RefreshCcw,  title: "Retention Decline",           desc: "Spot falling repeat purchase behavior early." },
+  { Icon: SearchX,     title: "Revenue Leaks",               desc: "Find where profit is being lost every month." },
+  { Icon: ShieldAlert, title: "High-Value Customer Risk",    desc: "Protect your most valuable customers." },
+  { Icon: Sparkles,    title: "Missed Growth Opportunities", desc: "Uncover revenue hiding inside existing data." },
 ];
 
 export default function ProblemSection() {
@@ -59,89 +24,62 @@ export default function ProblemSection() {
     <section id="problem" className="py-16 md:py-28 px-5 sm:px-6 lg:px-10 border-t border-white/5">
       <div className="mx-auto max-w-7xl">
 
-        {/* Header */}
+        {/* Header — left-aligned, same as Services Preview */}
         <motion.div {...fadeUp(0)} className="max-w-3xl mb-14">
           <div
             className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] mb-6"
             style={{ background: "rgba(255,255,255,0.03)", color: "var(--muted-foreground)" }}
           >
             <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--primary)" }} />
-            The silent growth problem
+            Hidden Revenue Opportunities
           </div>
 
           <h2
             className="font-display leading-[1.02] tracking-tight"
             style={{
-              fontFamily: "'Instrument Serif', Georgia, serif",
+              fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
               fontSize: "clamp(28px, 5vw, 64px)",
+              fontWeight: 800,
+              letterSpacing: "-0.02em",
             }}
           >
-            Most Shopify Brands Don&apos;t Have
-            <br />
-            <span className="text-gradient-gold italic">A Traffic Problem</span>
+            Revenue Leaks <span className="text-gradient-gold italic">Hide in Plain Sight</span>
           </h2>
-
-          <p
-            className="mt-5 text-base md:text-lg max-w-2xl leading-relaxed"
-            style={{ color: "var(--muted-foreground)" }}
-          >
-            Many brands spend thousands acquiring customers while silently losing revenue from
-            the ones they already have. Growth slows because customer behavior patterns
-            remain hidden inside data no one has time to dig through.
+          <p className="mt-5 text-base md:text-lg max-w-2xl leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
+            Most brands have the data. Very few know how to use it.
           </p>
         </motion.div>
 
-        {/* Cards — 2 col + 2 col + 1 centered */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {problems.map((p, i) => (
-            <motion.div
-              key={i}
-              {...fadeUp(i * 0.08)}
-              className={i === 4 ? "md:col-span-2 md:max-w-lg md:mx-auto w-full" : ""}
-            >
+        {/* Cards — same card-premium style */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {cards.map((c, i) => (
+            <motion.div key={i} {...fadeUp(0.05 * (i + 1))}>
               <div
-                className="card-premium h-full p-6 md:p-7 group cursor-default"
+                className="card-premium h-full p-6"
                 style={{ transition: "border-color 0.4s" }}
-                onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(238,188,74,0.35)")}
-                onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
               >
-                {/* Top row */}
-                <div className="flex items-start justify-between gap-4 mb-5">
-                  <div
-                    className="grid place-items-center h-10 w-10 rounded-xl shrink-0"
-                    style={{
-                      background: "rgba(238,188,74,0.1)",
-                      boxShadow: "0 0 0 1px rgba(238,188,74,0.2)",
-                      color: "var(--primary)",
-                    }}
-                  >
-                    <p.Icon size={18} aria-hidden />
-                  </div>
-                  {/* Stat pill */}
-                  <div className="text-right">
-                    <p
-                      className="font-display text-2xl leading-none"
-                      style={{ fontFamily: "'Instrument Serif', Georgia, serif", color: "var(--primary)" }}
-                    >
-                      {p.stat}
-                    </p>
-                    <p className="text-[10px] mt-0.5 uppercase tracking-wide" style={{ color: "var(--muted-foreground)" }}>
-                      {p.statLabel}
-                    </p>
-                  </div>
-                </div>
-
-                <h3
-                  className="font-display leading-tight mb-3"
+                <div
+                  className="grid place-items-center h-10 w-10 rounded-xl mb-5"
                   style={{
-                    fontFamily: "'Instrument Serif', Georgia, serif",
-                    fontSize: "clamp(18px, 2vw, 22px)",
+                    background: "rgba(238,188,74,0.1)",
+                    boxShadow: "0 0 0 1px rgba(238,188,74,0.2)",
+                    color: "var(--primary)",
                   }}
                 >
-                  {p.title}
+                  <c.Icon size={18} aria-hidden />
+                </div>
+                <h3
+                  className="font-display leading-tight mb-1.5"
+                  style={{
+                    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+                    fontSize: "clamp(18px, 2vw, 22px)",
+                    fontWeight: 700,
+                  }}
+                >
+                  {c.title}
                 </h3>
                 <p className="text-sm leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
-                  {p.body}
+                  {c.desc}
                 </p>
               </div>
             </motion.div>

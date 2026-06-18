@@ -46,7 +46,7 @@ export default function CaseStudySection() {
           <h2
             className="font-display leading-[1.02] tracking-tight"
             style={{
-              fontFamily: "'Instrument Serif', Georgia, serif",
+              fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
               fontSize: "clamp(28px, 5vw, 64px)",
             }}
           >
@@ -68,7 +68,7 @@ export default function CaseStudySection() {
               <p
                 className="font-display leading-snug"
                 style={{
-                  fontFamily: "'Instrument Serif', Georgia, serif",
+                  fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                   fontSize: "clamp(18px, 2.5vw, 24px)",
                 }}
               >
@@ -126,7 +126,7 @@ export default function CaseStudySection() {
                 <p
                   className="font-display leading-none mb-2"
                   style={{
-                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                     fontSize: "clamp(28px, 5vw, 60px)",
                     color: "var(--primary)",
                   }}

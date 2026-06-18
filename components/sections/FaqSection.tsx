@@ -64,7 +64,7 @@ export default function FaqSection() {
           <h2
             className="font-display tracking-tight"
             style={{
-              fontFamily: "'Instrument Serif', Georgia, serif",
+              fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
               fontSize: "clamp(28px, 5vw, 60px)",
               lineHeight: 1.02,
             }}
@@ -102,7 +102,7 @@ export default function FaqSection() {
                   <span
                     className="font-display text-base md:text-lg leading-snug"
                     style={{
-                      fontFamily: "'Instrument Serif', Georgia, serif",
+                      fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                       color: isOpen ? "var(--foreground)" : "rgba(250,250,250,0.8)",
                       transition: "color 0.3s",
                     }}

@@ -64,7 +64,7 @@ export default function DeliverablesSection() {
           <h2
             className="font-display leading-[1.02] tracking-tight"
             style={{
-              fontFamily: "'Instrument Serif', Georgia, serif",
+              fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
               fontSize: "clamp(28px, 5vw, 64px)",
             }}
           >
@@ -112,7 +112,7 @@ export default function DeliverablesSection() {
                 <h3
                   className="font-display leading-tight mb-1"
                   style={{
-                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                     fontSize: "clamp(20px, 2.5vw, 26px)",
                   }}
                 >

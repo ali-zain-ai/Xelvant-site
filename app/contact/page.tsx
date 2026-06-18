@@ -81,7 +81,7 @@ export default function ContactPage() {
               <h1
                 className="font-display tracking-tight"
                 style={{
-                  fontFamily: "'Instrument Serif', Georgia, serif",
+                  fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                   fontSize: "clamp(32px, 6vw, 72px)",
                   lineHeight: 1.02,
                 }}
@@ -123,7 +123,7 @@ export default function ContactPage() {
                   </div>
                   <h2
                     className="font-display text-2xl md:text-3xl mb-3"
-                    style={{ fontFamily: "'Instrument Serif', Georgia, serif" }}
+                    style={{ fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif" }}
                   >
                     We&apos;ve received your request
                   </h2>
@@ -145,7 +145,7 @@ export default function ContactPage() {
                     <Field
                       id="name"
                       label="Full Name"
-                      placeholder="Ali Ahmed"
+                      placeholder=""
                       type="text"
                       focused={isFocused("name")}
                       onFocus={() => setFocusedField("name")}
@@ -155,7 +155,7 @@ export default function ContactPage() {
                     <Field
                       id="email"
                       label="Work Email"
-                      placeholder="ali@yourstore.com"
+                      placeholder=""
                       type="email"
                       focused={isFocused("email")}
                       onFocus={() => setFocusedField("email")}
@@ -169,7 +169,7 @@ export default function ContactPage() {
                     <Field
                       id="store"
                       label="Shopify Store URL"
-                      placeholder="yourstore.myshopify.com"
+                      placeholder=""
                       type="url"
                       focused={isFocused("store")}
                       onFocus={() => setFocusedField("store")}
@@ -222,7 +222,7 @@ export default function ContactPage() {
                       id="challenge"
                       rows={3}
                       className="w-full rounded-xl border bg-transparent px-4 py-3.5 text-sm text-white outline-none resize-none transition-colors duration-300"
-                      placeholder="e.g. Customers aren't coming back for a second purchase..."
+                      placeholder=""
                       style={{
                         borderColor: isFocused("challenge") ? "rgba(238,188,74,0.4)" : "rgba(255,255,255,0.08)",
                         background: isFocused("challenge") ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.25)",
@@ -264,7 +264,7 @@ export default function ContactPage() {
                 <div className="card-premium p-6">
                   <h3
                     className="font-display text-lg mb-5"
-                    style={{ fontFamily: "'Instrument Serif', Georgia, serif" }}
+                    style={{ fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif" }}
                   >
                     What happens after you submit
                   </h3>
@@ -272,7 +272,7 @@ export default function ContactPage() {
                     {[
                       { step: "01", text: "We review your store details within 24 hours" },
                       { step: "02", text: "We connect to your Shopify data (read-only)" },
-                      { step: "03", text: "You receive your revenue audit in 14 days" },
+                      { step: "03", text: "You receive your revenue audit" },
                     ].map((item) => (
                       <li key={item.step} className="flex items-start gap-3">
                         <span

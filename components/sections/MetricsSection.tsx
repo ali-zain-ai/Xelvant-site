@@ -30,7 +30,7 @@ export default function MetricsSection() {
             <p
               className="text-gradient-gold leading-none"
               style={{
-                fontFamily: "'Instrument Serif', Georgia, serif",
+                fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                 fontSize: "clamp(28px, 4vw, 48px)",
               }}
             >

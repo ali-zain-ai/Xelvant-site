@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { NAVIGATION } from "@/lib/constants";
@@ -35,19 +35,19 @@ export default function Navbar() {
         initial={{ y: -16, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: EASE }}
-        className={`fixed top-0 inset-x-0 z-50 border-b border-white/5 transition-all duration-300 ${
-          isScrolled ? "backdrop-blur-xl bg-[var(--background)]/70" : "bg-transparent border-transparent"
+        className={`fixed top-0 inset-x-0 z-50 border-b transition-all duration-300 ${
+          isScrolled ? "bg-[#09090b] border-white/5" : "bg-[#09090b] border-transparent"
         }`}
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-10 h-16 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" onClick={(e) => handleClick(e, "/")} className="flex items-center gap-2.5">
             <Image
-              src="/logo-transparent.png"
+              src="/xelNOBG.jpeg"
               alt="Xelvant Logo"
-              width={140}
-              height={36}
-              className="h-8 w-auto object-contain"
+              width={220}
+              height={56}
+              className="h-14 w-auto object-contain"
               priority
               loading="eager"
             />
@@ -72,13 +72,14 @@ export default function Navbar() {
           <div className="hidden md:block">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition hover:opacity-90"
               style={{
                 background: "var(--primary)",
                 color: "var(--primary-foreground)",
               }}
             >
               Book a Revenue Audit
+              <ArrowRight size={14} aria-hidden />
             </Link>
           </div>
 
@@ -115,7 +116,7 @@ export default function Navbar() {
                   href={link.href}
                   onClick={() => setIsMobileOpen(false)}
                   className="font-display text-4xl text-white"
-                  style={{ fontFamily: "'Instrument Serif', Georgia, serif" }}
+                  style={{ fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif" }}
                 >
                   {link.name}
                 </Link>

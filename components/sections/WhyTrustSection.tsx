@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, X } from "lucide-react";
+import { ShieldCheck, FileX2, Store, DollarSign } from "lucide-react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const fadeUp = (delay = 0) => ({
@@ -11,48 +11,28 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.7, ease: EASE, delay },
 });
 
-const reasons = [
+const differentiators = [
   {
-    title: "Revenue-first mindset",
-    body: "Every recommendation we make is tied to a measurable revenue outcome, not marketing metrics or vanity numbers.",
+    Icon: ShieldCheck,
+    title: "Read-only access",
+    body: "We never touch your store settings, products, or customer records. View-only API access means zero risk to your operations.",
   },
   {
-    title: "Read-only data access",
-    body: "We never touch your store settings, product listings, or customer records. View-only API access means zero risk to your operations.",
-  },
-  {
+    Icon: FileX2,
     title: "No long-term contracts",
     body: "Work with us month-to-month. We earn continued work by delivering results, not by locking you into a 12-month retainer.",
   },
   {
-    title: "Actionable recommendations",
-    body: "We don't hand you a 60-page report and disappear. Every finding comes with a specific action and a projected revenue impact.",
+    Icon: Store,
+    title: "E-commerce only",
+    body: "We work exclusively with Shopify and DTC brands. Our benchmarks, patterns, and playbooks are built from stores in your space.",
   },
   {
-    title: "Shopify specialization",
-    body: "We work exclusively with Shopify and DTC brands. Our benchmarks, patterns, and playbooks are built from 120+ stores in your space.",
-  },
-  {
-    title: "Transparent process",
-    body: "You know exactly what we're analyzing, when you'll receive it, and what it will cover before we start.",
+    Icon: DollarSign,
+    title: "Revenue-focused",
+    body: "Every recommendation is tied to a measurable revenue outcome. No vanity metrics, no fluff. Just what moves the needle.",
   },
 ];
-
-const comparison = [
-  { attribute: "Revenue-focused recommendations",  xelv: true,    agency: false  },
-  { attribute: "Shopify specialization",            xelv: true,    agency: "rare" },
-  { attribute: "Data-backed every finding",         xelv: true,    agency: false  },
-  { attribute: "Read-only access (no risk)",        xelv: true,    agency: false  },
-  { attribute: "No long-term contracts",            xelv: true,    agency: false  },
-  { attribute: "14-day delivery",                   xelv: true,    agency: false  },
-  { attribute: "Results in dollar terms",           xelv: true,    agency: "rare" },
-];
-
-function Cell({ value }: { value: boolean | string }) {
-  if (value === true)  return <Check size={18} style={{ color: "var(--primary)" }} aria-label="Yes" />;
-  if (value === false) return <X    size={16} style={{ color: "rgba(255,255,255,0.25)" }} aria-label="No" />;
-  return <span className="text-xs" style={{ color: "var(--muted-foreground)" }}>Rarely</span>;
-}
 
 export default function WhyTrustSection() {
   return (
@@ -72,81 +52,53 @@ export default function WhyTrustSection() {
           <h2
             className="font-display leading-[1.02] tracking-tight"
             style={{
-              fontFamily: "'Instrument Serif', Georgia, serif",
+              fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
               fontSize: "clamp(28px, 5vw, 64px)",
             }}
           >
-            Why Shopify Brands{" "}
-            <span className="text-gradient-gold italic">Work With Xelv</span>
+            Why Brands Choose{" "}
+            <span className="text-gradient-gold italic">Xelvant</span>
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-
-          {/* Reasons */}
-          <motion.div {...fadeUp(0.08)} className="grid grid-cols-1 gap-4">
-            {reasons.map((r, i) => (
+        {/* 4-box grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {differentiators.map((item, i) => (
+            <motion.div key={i} {...fadeUp(0.06 * (i + 1))}>
               <div
-                key={i}
-                className="flex items-start gap-4 py-4 border-b border-white/5 last:border-0"
+                className="card-premium h-full p-6 md:p-8 group cursor-default"
+                style={{ transition: "border-color 0.4s" }}
               >
                 <div
-                  className="mt-0.5 grid place-items-center h-5 w-5 rounded-full shrink-0"
-                  style={{ background: "rgba(238,188,74,0.15)" }}
-                >
-                  <Check size={12} style={{ color: "var(--primary)" }} aria-hidden />
-                </div>
-                <div>
-                  <p className="text-sm font-medium mb-1">{r.title}</p>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
-                    {r.body}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </motion.div>
-
-          {/* Comparison table */}
-          <motion.div {...fadeUp(0.14)}>
-            <div className="card-premium overflow-hidden">
-              {/* Table header */}
-              <div
-                className="grid items-center px-4 md:px-5 py-3 border-b border-white/5"
-                style={{
-                  gridTemplateColumns: "1fr 60px 60px",
-                  background: "rgba(255,255,255,0.02)",
-                  color: "var(--muted-foreground)",
-                }}
-              >
-                <span className="text-[10px] uppercase tracking-[0.18em]">Attribute</span>
-                <span className="text-[10px] uppercase tracking-[0.18em] text-center" style={{ color: "var(--primary)" }}>Xelv</span>
-                <span className="text-[10px] uppercase tracking-[0.18em] text-center">Agency</span>
-              </div>
-
-              {/* Rows */}
-              {comparison.map((row, i) => (
-                <div
-                  key={i}
-                  className="grid items-center px-4 md:px-5 py-3 md:py-3.5 border-b border-white/5 last:border-0"
+                  className="grid place-items-center h-11 w-11 rounded-xl mb-6"
                   style={{
-                    gridTemplateColumns: "1fr 60px 60px",
-                    background: i % 2 === 0 ? "transparent" : "rgba(255,255,255,0.01)",
+                    background: "rgba(238,188,74,0.1)",
+                    boxShadow: "0 0 0 1px rgba(238,188,74,0.2)",
+                    color: "var(--primary)",
                   }}
                 >
-                  <span className="text-xs md:text-sm pr-2" style={{ color: "rgba(250,250,250,0.8)" }}>
-                    {row.attribute}
-                  </span>
-                  <span className="flex justify-center">
-                    <Cell value={row.xelv} />
-                  </span>
-                  <span className="flex justify-center">
-                    <Cell value={row.agency} />
-                  </span>
+                  <item.Icon size={20} aria-hidden />
                 </div>
-              ))}
-            </div>
-          </motion.div>
 
+                <h3
+                  className="font-display leading-tight mb-2"
+                  style={{
+                    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+                    fontSize: "clamp(20px, 2.5vw, 26px)",
+                  }}
+                >
+                  {item.title}
+                </h3>
+
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: "var(--muted-foreground)" }}
+                >
+                  {item.body}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
       </div>

@@ -41,7 +41,7 @@ export default function FitSection() {
           <h2
             className="font-display mt-5 leading-[1.02] tracking-tight"
             style={{
-              fontFamily: "'Instrument Serif', Georgia, serif",
+              fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
               fontSize: "clamp(36px, 5vw, 60px)",
             }}
           >

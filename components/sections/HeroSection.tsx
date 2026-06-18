@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, ShieldCheck, TrendingDown, Target, Lock } from "lucide-react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -25,11 +25,11 @@ const FadeUp = ({
   </motion.div>
 );
 
-const trustItems = [
-  "$84M+ Revenue Opportunities Found",
-  "120+ Shopify Brands Analyzed",
-  "$400M+ Revenue Reviewed",
-  "No Long-Term Contracts",
+const trustStrip = [
+  { Icon: ShieldCheck,  title: "Data-Driven Insights",    desc: "100% based on your data" },
+  { Icon: TrendingDown, title: "Identify Revenue Leaks",  desc: "Find what's costing you" },
+  { Icon: Target,       title: "Actionable Roadmap",      desc: "Clear steps to more profit" },
+  { Icon: Lock,         title: "Secure & Confidential",   desc: "Your data is always safe" },
 ];
 
 export default function HeroSection() {
@@ -75,7 +75,7 @@ export default function HeroSection() {
           <h1
             className="font-display tracking-tight"
             style={{
-              fontFamily: "'Instrument Serif', Georgia, serif",
+              fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
               fontSize: "clamp(36px, 6.5vw, 80px)",
               lineHeight: 1.0,
               letterSpacing: "-0.02em",
@@ -83,7 +83,7 @@ export default function HeroSection() {
           >
             Discover Exactly What&apos;s
             <br />
-            <span className="text-gradient-gold italic">Stopping Your Store</span>
+            <span className="text-gradient-gold">Stopping Your Store</span>
             <br />
             From Growing
           </h1>
@@ -95,9 +95,10 @@ export default function HeroSection() {
             className="mx-auto mt-7 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed"
             style={{ color: "var(--muted-foreground)" }}
           >
-            We analyze your customer and revenue data to uncover hidden growth
-            opportunities, revenue leaks, and profit-draining issues. Then we
-            give you a clear action plan to fix them.
+            We turn your data into clear insights and actionable steps
+            that improve{" "}
+            <span style={{ color: "var(--primary)" }}>revenue</span> and{" "}
+            <span style={{ color: "var(--primary)" }}>profit</span>.
           </p>
         </FadeUp>
 
@@ -126,6 +127,33 @@ export default function HeroSection() {
           </div>
         </FadeUp>
 
+        {/* Trust strip */}
+        <FadeUp delay={0.26}>
+          <div className="mt-16 pt-10 border-t border-white/5">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              {trustStrip.map((item, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div
+                    className="grid place-items-center h-9 w-9 rounded-lg shrink-0"
+                    style={{
+                      background: "rgba(238,188,74,0.1)",
+                      border: "1px solid rgba(238,188,74,0.2)",
+                      color: "var(--primary)",
+                    }}
+                  >
+                    <item.Icon size={16} aria-hidden />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-sm font-semibold leading-tight">{item.title}</p>
+                    <p className="text-xs mt-0.5" style={{ color: "var(--muted-foreground)" }}>
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </FadeUp>
 
       </div>
     </section>

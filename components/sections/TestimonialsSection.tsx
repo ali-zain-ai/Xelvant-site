@@ -55,7 +55,7 @@ export default function TestimonialsSection() {
           <h2
             className="font-display leading-[1.02] tracking-tight"
             style={{
-              fontFamily: "'Instrument Serif', Georgia, serif",
+              fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
               fontSize: "clamp(36px, 5vw, 64px)",
             }}
           >
@@ -96,7 +96,7 @@ export default function TestimonialsSection() {
                 <blockquote
                   className="font-display leading-snug flex-1 mb-7"
                   style={{
-                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                     fontSize: "clamp(16px, 2vw, 19px)",
                     color: "rgba(250,250,250,0.9)",
                   }}
