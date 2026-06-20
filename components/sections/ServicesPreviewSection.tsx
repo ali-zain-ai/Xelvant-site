@@ -13,12 +13,12 @@ const fadeUp = (delay = 0) => ({
 });
 
 const services = [
-  { Icon: UserX,        title: "Churn Prediction",           desc: "Spot exit signals before customers leave." },
-  { Icon: Users,        title: "Customer Segmentation",      desc: "Group buyers by real behavior, not guesswork." },
-  { Icon: SearchX,      title: "Revenue Leak Detection",     desc: "Find where money quietly disappears." },
-  { Icon: FileBarChart, title: "Automated Reporting",        desc: "Daily dashboards that replace spreadsheet hours." },
-  { Icon: Map,          title: "Growth Opportunity Mapping",  desc: "Surface your highest-impact growth levers." },
-  { Icon: Cog,          title: "Operational Automation",     desc: "Systems that run without you watching." },
+  { Icon: UserX,        title: "Churn Prediction",              desc: "Spot exit signals before customers leave." },
+  { Icon: Users,        title: "Customer Segmentation",         desc: "Group buyers by real behavior, not guesswork." },
+  { Icon: SearchX,      title: "Find Lost Revenue",             desc: "Find where money quietly disappears." },
+  { Icon: FileBarChart, title: "Automated Business Insights",   desc: "Clear performance reports without manual work." },
+  { Icon: Map,          title: "Find Your Next Growth Move",    desc: "Discover the highest-impact opportunities to grow revenue." },
+  { Icon: Cog,          title: "AI-Powered Automation",         desc: "Replace repetitive tasks with intelligent workflows." },
 ];
 
 export default function ServicesPreviewSection() {

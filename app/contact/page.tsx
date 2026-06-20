@@ -39,11 +39,48 @@ const revenueRanges = [
 export default function ContactPage() {
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+
+    const form = formRef.current;
+    if (!form) return;
+
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      store: formData.get("store") as string,
+      revenue: formData.get("revenue") as string,
+      challenge: formData.get("challenge") as string,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        setError(result.error || "Something went wrong.");
+        setLoading(false);
+        return;
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError("Network error. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const isFocused = (id: string) => focusedField === id;
@@ -186,6 +223,7 @@ export default function ContactPage() {
                       </label>
                       <select
                         id="revenue"
+                        name="revenue"
                         className="w-full rounded-xl border bg-transparent px-4 py-3.5 text-sm text-white outline-none appearance-none cursor-pointer transition-colors duration-300"
                         style={{
                           borderColor: isFocused("revenue") ? "rgba(238,188,74,0.4)" : "rgba(255,255,255,0.08)",
@@ -220,6 +258,7 @@ export default function ContactPage() {
                     </label>
                     <textarea
                       id="challenge"
+                      name="challenge"
                       rows={3}
                       className="w-full rounded-xl border bg-transparent px-4 py-3.5 text-sm text-white outline-none resize-none transition-colors duration-300"
                       placeholder=""
@@ -233,18 +272,26 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  {/* Error message */}
+                  {error && (
+                    <p className="mb-4 text-center text-sm font-medium" style={{ color: "#ef4444" }}>
+                      {error}
+                    </p>
+                  )}
+
                   {/* Submit */}
                   <button
                     type="submit"
-                    className="group w-full inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 text-sm font-semibold transition-all duration-300"
+                    disabled={loading}
+                    className="group w-full inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 text-sm font-semibold transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                     style={{
                       background: "var(--primary)",
                       color: "var(--primary-foreground)",
                       boxShadow: "0 10px 40px -10px rgba(238,188,74,0.45)",
                     }}
                   >
-                    Request My Free Revenue Audit
-                    <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" aria-hidden />
+                    {loading ? "Sending..." : "Request My Free Revenue Audit"}
+                    {!loading && <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" aria-hidden />}
                   </button>
 
                   {/* Privacy note */}

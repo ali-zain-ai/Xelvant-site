@@ -22,7 +22,7 @@ const services = [
   {
     Icon: UserX,
     title: "Churn Prediction",
-    desc: "Identify customers showing exit signals before they leave. Act early to retain revenue you already earned.",
+    desc: "Spot exit signals before customers leave. Act early to retain revenue you already earned.",
     deliverables: [
       "At-risk customer list with churn probability scores",
       "Behavioral trigger map (what predicts churn in your store)",
@@ -33,7 +33,7 @@ const services = [
   {
     Icon: Users,
     title: "Customer Segmentation",
-    desc: "Group your customers by real behavior, not demographics. Know who your best buyers are and what makes them different.",
+    desc: "Group buyers by real behavior, not guesswork. Know who your best buyers are and what makes them different.",
     deliverables: [
       "RFM-based customer segments with dollar values",
       "High-LTV buyer profile and acquisition source breakdown",
@@ -43,8 +43,8 @@ const services = [
   },
   {
     Icon: SearchX,
-    title: "Revenue Leak Detection",
-    desc: "Find every point in your funnel where money quietly disappears. Prioritized by dollar impact so you fix the biggest leaks first.",
+    title: "Find Lost Revenue",
+    desc: "Find where money quietly disappears. Prioritized by dollar impact so you fix the biggest leaks first.",
     deliverables: [
       "Full-funnel revenue leak audit with dollar estimates",
       "Cart abandonment pattern analysis",
@@ -54,8 +54,8 @@ const services = [
   },
   {
     Icon: FileBarChart,
-    title: "Automated Reporting",
-    desc: "Replace hours of spreadsheet work with automated dashboards that update daily. See what matters without digging.",
+    title: "Automated Business Insights",
+    desc: "Clear performance reports without manual work. See what matters without digging through spreadsheets.",
     deliverables: [
       "Custom daily/weekly KPI dashboard",
       "Automated email digest with key metrics",
@@ -65,8 +65,8 @@ const services = [
   },
   {
     Icon: Map,
-    title: "Growth Opportunity Mapping",
-    desc: "Surface the highest-impact growth levers hiding in your data. Know exactly where your next dollar of profit is coming from.",
+    title: "Find Your Next Growth Move",
+    desc: "Discover the highest-impact opportunities to grow revenue. Know exactly where your next dollar of profit is coming from.",
     deliverables: [
       "Ranked growth opportunity matrix with projected ROI",
       "Cross-sell and upsell opportunity identification",
@@ -76,8 +76,8 @@ const services = [
   },
   {
     Icon: Cog,
-    title: "Operational Automation",
-    desc: "Automate the repetitive operational tasks that drain your team's time. Systems that run without you watching.",
+    title: "AI-Powered Automation",
+    desc: "Replace repetitive tasks with intelligent workflows. Systems that run without you watching.",
     deliverables: [
       "Inventory reorder alert system",
       "Customer lifecycle email automation setup",
