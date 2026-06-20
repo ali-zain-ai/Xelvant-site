@@ -8,9 +8,9 @@ import type { ReactNode } from "react";
 export const BRAND = {
   name: "Xelvant",
   tagline: "E-commerce Operational Intelligence",
-  description: "Custom AI workflows, automation systems, and operational intelligence for Shopify, Amazon, and Daraz brands.",
+  description: "Custom AI workflows, automation systems, and operational intelligence for e-commerce brands.",
   whatsappNumber: "923123456789", // Placeholder
-  whatsappMessage: "Hi Xelvant, I'm interested in an operational audit for my store.",
+  whatsappMessage: "Hi Xelvant, I'm interested in an operational audit for my business.",
   email: "ops@xelvant.ai",
   calendlyUrl: "https://calendly.com/xelvant",
 };
@@ -140,7 +140,7 @@ export const TIMELINE = [
   {
     day: "Day 1-2",
     title: "Data Audit & Mapping",
-    description: "We connect to your Shopify, Meta, and Google APIs to map the flow of your store data.",
+    description: "We connect to your e-commerce platform and analytics APIs to map the flow of your business data.",
   },
   {
     day: "Day 3-4",

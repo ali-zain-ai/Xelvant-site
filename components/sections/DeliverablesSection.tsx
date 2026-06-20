@@ -77,7 +77,7 @@ export default function DeliverablesSection() {
             style={{ color: "var(--muted-foreground)" }}
           >
             This is not a sales call. You leave with four tangible, revenue-focused
-            documents built specifically for your store. Yours to keep regardless of
+            documents built specifically for your business. Yours to keep regardless of
             whether you continue working with us.
           </p>
         </motion.div>

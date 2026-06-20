@@ -38,7 +38,7 @@ const sections = [
     title: "3. Data Security",
     items: [
       { label: "Encryption", desc: "All data transfers use 256-bit SSL encryption." },
-      { label: "Read-Only Access", desc: "We connect to your platforms through read-only API tokens. We cannot modify your store data." },
+      { label: "Read-Only Access", desc: "We connect to your platforms through read-only API tokens. We cannot modify your data." },
       { label: "Access Control", desc: "Your data is accessible only to team members directly involved in your audit." },
       { label: "No Resale", desc: "We never sell, share, or trade your data with third parties." },
     ],

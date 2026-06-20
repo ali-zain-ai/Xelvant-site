@@ -123,7 +123,7 @@ export default function ContactPage() {
                   lineHeight: 1.02,
                 }}
               >
-                Get Your Free{" "}
+                Get Your{" "}
                 <span className="text-gradient-gold italic">Revenue Audit</span>
               </h1>
             </FadeUp>
@@ -133,8 +133,8 @@ export default function ContactPage() {
                 className="mx-auto mt-5 max-w-xl text-base md:text-lg leading-relaxed"
                 style={{ color: "var(--muted-foreground)" }}
               >
-                Tell us about your store. We&apos;ll analyze your data and show you
-                exactly where revenue is hiding. No contracts, no commitment.
+                Tell us about your business. We&apos;ll analyze your operations and show you
+                exactly where revenue opportunities are hiding.
               </p>
             </FadeUp>
           </div>
@@ -164,10 +164,20 @@ export default function ContactPage() {
                   >
                     We&apos;ve received your request
                   </h2>
-                  <p className="text-sm md:text-base leading-relaxed max-w-md mx-auto" style={{ color: "var(--muted-foreground)" }}>
+                  <p className="text-sm md:text-base leading-relaxed max-w-md mx-auto mb-6" style={{ color: "var(--muted-foreground)" }}>
                     Our team will review your details and reach out within 24 hours
-                    to schedule your free revenue audit.
+                    with your personalized action plan.
                   </p>
+                  <div
+                    className="rounded-xl p-4 mx-auto max-w-sm"
+                    style={{ background: "rgba(238,188,74,0.08)", border: "1px solid rgba(238,188,74,0.15)" }}
+                  >
+                    <p className="text-xs md:text-sm leading-relaxed" style={{ color: "rgba(250,250,250,0.85)" }}>
+                      📧 <strong>Check your email</strong> for a confirmation from Xelvant.
+                      <br />
+                      <span style={{ color: "var(--muted-foreground)" }}>If you don&apos;t see it in your inbox, please check your <strong style={{ color: "var(--primary)" }}>spam/junk folder</strong>.</span>
+                    </p>
+                  </div>
                 </motion.div>
               ) : (
                 /* ── Form ── */
@@ -205,7 +215,7 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
                     <Field
                       id="store"
-                      label="Shopify Store URL"
+                      label="Website URL"
                       placeholder=""
                       type="url"
                       focused={isFocused("store")}
@@ -290,7 +300,7 @@ export default function ContactPage() {
                       boxShadow: "0 10px 40px -10px rgba(238,188,74,0.45)",
                     }}
                   >
-                    {loading ? "Sending..." : "Request My Free Revenue Audit"}
+                    {loading ? "Sending..." : "Request My Revenue Audit"}
                     {!loading && <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" aria-hidden />}
                   </button>
 
@@ -317,9 +327,9 @@ export default function ContactPage() {
                   </h3>
                   <ol className="space-y-4">
                     {[
-                      { step: "01", text: "We review your store details within 24 hours" },
-                      { step: "02", text: "We connect to your Shopify data (read-only)" },
-                      { step: "03", text: "You receive your revenue audit" },
+                      { step: "01", text: "We review your business details within 24 hours" },
+                      { step: "02", text: "We analyze your data and identify opportunities" },
+                      { step: "03", text: "You receive your personalized action plan" },
                     ].map((item) => (
                       <li key={item.step} className="flex items-start gap-3">
                         <span
@@ -341,7 +351,7 @@ export default function ContactPage() {
                   <div className="space-y-4">
                     {[
                       { Icon: Clock, text: "Response within 24 hours" },
-                      { Icon: ShieldCheck, text: "Read-only access only. We never touch your store" },
+                      { Icon: ShieldCheck, text: "Read-only access only. We never modify your data" },
                       { Icon: Lock, text: "Your data stays private and encrypted" },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-3">

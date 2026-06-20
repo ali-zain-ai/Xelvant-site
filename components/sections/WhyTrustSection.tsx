@@ -15,7 +15,7 @@ const differentiators = [
   {
     Icon: ShieldCheck,
     title: "Read-only access",
-    body: "We never touch your store settings, products, or customer records. View-only API access means zero risk to your operations.",
+    body: "We never touch your settings, products, or customer records. View-only API access means zero risk to your operations.",
   },
   {
     Icon: FileX2,
@@ -25,7 +25,7 @@ const differentiators = [
   {
     Icon: Store,
     title: "E-commerce only",
-    body: "We work exclusively with Shopify and DTC brands. Our benchmarks, patterns, and playbooks are built from stores in your space.",
+    body: "We work exclusively with e-commerce brands. Our benchmarks, patterns, and playbooks are built from businesses in your space.",
   },
   {
     Icon: DollarSign,

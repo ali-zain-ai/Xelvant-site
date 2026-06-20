@@ -6,7 +6,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 const metrics = [
   { value: "$84M+",         label: "Extra revenue surfaced for clients" },
-  { value: "120+",          label: "Shopify & DTC brands analyzed" },
+  { value: "120+",          label: "E-commerce brands analyzed" },
   { value: "14 days",       label: "From kickoff to your first action plan" },
   { value: "Month-to-month", label: "No long-term lock-in" },
 ];

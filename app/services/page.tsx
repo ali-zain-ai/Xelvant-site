@@ -25,7 +25,7 @@ const services = [
     desc: "Spot exit signals before customers leave. Act early to retain revenue you already earned.",
     deliverables: [
       "At-risk customer list with churn probability scores",
-      "Behavioral trigger map (what predicts churn in your store)",
+      "Behavioral trigger map (what predicts churn in your business)",
       "Retention playbook with timing recommendations",
       "Monthly churn trend dashboard",
     ],
@@ -89,14 +89,14 @@ const services = [
 
 /* ── 2.3  Platforms ── */
 const platforms = [
-  "Shopify", "Shopify Plus", "Amazon", "Klaviyo",
+  "Shopify", "Shopify Plus", "Amazon", "WooCommerce", "Klaviyo",
   "Meta Ads", "Google Ads", "Triple Whale", "Recharge",
 ];
 
 /* ── 2.4  Engagement options ── */
 const engagements = [
   {
-    label: "Free Audit",
+    label: "Revenue Audit",
     type: "One-time",
     scope: [
       "Revenue leak analysis",
@@ -104,7 +104,7 @@ const engagements = [
       "Growth opportunity map",
       "Prioritized action plan",
     ],
-    cta: "Book Free Audit",
+    cta: "Book Your Audit",
     href: "/contact",
     featured: true,
   },
@@ -291,7 +291,7 @@ export default function ServicesPage() {
                 <span className="text-gradient-gold italic">Work With Us</span>
               </h2>
               <p className="mt-4 text-base max-w-xl mx-auto" style={{ color: "var(--muted-foreground)" }}>
-                Pick the engagement that fits your stage. Start with a free audit, or go straight to ongoing intelligence.
+                Pick the engagement that fits your stage. Start with an audit, or go straight to ongoing intelligence.
               </p>
             </motion.div>
 
@@ -370,7 +370,7 @@ export default function ServicesPage() {
                 <span className="text-gradient-gold italic">hidden revenue</span>?
               </h2>
               <p className="text-base md:text-lg mb-8" style={{ color: "var(--muted-foreground)" }}>
-                Free Revenue Audit. 14-day delivery. No obligation.
+                Revenue Audit. 14-day delivery. No obligation.
               </p>
               <Link
                 href="/contact"
@@ -381,7 +381,7 @@ export default function ServicesPage() {
                   boxShadow: "0 10px 40px -10px rgba(238,188,74,0.5)",
                 }}
               >
-                Book Your Free Audit
+                Book Your Audit
                 <ArrowRight size={16} />
               </Link>
             </motion.div>

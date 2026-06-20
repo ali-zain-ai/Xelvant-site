@@ -51,7 +51,7 @@ export default function CaseStudySection() {
             }}
           >
             What We Found For{" "}
-            <span className="text-gradient-gold italic">One Shopify Brand</span>
+            <span className="text-gradient-gold italic">One E-Commerce Brand</span>
           </h2>
         </motion.div>
 

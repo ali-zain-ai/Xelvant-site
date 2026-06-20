@@ -4,20 +4,20 @@ import SmoothScrollProvider from "@/components/ui/SmoothScrollProvider";
 import PageLoader from "@/components/ui/PageLoader";
 
 export const metadata: Metadata = {
-  title: "Xelvant | Find the hidden profit inside your Shopify store",
-  description: "Xelvant helps Shopify and DTC brands uncover churn, weak cohorts, and missed repeat purchases, then turns it into a simple action plan that increases profit. Book a free Revenue Audit.",
-  keywords: "e-commerce analytics, Shopify data science, DTC revenue optimization, churn prediction, customer LTV, revenue audit",
+  title: "Xelvant | Find the hidden profit inside your e-commerce business",
+  description: "Xelvant helps e-commerce brands uncover churn, weak cohorts, and missed repeat purchases, then turns it into a simple action plan that increases profit. Book a Revenue Audit.",
+  keywords: "e-commerce analytics, revenue intelligence, DTC revenue optimization, churn prediction, customer LTV, revenue audit",
   openGraph: {
-    title: "Xelvant | Find the hidden profit inside your Shopify store",
-    description: "We do the analysis and tell you what to fix. A simple, ranked plan to grow profit for Shopify and DTC brands doing $2M–$30M.",
-    url: "https://xelvant.com",
+    title: "Xelvant | Find the hidden profit inside your e-commerce business",
+    description: "We do the analysis and tell you what to fix. A simple, ranked plan to grow profit for e-commerce and DTC brands.",
+    url: "https://xelvant.dev",
     siteName: "Xelvant",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Xelvant | Your Revenue Intelligence Partner",
-    description: "Xelvant finds the hidden revenue leaks costing your Shopify store thousands.",
+    description: "Xelvant finds the hidden revenue leaks costing your e-commerce business thousands.",
   },
   icons: {
     icon: "/favicon.svg",
@@ -46,8 +46,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Xelvant",
-              url: "https://xelvant.com",
-              description: "E-commerce revenue intelligence for Shopify & DTC brands.",
+              url: "https://xelvant.dev",
+              description: "E-commerce revenue intelligence for online brands.",
             }),
           }}
         />

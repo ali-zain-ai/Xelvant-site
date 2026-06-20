@@ -33,21 +33,21 @@ export async function POST(req: Request) {
     await transporter.verify();
 
     const firstName = name.split(" ")[0];
+    const senderAddress = process.env.CONTACT_EMAIL || "hello@xelvant.dev";
 
     // ─── Email to Xelvant team ───
     await transporter.sendMail({
       from: {
-        name: "Xelvant Revenue Audit",
-        address: process.env.CONTACT_EMAIL || "hello@xelvant.dev",
+        name: "Xelvant",
+        address: senderAddress,
       },
-      to: process.env.CONTACT_EMAIL!,
+      to: senderAddress,
       replyTo: email,
-      subject: `Revenue Audit Request from ${name}`,
+      subject: `New Inquiry from ${name}`,
       headers: {
         "X-Mailer": "Xelvant Contact System",
-        "X-Priority": "1",
       },
-      text: `New Revenue Audit Request\n\nName: ${name}\nEmail: ${email}\nStore: ${store}\nMonthly Revenue: ${revenue}\n${challenge ? `Challenge: ${challenge}\n` : ""}\n\nReply to this email to respond directly to ${name}.`,
+      text: `New Inquiry\n\nName: ${name}\nEmail: ${email}\nWebsite: ${store}\nMonthly Revenue: ${revenue}\n${challenge ? `Challenge: ${challenge}\n` : ""}\n\nReply to this email to respond directly to ${name}.`,
       html: `
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +69,7 @@ export async function POST(req: Request) {
 
   <!-- Title -->
   <tr><td style="padding:32px 40px 16px;">
-    <h1 style="margin:0;font-size:24px;font-weight:700;color:#09090b;">Revenue Audit Request</h1>
+    <h1 style="margin:0;font-size:24px;font-weight:700;color:#09090b;">New Client Inquiry</h1>
     <p style="margin:6px 0 0;font-size:14px;color:#6b7280;">Submitted from xelvant.dev contact form</p>
   </td></tr>
 
@@ -97,7 +97,7 @@ export async function POST(req: Request) {
       <tr><td colspan="2" style="padding:0;"><div style="height:1px;background:#f3f4f6;"></div></td></tr>
       <tr>
         <td style="padding:12px 0;vertical-align:top;">
-          <span style="font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#9ca3af;font-weight:600;">Store URL</span>
+          <span style="font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#9ca3af;font-weight:600;">Website</span>
         </td>
         <td style="padding:12px 0;font-size:15px;color:#111827;">
           <a href="${store}" style="color:#b37903;text-decoration:none;font-weight:500;">${store}</a>
@@ -143,19 +143,20 @@ export async function POST(req: Request) {
       `,
     });
 
-    // ─── Auto-reply to client (Premium) ───
+    // ─── Auto-reply to client ───
     await transporter.sendMail({
       from: {
         name: "Xelvant",
-        address: process.env.CONTACT_EMAIL || "hello@xelvant.dev",
+        address: senderAddress,
       },
+      replyTo: senderAddress,
       to: email,
-      subject: `${firstName}, we received your audit request`,
+      subject: `${firstName}, your request has been received`,
       headers: {
-        "X-Entity-Ref-ID": `xelvant-audit-${Date.now()}`,
+        "X-Entity-Ref-ID": `xelvant-${Date.now()}`,
         "Auto-Submitted": "auto-replied",
       },
-      text: `Hi ${firstName},\n\nThank you for requesting a Revenue Audit from Xelvant.\n\nWe have received your details and our team will review your store within 24 hours. You will hear from us soon with next steps.\n\nWhat happens next:\n1. We review your store data (read-only access)\n2. We identify revenue leaks and growth opportunities\n3. We send you a clear, actionable report\n\nIf you have any questions in the meantime, simply reply to this email.\n\nBest regards,\nThe Xelvant Team\nhttps://xelvant.dev`,
+      text: `Hi ${firstName},\n\nThank you for reaching out to Xelvant.\n\nWe have received your details and our team will review them within 24 hours. You will hear from us soon with next steps.\n\nWhat happens next:\n1. We review your business details\n2. We identify revenue opportunities and areas for improvement\n3. We send you a clear, actionable plan\n\nIf you have any questions in the meantime, simply reply to this email.\n\nBest regards,\nThe Xelvant Team\nhttps://xelvant.dev`,
       html: `
 <!DOCTYPE html>
 <html lang="en">
@@ -168,7 +169,7 @@ export async function POST(req: Request) {
   <!-- Header with logo -->
   <tr><td style="background:#09090b;padding:36px 40px;text-align:center;">
     <span style="font-size:28px;font-weight:800;color:#eebc4a;letter-spacing:-0.5px;">X</span><span style="font-size:28px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;">elvant</span>
-    <p style="margin:8px 0 0;font-size:12px;text-transform:uppercase;letter-spacing:3px;color:#6b7280;">Revenue Intelligence</p>
+    <p style="margin:8px 0 0;font-size:12px;text-transform:uppercase;letter-spacing:3px;color:#6b7280;">E-Commerce Intelligence</p>
   </td></tr>
 
   <!-- Gold accent bar -->
@@ -180,7 +181,7 @@ export async function POST(req: Request) {
       Thank you, ${firstName}
     </h1>
     <p style="margin:12px 0 0;font-size:15px;color:#4b5563;line-height:1.7;">
-      We have received your Revenue Audit request and our team is already on it. You will hear from us within <strong style="color:#09090b;">24 hours</strong>.
+      We have received your request and our team is reviewing your details. You will hear from us within <strong style="color:#09090b;">24 hours</strong> with next steps.
     </p>
   </td></tr>
 
@@ -200,8 +201,8 @@ export async function POST(req: Request) {
           </div>
         </td>
         <td style="vertical-align:top;padding:2px 0 20px;">
-          <p style="margin:0;font-size:15px;font-weight:600;color:#111827;">Store Review</p>
-          <p style="margin:4px 0 0;font-size:13px;color:#6b7280;line-height:1.5;">We analyze your store data with read-only access. Your data stays private and encrypted.</p>
+          <p style="margin:0;font-size:15px;font-weight:600;color:#111827;">Business Review</p>
+          <p style="margin:4px 0 0;font-size:13px;color:#6b7280;line-height:1.5;">We review your business details and identify key areas of focus. Your data stays private and secure.</p>
         </td>
       </tr>
       <!-- Step 2 -->
@@ -213,7 +214,7 @@ export async function POST(req: Request) {
         </td>
         <td style="vertical-align:top;padding:2px 0 20px;">
           <p style="margin:0;font-size:15px;font-weight:600;color:#111827;">Identify Opportunities</p>
-          <p style="margin:4px 0 0;font-size:13px;color:#6b7280;line-height:1.5;">We find revenue leaks, weak cohorts, and hidden growth opportunities in your data.</p>
+          <p style="margin:4px 0 0;font-size:13px;color:#6b7280;line-height:1.5;">We find revenue opportunities, operational gaps, and growth strategies specific to your business.</p>
         </td>
       </tr>
       <!-- Step 3 -->
@@ -224,8 +225,8 @@ export async function POST(req: Request) {
           </div>
         </td>
         <td style="vertical-align:top;padding:2px 0 4px;">
-          <p style="margin:0;font-size:15px;font-weight:600;color:#111827;">Actionable Report</p>
-          <p style="margin:4px 0 0;font-size:13px;color:#6b7280;line-height:1.5;">You receive a clear, prioritized action plan ranked by revenue impact.</p>
+          <p style="margin:0;font-size:15px;font-weight:600;color:#111827;">Actionable Plan</p>
+          <p style="margin:4px 0 0;font-size:13px;color:#6b7280;line-height:1.5;">You receive a clear, prioritized action plan to boost your revenue and streamline operations.</p>
         </td>
       </tr>
     </table>
@@ -239,7 +240,7 @@ export async function POST(req: Request) {
     <h2 style="margin:0 0 16px;font-size:14px;text-transform:uppercase;letter-spacing:2px;color:#9ca3af;font-weight:700;">Your Submission</h2>
     <table width="100%" cellpadding="0" cellspacing="0" style="background:#f9fafb;border-radius:12px;overflow:hidden;">
       <tr>
-        <td style="padding:14px 20px;font-size:13px;color:#6b7280;border-bottom:1px solid #e5e7eb;">Store</td>
+        <td style="padding:14px 20px;font-size:13px;color:#6b7280;border-bottom:1px solid #e5e7eb;">Website</td>
         <td style="padding:14px 20px;font-size:14px;font-weight:600;color:#111827;text-align:right;border-bottom:1px solid #e5e7eb;">${store}</td>
       </tr>
       <tr>
@@ -269,7 +270,7 @@ export async function POST(req: Request) {
             &copy; ${new Date().getFullYear()} Xelvant. All rights reserved.
           </p>
           <p style="margin:4px 0 0;font-size:12px;color:#9ca3af;">
-            Revenue Intelligence for E-commerce
+            E-Commerce Intelligence
           </p>
         </td>
         <td align="right" style="vertical-align:top;">
@@ -285,7 +286,7 @@ export async function POST(req: Request) {
 <table width="560" cellpadding="0" cellspacing="0">
   <tr><td style="padding:20px 0;text-align:center;">
     <p style="margin:0;font-size:11px;color:#9ca3af;">
-      You are receiving this because you requested a Revenue Audit on xelvant.dev.
+      You are receiving this email because you submitted an inquiry on xelvant.dev.
       <br>Questions? Reply to this email or contact us at <a href="mailto:hello@xelvant.dev" style="color:#b37903;text-decoration:none;">hello@xelvant.dev</a>
     </p>
   </td></tr>

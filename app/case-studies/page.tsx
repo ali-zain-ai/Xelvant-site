@@ -17,7 +17,7 @@ const fadeUp = (delay = 0) => ({
 /* ── Case Studies ── */
 const caseStudies = [
   {
-    tag: "Health & Wellness · Shopify Plus",
+    tag: "Health & Wellness · E-Commerce",
     problem: "Growth had stalled despite increasing ad spend. Repeat purchase rate was declining and the founder could not identify why.",
     found: [
       "37% of first-time buyers never made a second purchase",
@@ -32,7 +32,7 @@ const caseStudies = [
     ],
   },
   {
-    tag: "Fashion & Apparel · Shopify",
+    tag: "Fashion & Apparel · DTC Brand",
     problem: "Customer acquisition costs kept rising while revenue stayed flat. The brand had no visibility into which products drove long-term value.",
     found: [
       "Top 3 SKUs by volume were generating the lowest LTV customers",
@@ -47,7 +47,7 @@ const caseStudies = [
     ],
   },
   {
-    tag: "Home & Kitchen · Amazon + Shopify",
+    tag: "Home & Kitchen · Multi-Channel",
     problem: "Strong Amazon sales but almost zero repeat purchases. DTC channel was underperforming with no clear diagnosis of why.",
     found: [
       "Amazon-to-DTC migration rate was under 2%",
@@ -235,11 +235,11 @@ export default function CaseStudiesPage() {
                     fontSize: "clamp(24px, 4vw, 40px)",
                   }}
                 >
-                  Your store could be{" "}
+                  Your business could be{" "}
                   <span className="text-gradient-gold italic">next</span>
                 </h3>
                 <p className="text-base mb-8 max-w-lg mx-auto" style={{ color: "var(--muted-foreground)" }}>
-                  We will analyze your data and show you exactly where revenue is hiding. Free. No obligation.
+                  We will analyze your data and show you exactly where revenue is hiding. No obligation.
                 </p>
                 <Link
                   href="/contact"
@@ -250,7 +250,7 @@ export default function CaseStudiesPage() {
                     boxShadow: "0 10px 40px -10px rgba(238,188,74,0.5)",
                   }}
                 >
-                  Book Your Free Audit
+                  Book Your Audit
                   <ArrowRight size={16} />
                 </Link>
               </div>

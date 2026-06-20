@@ -12,7 +12,7 @@ const fadeUp = (delay = 0) => ({
 });
 
 const goodFit = [
-  "You're a Shopify or DTC brand doing $2M–$30M/year",
+  "You're an e-commerce or DTC brand doing $2M–$30M/year",
   "You have real customer and order data (12+ months)",
   "You'd rather have a clear answer than another tool",
   "You're ready to act on a plan once you have it",

@@ -50,7 +50,7 @@ const differentiators = [
   {
     Icon: ShieldCheck,
     title: "Read-only access, zero risk",
-    body: "We connect through official read-only API tokens. We cannot change your settings, products, prices, or customer data. Your store runs exactly the same during the entire process.",
+    body: "We connect through official read-only API tokens. We cannot change your settings, products, prices, or customer data. Your business runs exactly the same during the entire process.",
   },
   {
     Icon: FileX2,
@@ -118,7 +118,7 @@ export default function AboutPage() {
             </motion.div>
             <motion.div {...fadeUp(0.08)} className="space-y-5 text-base md:text-lg leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
               <p>
-                We kept seeing the same pattern. Shopify and Amazon brands spending heavily on ads, hiring agencies for more traffic, and pouring money into tools they barely used. Meanwhile, the answers were already sitting inside their own data. Customers leaving without anyone noticing. Revenue leaking from abandoned carts, bad bundles, and mismatched pricing. Reports that took hours to build and still missed the point.
+                We kept seeing the same pattern. E-commerce brands spending heavily on ads, hiring agencies for more traffic, and pouring money into tools they barely used. Meanwhile, the answers were already sitting inside their own data. Customers leaving without anyone noticing. Revenue leaking from abandoned carts, bad bundles, and mismatched pricing. Reports that took hours to build and still missed the point.
               </p>
               <p>
                 We started Xelvant because we believed one simple thing: most e-commerce brands do not have a traffic problem. They have a visibility problem. They cannot see where money is going, why customers are not returning, or which products are quietly dragging down margins. We built this company to give founders that clarity, in plain language, with dollar signs attached to every finding.
@@ -256,7 +256,7 @@ export default function AboutPage() {
                 <span className="text-gradient-gold italic">gets e-commerce</span>?
               </h2>
               <p className="text-base md:text-lg mb-8" style={{ color: "var(--muted-foreground)" }}>
-                Free Revenue Audit. No obligation. No contracts.
+                Revenue Audit. No obligation. No contracts.
               </p>
               <Link
                 href="/contact"
@@ -267,7 +267,7 @@ export default function AboutPage() {
                   boxShadow: "0 10px 40px -10px rgba(238,188,74,0.5)",
                 }}
               >
-                Book Your Free Audit
+                Book Your Audit
                 <ArrowRight size={16} />
               </Link>
             </motion.div>

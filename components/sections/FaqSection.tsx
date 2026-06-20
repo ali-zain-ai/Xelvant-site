@@ -9,7 +9,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const FAQS = [
   {
     q: "What data access is required?",
-    a: "We need read-only API access to your Shopify store (orders, customers, products), your email platform (Klaviyo, Mailchimp, etc.), and optionally your ad accounts. Setup takes under 30 minutes on your end. We never modify, export, or share your data.",
+    a: "We need read-only API access to your e-commerce platform (orders, customers, products), your email platform (Klaviyo, Mailchimp, etc.), and optionally your ad accounts. Setup takes under 30 minutes on your end. We never modify, export, or share your data.",
   },
   {
     q: "How secure is the process?",
@@ -21,7 +21,7 @@ const FAQS = [
   },
   {
     q: "Who is this designed for?",
-    a: "Shopify and DTC brands doing between $2M and $30M per year with at least 12 months of customer data. If you're earlier-stage, the audit may not surface enough patterns to be actionable. We'll let you know on a call if it's not the right fit.",
+    a: "E-commerce and DTC brands doing between $2M and $30M per year with at least 12 months of customer data. If you're earlier-stage, the audit may not surface enough patterns to be actionable. We'll let you know on a call if it's not the right fit.",
   },
   {
     q: "Do you implement the recommendations?",
@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: "What does an engagement typically cost?",
-    a: "The revenue audit is free. If you continue with an ongoing engagement (monthly analysis, forecasting, and strategy), pricing starts at $3,500/month with no long-term commitment. We'll discuss what's right for your stage after the audit.",
+    a: "The initial revenue audit is complimentary. If you continue with an ongoing engagement (monthly analysis, forecasting, and strategy), pricing starts at $3,500/month with no long-term commitment. We'll discuss what's right for your stage after the audit.",
   },
 ];
 

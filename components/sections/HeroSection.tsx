@@ -66,7 +66,7 @@ export default function HeroSection() {
             style={{ background: "rgba(255,255,255,0.03)", color: "var(--muted-foreground)" }}
           >
             <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: "var(--primary)" }} />
-            Revenue Intelligence for Shopify &amp; DTC Brands
+            Revenue Intelligence for E-Commerce Brands
           </div>
         </FadeUp>
 
@@ -83,7 +83,7 @@ export default function HeroSection() {
           >
             Discover Exactly What&apos;s
             <br />
-            <span className="text-gradient-gold">Stopping Your Store</span>
+            <span className="text-gradient-gold">Stopping Your Business</span>
             <br />
             From Growing
           </h1>
@@ -114,7 +114,7 @@ export default function HeroSection() {
                 boxShadow: "0 10px 40px -10px rgba(238,188,74,0.5)",
               }}
             >
-              Get My Free Revenue Audit
+              Get My Revenue Audit
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" aria-hidden />
             </Link>
             <Link

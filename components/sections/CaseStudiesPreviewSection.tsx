@@ -14,7 +14,7 @@ const fadeUp = (delay = 0) => ({
 
 const highlights = [
   {
-    tag: "Health & Wellness · Shopify Plus",
+    tag: "Health & Wellness · E-Commerce",
     problem: "Growth stalled despite increasing ad spend.",
     metrics: [
       { value: "+18%", label: "Repeat purchases" },
@@ -22,7 +22,7 @@ const highlights = [
     ],
   },
   {
-    tag: "Fashion & Apparel · Shopify",
+    tag: "Fashion & Apparel · DTC Brand",
     problem: "Rising acquisition costs with flat revenue.",
     metrics: [
       { value: "+24%", label: "Customer LTV" },
@@ -30,7 +30,7 @@ const highlights = [
     ],
   },
   {
-    tag: "Home & Kitchen · Amazon + Shopify",
+    tag: "Home & Kitchen · Multi-Channel",
     problem: "Strong Amazon sales, zero DTC repeat purchases.",
     metrics: [
       { value: "+41%", label: "DTC repeat rate" },
