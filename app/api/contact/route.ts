@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+// Force Node.js runtime (required for Nodemailer on Vercel)
+export const runtime = "nodejs";
+export const maxDuration = 30;
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -14,16 +18,20 @@ export async function POST(req: Request) {
       );
     }
 
-    // Create SMTP transporter
+    // Create SMTP transporter with Google Workspace settings
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      secure: false, // true for 465, false for 587
+      service: "gmail",
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
+      tls: {
+        rejectUnauthorized: false,
+      },
     });
+
+    // Verify connection first
+    await transporter.verify();
 
     // Email to Xelvant team
     await transporter.sendMail({
@@ -113,8 +121,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Contact form error:", error);
+    const message = error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json(
-      { error: "Something went wrong. Please try again." },
+      { error: `Something went wrong: ${message}` },
       { status: 500 }
     );
   }
