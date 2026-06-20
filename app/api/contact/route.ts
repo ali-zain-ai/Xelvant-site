@@ -38,7 +38,7 @@ export async function POST(req: Request) {
     await transporter.sendMail({
       from: {
         name: "Xelvant Revenue Audit",
-        address: process.env.SMTP_USER!,
+        address: process.env.CONTACT_EMAIL || "hello@xelvant.dev",
       },
       to: process.env.CONTACT_EMAIL!,
       replyTo: email,
@@ -147,7 +147,7 @@ export async function POST(req: Request) {
     await transporter.sendMail({
       from: {
         name: "Xelvant",
-        address: process.env.SMTP_USER!,
+        address: process.env.CONTACT_EMAIL || "hello@xelvant.dev",
       },
       to: email,
       subject: `${firstName}, we received your audit request`,
