@@ -152,9 +152,8 @@ export async function POST(req: Request) {
       to: email,
       subject: `${firstName}, we received your audit request`,
       headers: {
-        "X-Mailer": "Xelvant Contact System",
-        "List-Unsubscribe": "<mailto:hello@xelvant.dev?subject=unsubscribe>",
-        "Precedence": "bulk",
+        "X-Entity-Ref-ID": `xelvant-audit-${Date.now()}`,
+        "Auto-Submitted": "auto-replied",
       },
       text: `Hi ${firstName},\n\nThank you for requesting a Revenue Audit from Xelvant.\n\nWe have received your details and our team will review your store within 24 hours. You will hear from us soon with next steps.\n\nWhat happens next:\n1. We review your store data (read-only access)\n2. We identify revenue leaks and growth opportunities\n3. We send you a clear, actionable report\n\nIf you have any questions in the meantime, simply reply to this email.\n\nBest regards,\nThe Xelvant Team\nhttps://xelvant.dev`,
       html: `
