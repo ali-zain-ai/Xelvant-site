@@ -32,24 +32,29 @@ export default function Footer() {
     >
       <div className="mx-auto max-w-7xl">
 
-        {/* Top row: logo + links */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-8">
-          <Link href="/">
-            <Image
-              src="/logo-transparent.png"
-              alt="Xelvant"
-              width={140}
-              height={36}
-              className="h-8 w-auto object-contain"
-            />
-          </Link>
+        {/* Top row: logo/intro + links */}
+        <div className="flex flex-col md:flex-row items-start justify-between gap-10 mb-12">
+          <div className="max-w-sm">
+            <Link href="/" className="inline-block mb-4">
+              <Image
+                src="/logo-transparent.png"
+                alt="Xelvant"
+                width={160}
+                height={42}
+                className="h-10 w-auto object-contain"
+              />
+            </Link>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
+              We turn e-commerce data into a clear plan for growth. Find hidden leaks, stop losing customers, and increase your bottom line.
+            </p>
+          </div>
 
-          <nav className="flex flex-wrap items-center gap-6">
+          <nav className="flex flex-wrap items-center gap-6 md:gap-8 pt-2">
             {links.map((l) => (
               <Link
                 key={l.label}
                 href={l.href}
-                className="text-sm transition-colors hover:text-white"
+                className="text-sm font-medium transition-colors hover:text-white"
                 style={{ color: "var(--muted-foreground)" }}
               >
                 {l.label}
