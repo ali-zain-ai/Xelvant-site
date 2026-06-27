@@ -138,8 +138,8 @@ button {
 .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
 .hidden { display: none !important; }
 @media (min-width: 640px) {
-  .sm\:flex-row { flex-direction: row; }
-  .sm\:w-auto { width: auto; }
+  .sm\:flex-row { flex-direction: row !important; }
+  .sm\:w-auto { width: auto !important; }
 }
 @media (min-width: 768px) {
   .md\:flex { display: flex !important; }
