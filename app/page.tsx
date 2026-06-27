@@ -80,7 +80,7 @@ export default function Home() {
             alt="Xelvant Logo" 
             width={180} 
             height={37} 
-            style={{ objectFit: 'contain', transform: 'scale(2.1)', transformOrigin: 'left center' }} 
+            style={{ objectFit: 'contain' }} 
             priority
           />
         </Link>
