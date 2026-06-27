@@ -81,11 +81,9 @@ export default function HeroSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Most E-Commerce Brands{" "}
-            <span className="text-gradient-gold">Lose Revenue</span>{" "}
-            Without Knowing It.{" "}
+            Find What&apos;s Costing Your
             <br />
-            We Find It.
+            <span className="text-gradient-gold">Business Revenue.</span>
           </h1>
         </FadeUp>
 
