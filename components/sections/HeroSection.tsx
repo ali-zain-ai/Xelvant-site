@@ -81,11 +81,11 @@ export default function HeroSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            We Find What&apos;s Costing
+            Most E-Commerce Brands{" "}
+            <span className="text-gradient-gold">Lose Revenue</span>{" "}
+            Without Knowing It.{" "}
             <br />
-            <span className="text-gradient-gold">You Revenue</span> — And
-            <br />
-            Show You How to Fix It
+            We Find It.
           </h1>
         </FadeUp>
 
@@ -95,9 +95,8 @@ export default function HeroSection() {
             className="mx-auto mt-7 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed"
             style={{ color: "var(--muted-foreground)" }}
           >
-            We analyze your e-commerce data, find where you&apos;re
-            losing money, and give you a step-by-step plan to{" "}
-            <span style={{ color: "var(--primary)" }}>grow</span>.
+            We dig into your e-commerce data and show you exactly what to fix to{" "}
+            <span style={{ color: "var(--primary)" }}>grow faster</span>.
           </p>
         </FadeUp>
 

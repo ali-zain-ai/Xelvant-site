@@ -43,8 +43,8 @@ export default function HowItWorksSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            How It Works —{" "}
-            <span className="text-gradient-gold italic">4 Simple Steps</span>
+            Connect. Analyze. Report.{" "}
+            <span className="text-gradient-gold italic">Grow.</span>
           </h2>
           <p className="mt-5 text-base md:text-lg max-w-2xl leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
             From connecting your data to getting a clear plan. The whole process takes 14 days.

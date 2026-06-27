@@ -16,8 +16,8 @@ const services = [
   { Icon: UserX,        title: "Stop Losing Customers",        desc: "Know who's about to leave — and what to do to keep them." },
   { Icon: Users,        title: "Know Your Best Buyers",        desc: "See exactly which customers drive the most revenue and why." },
   { Icon: SearchX,      title: "Find Lost Revenue",            desc: "Find where money is quietly disappearing every month." },
-  { Icon: FileBarChart, title: "Automatic Reports",            desc: "Get clear performance reports delivered — no spreadsheets needed." },
-  { Icon: Map,          title: "Growth Opportunities",         desc: "We find the fastest way to increase your revenue." },
+  { Icon: FileBarChart, title: "Performance at a Glance",      desc: "Get clear performance reports delivered — no spreadsheets needed." },
+  { Icon: Map,          title: "Find Your Next Growth Move",   desc: "We find the fastest way to increase your revenue." },
   { Icon: Cog,          title: "Workflow Automation",          desc: "Eliminate repetitive tasks so your team focuses on growth." },
 ];
 
@@ -45,7 +45,8 @@ export default function ServicesPreviewSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Everything You Need to <span className="text-gradient-gold italic">Grow Revenue</span>
+            Six Services. One Goal:{" "}
+            <span className="text-gradient-gold italic">More Revenue.</span>
           </h2>
           <p className="mt-5 text-base md:text-lg max-w-2xl leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
             Six ways we help e-commerce brands sell more, keep more customers, and stop losing money.
