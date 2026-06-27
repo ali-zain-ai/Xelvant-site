@@ -1,284 +1,161 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  UserX, Users, SearchX, FileBarChart, Map, Cog,
-  ArrowRight,
-} from "lucide-react";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import { ArrowLeft, UserX, Users, SearchX, FileBarChart, Map, Cog } from "lucide-react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-60px" },
-  transition: { duration: 0.7, ease: EASE, delay },
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: EASE, delay },
 });
 
-/* ── 2.2  Six service cards ── */
 const services = [
   {
     Icon: UserX,
     title: "Stop Losing Customers",
     desc: "Know who's about to leave — and what to do to keep them.",
     deliverables: [
-      "List of high-value customers at risk of leaving",
-      "Breakdown of exactly what causes your buyers to drop off",
-      "Step-by-step retention playbook to win them back",
-      "Monthly tracking to measure saved revenue",
-    ],
+      "Identify high-risk segments",
+      "Win-back email sequences",
+      "Churn prevention strategy"
+    ]
   },
   {
     Icon: Users,
     title: "Know Your Best Buyers",
     desc: "See exactly which customers drive the most revenue and why.",
     deliverables: [
-      "Customer segments ranked by actual dollar value",
-      "Deep dive into where your most profitable buyers come from",
-      "Tracking of customers moving from low-value to high-value",
-      "Targeted campaign strategies for your top spenders",
-    ],
+      "VIP customer identification",
+      "Customer lifetime value modeling",
+      "Lookalike audience profiles"
+    ]
   },
   {
     Icon: SearchX,
     title: "Find Lost Revenue",
     desc: "Find where money is quietly disappearing every month.",
     deliverables: [
-      "Full-funnel audit highlighting exactly where cash is leaking",
-      "Analysis of abandoned carts and failed subscriptions",
-      "Identification of products dragging down your margins",
-      "Clear breakdown of discount and promotion ROI",
-    ],
+      "Checkout flow friction analysis",
+      "Abandoned cart optimization",
+      "Hidden fee/margin analysis"
+    ]
   },
   {
     Icon: FileBarChart,
     title: "Performance at a Glance",
     desc: "Get clear performance reports delivered — no spreadsheets needed.",
     deliverables: [
-      "Custom dashboards showing only the metrics that matter",
-      "Automated daily or weekly performance emails",
-      "Real-time tracking of customer retention and repeat rates",
-      "Clear attribution showing exactly how ad spend drives revenue",
-    ],
+      "Automated daily dashboards",
+      "KPI tracking alerts",
+      "Executive summary reports"
+    ]
   },
   {
     Icon: Map,
     title: "Find Your Next Growth Move",
     desc: "We find the fastest way to increase your revenue.",
     deliverables: [
-      "Ranked list of growth opportunities based on revenue impact",
-      "Clear roadmap for cross-selling and up-selling",
-      "Analysis of the exact window when buyers are ready to purchase again",
-      "Identification of profitable customer groups you aren't targeting yet",
-    ],
+      "Market expansion analysis",
+      "Product-line profitability",
+      "Actionable 90-day roadmap"
+    ]
   },
   {
     Icon: Cog,
     title: "Workflow Automation",
     desc: "Eliminate repetitive tasks so your team focuses on growth.",
     deliverables: [
-      "Automated alerts for low inventory and reordering",
-      "Smart email triggers based on real customer lifecycle events",
-      "Automatic detection of unusual return or refund patterns",
-      "Custom workflows connecting your e-commerce tools together",
-    ],
+      "Data entry automation",
+      "Inventory alerts setup",
+      "Marketing stack integration"
+    ]
   },
 ];
 
-/* ── 2.3  Platforms ── */
-const platforms = [
-  "Shopify", "Shopify Plus", "Amazon", "WooCommerce", "Klaviyo",
-  "Meta Ads", "Google Ads", "Triple Whale", "Recharge",
-];
-
-
 export default function ServicesPage() {
   return (
-    <>
-      <Navbar />
-      <main className="min-h-screen">
-
-        {/* ─── 2.1  Hero ─── */}
-        <section className="relative pt-32 pb-16 px-5 sm:px-6 lg:px-10">
-          <div
-            className="absolute inset-x-0 top-0 pointer-events-none -z-10"
-            style={{
-              height: "600px",
-              background:
-                "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(238,188,74,0.12) 0%, transparent 70%)",
-            }}
+    <main style={{ minHeight: "100vh" }}>
+      {/* Navbar Placeholder */}
+      <nav className="flex items-center justify-between" style={{ padding: "1.5rem 2rem", borderBottom: "1px solid var(--border)" }}>
+        <Link href="/">
+          <Image 
+            src="/xelvant-logo-transparent.png" 
+            alt="Xelvant Logo" 
+            width={180} 
+            height={37} 
+            style={{ objectFit: 'contain', transform: 'scale(2.1)', transformOrigin: 'left center' }} 
+            priority
           />
-          <div className="mx-auto max-w-4xl text-center">
-            <motion.div {...fadeUp(0)}>
-              <div
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3.5 py-1.5 text-[11px] uppercase tracking-[0.18em] mb-6"
-                style={{ background: "rgba(255,255,255,0.03)", color: "var(--muted-foreground)" }}
-              >
-                <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--primary)" }} />
-                Our Services
-              </div>
-            </motion.div>
+        </Link>
+        <div className="flex items-center gap-6">
+          <Link href="/" className="text-sm font-display text-muted" style={{ transition: "color 0.2s", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <ArrowLeft size={16} /> Back to Home
+          </Link>
+        </div>
+      </nav>
 
-            <motion.h1
-              {...fadeUp(0.06)}
-              className="font-display tracking-tight"
-              style={{
-                fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-                fontSize: "clamp(32px, 5.5vw, 68px)",
-                lineHeight: 1.05,
-              }}
-            >
-              We Turn Your Store&apos;s Data Into a{" "}
-              <span className="text-gradient-gold italic">Clear Plan for Growth.</span>
-            </motion.h1>
+      {/* Hero */}
+      <section className="relative pt-32 pb-16 px-6 text-center">
+        <motion.div {...fadeUp(0)}>
+          <h1 className="font-display tracking-tight mb-6" style={{ fontSize: "clamp(40px, 6vw, 64px)", lineHeight: 1.1, color: "var(--foreground)", fontWeight: 700 }}>
+            Our Services
+          </h1>
+          <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
+            We turn your store's data into a clear plan for growth. Explore exactly how we stop revenue leaks and increase your bottom line.
+          </p>
+        </motion.div>
+      </section>
 
-            <motion.p
-              {...fadeUp(0.12)}
-              className="mx-auto mt-6 max-w-2xl text-base sm:text-lg leading-relaxed"
-              style={{ color: "var(--muted-foreground)" }}
-            >
-              From stopping customer churn to finding hidden leaks, every service we offer is designed to do one thing: increase your bottom line.
-            </motion.p>
-          </div>
-        </section>
-
-        {/* ─── 2.2  Service Cards (2-col grid) ─── */}
-        <section className="py-16 md:py-24 px-5 sm:px-6 lg:px-10 border-t border-white/5">
-          <div className="mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {services.map((s, i) => (
-                <motion.div key={i} {...fadeUp(0.06 * (i + 1))}>
-                  <div
-                    className="card-premium h-full p-6 md:p-8 group cursor-default"
-                    style={{ transition: "border-color 0.4s" }}
-                  >
-                    {/* Icon + Title */}
-                    <div className="flex items-start gap-4 mb-5">
-                      <div
-                        className="grid place-items-center h-11 w-11 rounded-xl shrink-0"
-                        style={{
-                          background: "rgba(238,188,74,0.1)",
-                          boxShadow: "0 0 0 1px rgba(238,188,74,0.2)",
-                          color: "var(--primary)",
-                        }}
-                      >
-                        <s.Icon size={20} aria-hidden />
-                      </div>
-                      <div>
-                        <h3
-                          className="font-display leading-tight"
-                          style={{
-                            fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-                            fontSize: "clamp(20px, 2.5vw, 26px)",
-                          }}
-                        >
-                          {s.title}
-                        </h3>
-                        <p
-                          className="text-sm leading-relaxed mt-1"
-                          style={{ color: "var(--muted-foreground)" }}
-                        >
-                          {s.desc}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Deliverables */}
-                    <ul className="space-y-2.5 ml-[60px]">
-                      {s.deliverables.map((d, j) => (
-                        <li key={j} className="flex items-start gap-2.5 text-sm" style={{ color: "rgba(250,250,250,0.75)" }}>
-                          <span
-                            className="mt-2 h-1 w-1 rounded-full shrink-0"
-                            style={{ background: "var(--primary)" }}
-                          />
-                          {d}
+      {/* Services List */}
+      <section className="section px-6 pt-0">
+        <div className="container max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {services.map((s, i) => (
+              <motion.div key={i} {...fadeUp(0.1 * (i + 1))}>
+                <div className="card-premium p-8 h-full flex flex-col">
+                  <div className="mb-6" style={{ color: "var(--primary)" }}>
+                    <s.Icon size={32} strokeWidth={1.5} />
+                  </div>
+                  <h3 className="font-display text-xl mb-3" style={{ fontWeight: 700, color: "var(--foreground)" }}>{s.title}</h3>
+                  <p className="text-base text-muted leading-relaxed mb-8">{s.desc}</p>
+                  
+                  <div className="mt-auto">
+                    <h4 className="text-sm font-display mb-4" style={{ color: "var(--foreground)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                      What You Get
+                    </h4>
+                    <ul className="flex flex-col gap-3">
+                      {s.deliverables.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-3 text-sm text-muted">
+                          <div style={{ color: "var(--primary)", marginTop: "2px" }}>•</div>
+                          {item}
                         </li>
                       ))}
                     </ul>
                   </div>
-                </motion.div>
-              ))}
-            </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ─── 2.3  Platforms ─── */}
-        <section className="py-16 md:py-20 px-5 sm:px-6 lg:px-10 border-t border-white/5">
-          <div className="mx-auto max-w-5xl text-center">
-            <motion.div {...fadeUp(0)}>
-              <h2
-                className="font-display tracking-tight mb-10"
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-                  fontSize: "clamp(24px, 4vw, 44px)",
-                }}
-              >
-                Platforms We{" "}
-                <span className="text-gradient-gold italic">Work With</span>
-              </h2>
-            </motion.div>
-            <motion.div {...fadeUp(0.08)} className="flex flex-wrap justify-center gap-3">
-              {platforms.map((p) => (
-                <span
-                  key={p}
-                  className="inline-flex items-center rounded-full border border-white/10 px-4 py-2 text-sm font-medium"
-                  style={{ background: "rgba(255,255,255,0.03)", color: "rgba(250,250,250,0.8)" }}
-                >
-                  {p}
-                </span>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* ─── 2.4  Premium CTA ─── */}
-        <section className="py-24 md:py-32 px-5 sm:px-6 lg:px-10 border-t border-white/5 relative overflow-hidden">
-          {/* Subtle background glow */}
-          <div
-            className="absolute inset-0 pointer-events-none -z-10"
-            style={{
-              background: "radial-gradient(circle at 50% 100%, rgba(238,188,74,0.05) 0%, transparent 60%)",
-            }}
-          />
-          <div className="mx-auto max-w-3xl text-center">
-            <motion.div {...fadeUp(0)}>
-              <h2
-                className="font-display tracking-tight mb-6"
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-                  fontSize: "clamp(32px, 5vw, 56px)",
-                  lineHeight: 1.05,
-                }}
-              >
-                Ready to Grow Your{" "}
-                <span className="text-gradient-gold italic">E&#8209;Commerce Business?</span>
-              </h2>
-              <p
-                className="text-base md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed"
-                style={{ color: "var(--muted-foreground)" }}
-              >
-                Tell us about your business, and we&apos;ll show you where your biggest growth opportunities are.
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-semibold transition hover:opacity-90"
-                style={{
-                  background: "var(--primary)",
-                  color: "var(--primary-foreground)",
-                  boxShadow: "0 10px 40px -10px rgba(238,188,74,0.4)",
-                }}
-              >
-                Contact Us
-                <ArrowRight size={16} />
-              </Link>
-            </motion.div>
-          </div>
-        </section>
-
-      </main>
-      <Footer />
-    </>
+      {/* Premium Contact CTA */}
+      <section className="relative section px-6 text-center" style={{ borderTop: "1px solid var(--border)" }}>
+        <div className="container max-w-2xl">
+          <motion.div {...fadeUp(0)}>
+            <h2 className="font-display tracking-tight mb-6" style={{ fontSize: "clamp(32px, 5vw, 48px)", lineHeight: 1.1, color: "var(--foreground)", fontWeight: 700 }}>
+              Ready to plug your <br />
+              <span style={{ color: "var(--primary)", fontStyle: "italic" }}>revenue leaks?</span>
+            </h2>
+            <Link href="/#contact" className="btn-primary" style={{ padding: "1.25rem 3rem", fontSize: "1rem" }}>
+              Get in Touch
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    </main>
   );
 }
