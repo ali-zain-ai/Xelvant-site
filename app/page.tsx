@@ -102,7 +102,7 @@ export default function Home() {
   return (
     <main style={{ minHeight: "100vh" }}>
       {/* Navbar Placeholder */}
-      <nav className="flex items-center justify-between" style={{ padding: "1.5rem 2rem", borderBottom: "1px solid var(--border)" }}>
+      <nav className="navbar flex items-center justify-between" style={{ borderBottom: "1px solid var(--border)" }}>
         <Link href="/">
           <Image 
             src="/xelvant-logo-transparent.png" 
@@ -113,7 +113,7 @@ export default function Home() {
             priority
           />
         </Link>
-        <div className="flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-6">
           <Link href="/services" className="text-sm font-display text-muted" style={{ transition: "color 0.2s" }}>
             Services
           </Link>
@@ -159,11 +159,11 @@ export default function Home() {
           We turn e-commerce data into a clear plan for growth. Find hidden leaks, stop losing customers, and increase your bottom line.
         </motion.p>
 
-        <motion.div {...fadeUp(0.3)} className="flex items-center gap-4">
-          <Link href="#contact" className="btn-primary">
+        <motion.div {...fadeUp(0.3)} className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center">
+          <Link href="#contact" className="btn-primary w-full sm:w-auto">
             Contact Us
           </Link>
-          <Link href="/services" className="btn-secondary">
+          <Link href="/services" className="btn-secondary w-full sm:w-auto">
             View Services
           </Link>
         </motion.div>

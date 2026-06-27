@@ -79,7 +79,7 @@ export default function ServicesPage() {
   return (
     <main style={{ minHeight: "100vh" }}>
       {/* Navbar Placeholder */}
-      <nav className="flex items-center justify-between" style={{ padding: "1.5rem 2rem", borderBottom: "1px solid var(--border)" }}>
+      <nav className="navbar flex items-center justify-between" style={{ borderBottom: "1px solid var(--border)" }}>
         <Link href="/">
           <Image 
             src="/xelvant-logo-transparent.png" 
