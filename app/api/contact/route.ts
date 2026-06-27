@@ -156,6 +156,9 @@ export async function POST(req: Request) {
       messageId: `<reply-${Date.now()}-${Math.random().toString(36).substring(2)}@xelvant.dev>`,
       headers: {
         "X-Entity-Ref-ID": `xelvant-${Date.now()}`,
+        "Importance": "high",
+        "X-Priority": "1",
+        "List-Unsubscribe": `<mailto:${process.env.CONTACT_EMAIL || "hello@xelvant.dev"}?subject=unsubscribe>`,
       },
       text: `Hi ${firstName},\n\nThank you for reaching out to Xelvant.\n\nYour inquiry has been successfully received. Our intelligence team is currently reviewing your details and will follow up with you within 24 hours.\n\nBest regards,\nThe Xelvant Team\nhttps://xelvant.dev`,
       html: `
