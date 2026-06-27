@@ -249,27 +249,46 @@ export default function Home() {
             </p>
 
             {status === "success" ? (
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="card-premium p-10 md:p-14 text-center border border-[var(--border)] relative overflow-hidden shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-b from-[rgba(0,70,67,0.03)] to-transparent pointer-events-none" />
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} 
+                className="card-premium p-10 md:p-14 text-center relative overflow-hidden"
+                style={{ 
+                  backgroundColor: "var(--foreground)", 
+                  borderColor: "var(--primary)", 
+                  boxShadow: "0 25px 50px -12px rgba(0, 70, 67, 0.3)" 
+                }}
+              >
+                <div 
+                  className="absolute inset-0 pointer-events-none" 
+                  style={{ background: "radial-gradient(ellipse at top, rgba(0, 70, 67, 0.3), transparent 70%)" }}
+                />
                 
                 <motion.div 
                   initial={{ scale: 0.5, opacity: 0 }} 
                   animate={{ scale: 1, opacity: 1 }} 
                   transition={{ delay: 0.2, type: "spring", stiffness: 200, damping: 20 }}
-                  className="mx-auto flex items-center justify-center w-20 h-20 rounded-full bg-[#004643] text-[#F0EDE5] mb-8 shadow-lg"
+                  className="mx-auto flex items-center justify-center rounded-full shadow-lg"
+                  style={{ width: "5rem", height: "5rem", backgroundColor: "var(--primary)", color: "var(--primary-foreground)", marginBottom: "2rem" }}
                 >
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </motion.div>
                 
-                <h3 className="font-display text-3xl font-bold mb-4 tracking-tight" style={{ color: "var(--foreground)" }}>Inquiry Received</h3>
+                <h3 className="font-display text-3xl font-bold mb-4 tracking-tight" style={{ color: "var(--primary-foreground)" }}>
+                  Inquiry Received
+                </h3>
                 
-                <p className="text-lg text-muted leading-relaxed mb-10 max-w-lg mx-auto">
-                  Thank you for reaching out. We have sent a confirmation email to <strong style={{ color: "var(--primary)" }}>{formData.email || "your inbox"}</strong>. Our intelligence team will review your details and respond within 24 hours.
+                <p className="text-lg leading-relaxed mb-10 max-w-lg mx-auto" style={{ color: "rgba(240, 237, 229, 0.8)" }}>
+                  Thank you for reaching out. We have sent a confirmation email to <strong style={{ color: "var(--primary-foreground)", fontWeight: 600 }}>{formData.email || "your inbox"}</strong>. Our intelligence team will review your details and respond within 24 hours.
                 </p>
 
                 <button 
                   onClick={() => { setStatus("idle"); setFormData({ name: "", email: "", store: "", revenue: "", challenge: "" }); }}
-                  className="text-sm font-semibold uppercase tracking-widest text-muted hover:text-[var(--primary)] transition-colors duration-300 flex items-center justify-center mx-auto gap-2"
+                  className="text-sm font-semibold uppercase tracking-widest transition-colors duration-300 flex items-center justify-center mx-auto gap-2"
+                  style={{ color: "var(--primary)", backgroundColor: "rgba(0, 70, 67, 0.1)", padding: "0.75rem 1.5rem", borderRadius: "9999px" }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "rgba(0, 70, 67, 0.2)"}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "rgba(0, 70, 67, 0.1)"}
                 >
                   <ArrowLeft size={16} /> Send Another Inquiry
                 </button>
