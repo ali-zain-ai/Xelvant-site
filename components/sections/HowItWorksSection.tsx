@@ -13,10 +13,10 @@ const fadeUp = (delay = 0) => ({
 });
 
 const steps = [
-  { Icon: Link2,    step: "01", title: "Connect Data",     desc: "Read-only access to your e-commerce platform and marketing tools." },
-  { Icon: Search,   step: "02", title: "Analyze Revenue",  desc: "Identify leaks, retention issues, and growth opportunities." },
-  { Icon: FileText, step: "03", title: "Receive Audit",    desc: "Get a clear breakdown of what is hurting growth." },
-  { Icon: Rocket,   step: "04", title: "Execute Plan",     desc: "Follow prioritized actions based on revenue impact." },
+  { Icon: Link2,    step: "01", title: "Connect Your Data",     desc: "We get read-only access to your platform. You don't need to do anything technical." },
+  { Icon: Search,   step: "02", title: "We Analyze Everything",  desc: "We dig into your customers, revenue, and operations to find what's not working." },
+  { Icon: FileText, step: "03", title: "Get Your Report",        desc: "You receive a clear breakdown of problems and exactly what to fix." },
+  { Icon: Rocket,   step: "04", title: "Take Action",            desc: "A ranked list of changes — biggest revenue impact first." },
 ];
 
 export default function HowItWorksSection() {
@@ -43,11 +43,11 @@ export default function HowItWorksSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            From Data to{" "}
-            <span className="text-gradient-gold italic">Actionable Growth</span>
+            How It Works —{" "}
+            <span className="text-gradient-gold italic">4 Simple Steps</span>
           </h2>
           <p className="mt-5 text-base md:text-lg max-w-2xl leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
-            A structured process from data access to a clear action plan.
+            From connecting your data to getting a clear plan. The whole process takes 14 days.
           </p>
         </motion.div>
 
@@ -112,7 +112,7 @@ export default function HowItWorksSection() {
                 fontWeight: 700,
               }}
             >
-              Clear Insights. Actionable Growth Plan.
+               See what&apos;s holding your revenue back.
             </p>
             <Link
               href="/contact"

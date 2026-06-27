@@ -26,10 +26,10 @@ const FadeUp = ({
 );
 
 const trustStrip = [
-  { Icon: ShieldCheck,  title: "Data-Driven Insights",    desc: "100% based on your data" },
-  { Icon: TrendingDown, title: "Identify Revenue Leaks",  desc: "Find what's costing you" },
-  { Icon: Target,       title: "Actionable Roadmap",      desc: "Clear steps to more profit" },
-  { Icon: Lock,         title: "Secure & Confidential",   desc: "Your data is always safe" },
+  { Icon: ShieldCheck,  title: "Based on Your Data",      desc: "Not guesswork — real numbers from your business" },
+  { Icon: TrendingDown, title: "Find Hidden Losses",      desc: "See exactly where you're losing money" },
+  { Icon: Target,       title: "Clear Action Plan",       desc: "Step-by-step — ranked by revenue impact" },
+  { Icon: Lock,         title: "Your Data Stays Private", desc: "Read-only access. We never modify anything" },
 ];
 
 export default function HeroSection() {
@@ -66,7 +66,7 @@ export default function HeroSection() {
             style={{ background: "rgba(255,255,255,0.03)", color: "var(--muted-foreground)" }}
           >
             <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: "var(--primary)" }} />
-            Revenue Intelligence for E-Commerce Brands
+            We Help E-Commerce Brands Grow Revenue
           </div>
         </FadeUp>
 
@@ -81,11 +81,11 @@ export default function HeroSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Discover Exactly What&apos;s
+            We Find What&apos;s Costing
             <br />
-            <span className="text-gradient-gold">Stopping Your Business</span>
+            <span className="text-gradient-gold">You Revenue</span> — And
             <br />
-            From Growing
+            Show You How to Fix It
           </h1>
         </FadeUp>
 
@@ -95,10 +95,9 @@ export default function HeroSection() {
             className="mx-auto mt-7 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed"
             style={{ color: "var(--muted-foreground)" }}
           >
-            We turn your data into clear insights and actionable steps
-            that improve{" "}
-            <span style={{ color: "var(--primary)" }}>revenue</span> and{" "}
-            <span style={{ color: "var(--primary)" }}>profit</span>.
+            We analyze your e-commerce data, find where you&apos;re
+            losing money, and give you a step-by-step plan to{" "}
+            <span style={{ color: "var(--primary)" }}>grow</span>.
           </p>
         </FadeUp>
 

@@ -48,8 +48,8 @@ export default function CtaSection() {
             lineHeight: 1.02,
           }}
         >
-          Your Next Growth Opportunity Might Already Be{" "}
-          <span className="text-gradient-gold italic">Hidden In Your Data</span>
+          You&apos;re Leaving Money on the Table.{" "}
+          <span className="text-gradient-gold italic">Let Us Show You Where.</span>
         </motion.h2>
 
         <motion.p
@@ -57,8 +57,7 @@ export default function CtaSection() {
           className="mt-7 text-base md:text-lg mx-auto max-w-2xl leading-relaxed"
           style={{ color: "var(--muted-foreground)" }}
         >
-          Get a revenue audit and uncover the highest-impact opportunities
-          inside your business before your competitors find them first.
+          Get a complete revenue audit for your e-commerce business. No obligation. No risk.
         </motion.p>
 
         <motion.div {...fadeUp(0.18)}>

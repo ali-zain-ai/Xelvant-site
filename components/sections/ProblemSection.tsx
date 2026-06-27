@@ -12,11 +12,11 @@ const fadeUp = (delay = 0) => ({
 });
 
 const cards = [
-  { Icon: UserX,       title: "Customer Churn",              desc: "Identify customers before they stop buying." },
-  { Icon: RefreshCcw,  title: "Retention Decline",           desc: "Spot falling repeat purchase behavior early." },
-  { Icon: SearchX,     title: "Revenue Leaks",               desc: "Find where profit is being lost every month." },
-  { Icon: ShieldAlert, title: "High-Value Customer Risk",    desc: "Protect your most valuable customers." },
-  { Icon: Sparkles,    title: "Missed Growth Opportunities", desc: "Uncover revenue hiding inside existing data." },
+  { Icon: UserX,       title: "Customers Leaving",            desc: "Know which customers are about to stop buying — before they do." },
+  { Icon: RefreshCcw,  title: "Fewer Repeat Buyers",          desc: "Spot when repeat purchases are dropping and why." },
+  { Icon: SearchX,     title: "Revenue Leaks",                desc: "Find where your profit is quietly disappearing every month." },
+  { Icon: ShieldAlert, title: "Top Customers at Risk",        desc: "Your best buyers could be leaving. We flag them early." },
+  { Icon: Sparkles,    title: "Missed Growth",                desc: "Revenue opportunities hiding in data you already have." },
 ];
 
 export default function ProblemSection() {

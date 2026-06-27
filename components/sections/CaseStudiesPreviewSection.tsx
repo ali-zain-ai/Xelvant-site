@@ -18,7 +18,7 @@ const highlights = [
     problem: "Growth stalled despite increasing ad spend.",
     metrics: [
       { value: "+18%", label: "Repeat purchases" },
-      { value: "$31K", label: "Leak closed/mo" },
+      { value: "$31K", label: "Revenue recovered/mo" },
     ],
   },
   {
@@ -31,10 +31,10 @@ const highlights = [
   },
   {
     tag: "Home & Kitchen · Multi-Channel",
-    problem: "Strong Amazon sales, zero DTC repeat purchases.",
+    problem: "Strong marketplace sales, no repeat buyers on their own website.",
     metrics: [
-      { value: "+41%", label: "DTC repeat rate" },
-      { value: "$27K", label: "Margin improvement/mo" },
+      { value: "+41%", label: "Repeat purchases" },
+      { value: "$27K", label: "Extra margin/mo" },
     ],
   },
 ];
@@ -51,7 +51,7 @@ export default function CaseStudiesPreviewSection() {
             style={{ background: "rgba(255,255,255,0.03)", color: "var(--muted-foreground)" }}
           >
             <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--primary)" }} />
-            Proof of work
+            Real Results
           </div>
 
           <h2
@@ -61,8 +61,8 @@ export default function CaseStudiesPreviewSection() {
               fontSize: "clamp(28px, 5vw, 64px)",
             }}
           >
-            Results from{" "}
-            <span className="text-gradient-gold italic">real analyses</span>
+            What We&apos;ve Done for{" "}
+            <span className="text-gradient-gold italic">Brands Like Yours</span>
           </h2>
         </motion.div>
 
