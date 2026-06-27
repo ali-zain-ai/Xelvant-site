@@ -254,7 +254,7 @@ export default function ServicesPage() {
                 }}
               >
                 Ready to Grow Your{" "}
-                <span className="text-gradient-gold italic">E-Commerce Business?</span>
+                <span className="text-gradient-gold italic">E&#8209;Commerce Business?</span>
               </h2>
               <p
                 className="text-base md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed"
