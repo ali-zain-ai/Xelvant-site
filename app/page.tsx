@@ -2,7 +2,7 @@
 import { useState } from "react";import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, UserX, Users, SearchX, FileBarChart, Map, Cog } from "lucide-react";
+import { ArrowRight, UserX, Users, SearchX, FileBarChart, Map, Cog, ArrowLeft } from "lucide-react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const fadeUp = (delay = 0) => ({
