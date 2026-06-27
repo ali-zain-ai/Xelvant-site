@@ -93,48 +93,6 @@ const platforms = [
   "Meta Ads", "Google Ads", "Triple Whale", "Recharge",
 ];
 
-/* ── 2.4  Engagement options ── */
-const engagements = [
-  {
-    label: "Revenue Audit",
-    type: "One-time",
-    scope: [
-      "Revenue leak analysis",
-      "Customer retention snapshot",
-      "Growth opportunity map",
-      "Prioritized action plan",
-    ],
-    cta: "Book Your Audit",
-    href: "/contact",
-    featured: true,
-  },
-  {
-    label: "Monthly Retainer",
-    type: "Ongoing intelligence",
-    scope: [
-      "Continuous data monitoring",
-      "Monthly insight reports",
-      "Priority Slack/email support",
-      "Strategy calls twice a month",
-    ],
-    cta: "Get a Quote",
-    href: "/contact",
-    featured: false,
-  },
-  {
-    label: "Project-Based",
-    type: "Custom build",
-    scope: [
-      "Scoped to your specific challenge",
-      "Custom dashboards and automations",
-      "Full documentation and handoff",
-      "Defined timeline and deliverables",
-    ],
-    cta: "Get a Quote",
-    href: "/contact",
-    featured: false,
-  },
-];
 
 export default function ServicesPage() {
   return (
@@ -276,101 +234,33 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* ─── 2.4  Engagement Options ─── */}
-        <section className="py-16 md:py-24 px-5 sm:px-6 lg:px-10 border-t border-white/5">
-          <div className="mx-auto max-w-7xl">
-            <motion.div {...fadeUp(0)} className="text-center mb-14">
-              <h2
-                className="font-display tracking-tight"
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-                  fontSize: "clamp(24px, 4vw, 44px)",
-                }}
-              >
-                How to{" "}
-                <span className="text-gradient-gold italic">Work With Us</span>
-              </h2>
-              <p className="mt-4 text-base max-w-xl mx-auto" style={{ color: "var(--muted-foreground)" }}>
-                Pick the engagement that fits your stage. Start with an audit, or go straight to ongoing intelligence.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {engagements.map((e, i) => (
-                <motion.div key={i} {...fadeUp(0.06 * (i + 1))}>
-                  <div
-                    className="card-premium h-full p-6 md:p-8 flex flex-col"
-                    style={{
-                      borderColor: e.featured ? "rgba(238,188,74,0.3)" : undefined,
-                      boxShadow: e.featured ? "0 0 30px -10px rgba(238,188,74,0.15)" : undefined,
-                    }}
-                  >
-                    {/* Type badge */}
-                    <p
-                      className="text-[10px] uppercase tracking-[0.22em] mb-4"
-                      style={{ color: e.featured ? "var(--primary)" : "var(--muted-foreground)" }}
-                    >
-                      {e.type}
-                    </p>
-
-                    <h3
-                      className="font-display leading-tight mb-5"
-                      style={{
-                        fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-                        fontSize: "clamp(22px, 2.5vw, 30px)",
-                      }}
-                    >
-                      {e.label}
-                    </h3>
-
-                    {/* Scope list */}
-                    <ul className="space-y-3 mb-8 flex-1">
-                      {e.scope.map((s, j) => (
-                        <li key={j} className="flex items-start gap-2.5 text-sm" style={{ color: "rgba(250,250,250,0.75)" }}>
-                          <span
-                            className="mt-2 h-1 w-1 rounded-full shrink-0"
-                            style={{ background: "var(--primary)" }}
-                          />
-                          {s}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Link
-                      href={e.href}
-                      className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition hover:opacity-90"
-                      style={{
-                        background: e.featured ? "var(--primary)" : "rgba(255,255,255,0.06)",
-                        color: e.featured ? "var(--primary-foreground)" : "rgba(250,250,250,0.9)",
-                        border: e.featured ? "none" : "1px solid rgba(255,255,255,0.1)",
-                      }}
-                    >
-                      {e.cta}
-                      <ArrowRight size={14} />
-                    </Link>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ─── 2.5  Bottom CTA ─── */}
-        <section className="py-20 md:py-28 px-5 sm:px-6 lg:px-10 border-t border-white/5">
+        {/* ─── 2.4  Premium CTA ─── */}
+        <section className="py-24 md:py-32 px-5 sm:px-6 lg:px-10 border-t border-white/5 relative overflow-hidden">
+          {/* Subtle background glow */}
+          <div
+            className="absolute inset-0 pointer-events-none -z-10"
+            style={{
+              background: "radial-gradient(circle at 50% 100%, rgba(238,188,74,0.05) 0%, transparent 60%)",
+            }}
+          />
           <div className="mx-auto max-w-3xl text-center">
             <motion.div {...fadeUp(0)}>
               <h2
-                className="font-display tracking-tight mb-5"
+                className="font-display tracking-tight mb-6"
                 style={{
                   fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-                  fontSize: "clamp(28px, 5vw, 56px)",
+                  fontSize: "clamp(32px, 5vw, 56px)",
+                  lineHeight: 1.05,
                 }}
               >
-                Ready to find the{" "}
-                <span className="text-gradient-gold italic">hidden revenue</span>?
+                Ready to Grow Your{" "}
+                <span className="text-gradient-gold italic">E-Commerce Business?</span>
               </h2>
-              <p className="text-base md:text-lg mb-8" style={{ color: "var(--muted-foreground)" }}>
-                Revenue Audit. 14-day delivery. No obligation.
+              <p
+                className="text-base md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed"
+                style={{ color: "var(--muted-foreground)" }}
+              >
+                Tell us about your business, and we&apos;ll show you where your biggest growth opportunities are.
               </p>
               <Link
                 href="/contact"
@@ -378,10 +268,10 @@ export default function ServicesPage() {
                 style={{
                   background: "var(--primary)",
                   color: "var(--primary-foreground)",
-                  boxShadow: "0 10px 40px -10px rgba(238,188,74,0.5)",
+                  boxShadow: "0 10px 40px -10px rgba(238,188,74,0.4)",
                 }}
               >
-                Book Your Audit
+                Contact Us
                 <ArrowRight size={16} />
               </Link>
             </motion.div>
