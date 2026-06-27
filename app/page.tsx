@@ -1,6 +1,5 @@
 "use client";
-
-import Link from "next/link";
+import { useState } from "react";import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, UserX, Users, SearchX, FileBarChart, Map, Cog } from "lucide-react";
@@ -70,6 +69,36 @@ const testimonials = [
 ];
 
 export default function Home() {
+  const [formData, setFormData] = useState({ name: "", email: "", store: "", revenue: "", challenge: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      
+      const data = await res.json();
+      
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong.");
+      }
+      
+      setStatus("success");
+      setFormData({ name: "", email: "", store: "", revenue: "", challenge: "" });
+    } catch (err: any) {
+      setStatus("error");
+      setErrorMessage(err.message);
+    }
+  };
+
   return (
     <main style={{ minHeight: "100vh" }}>
       {/* Navbar Placeholder */}
@@ -219,25 +248,60 @@ export default function Home() {
               Tell us about your business, and we&apos;ll show you where your biggest growth opportunities are.
             </p>
 
-            <form className="flex flex-col gap-6 text-left" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="label-premium">Name</label>
-                  <input type="text" id="name" placeholder="John Doe" className="input-premium" required />
+            {status === "success" ? (
+              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="card-premium p-12 text-center">
+                <div style={{ width: "64px", height: "64px", borderRadius: "50%", background: "rgba(0, 70, 67, 0.1)", color: "var(--primary)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.5rem" }}>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <h3 className="font-display text-2xl font-bold mb-4" style={{ color: "var(--foreground)" }}>Message Sent Successfully!</h3>
+                <p className="text-muted mb-0">
+                  Thank you for reaching out. We have sent a confirmation email to <strong>{formData.email || "your email address"}</strong> and our team will get back to you within 24 hours.
+                </p>
+              </motion.div>
+            ) : (
+              <form className="flex flex-col gap-6 text-left" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="label-premium">Name</label>
+                    <input type="text" id="name" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} placeholder="John Doe" className="input-premium" required disabled={status === "loading"} />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="label-premium">Email</label>
+                    <input type="email" id="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} placeholder="john@example.com" className="input-premium" required disabled={status === "loading"} />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="store" className="label-premium">Website URL</label>
+                    <input type="url" id="store" value={formData.store} onChange={(e) => setFormData({...formData, store: e.target.value})} placeholder="https://yourstore.com" className="input-premium" required disabled={status === "loading"} />
+                  </div>
+                  <div>
+                    <label htmlFor="revenue" className="label-premium">Monthly Revenue</label>
+                    <select id="revenue" value={formData.revenue} onChange={(e) => setFormData({...formData, revenue: e.target.value})} className="input-premium" required disabled={status === "loading"} style={{ appearance: "none", cursor: "pointer" }}>
+                      <option value="" disabled>Select revenue range</option>
+                      <option value="Under $10k">Under $10k</option>
+                      <option value="$10k - $50k">$10k - $50k</option>
+                      <option value="$50k - $250k">$50k - $250k</option>
+                      <option value="$250k+">$250k+</option>
+                    </select>
+                  </div>
                 </div>
                 <div>
-                  <label htmlFor="email" className="label-premium">Email</label>
-                  <input type="email" id="email" placeholder="john@example.com" className="input-premium" required />
+                  <label htmlFor="challenge" className="label-premium">Biggest Challenge (Optional)</label>
+                  <textarea id="challenge" value={formData.challenge} onChange={(e) => setFormData({...formData, challenge: e.target.value})} rows={4} placeholder="What is the biggest hurdle preventing your growth?" className="input-premium resize-none" disabled={status === "loading"}></textarea>
                 </div>
-              </div>
-              <div>
-                <label htmlFor="message" className="label-premium">Tell us about your store</label>
-                <textarea id="message" rows={5} placeholder="What are your current revenue goals?" className="input-premium resize-none" required></textarea>
-              </div>
-              <button type="submit" className="btn-primary mt-4" style={{ padding: "1.25rem 3rem", fontSize: "1.125rem", width: "100%", height: "4rem" }}>
-                Submit Enquiry
-              </button>
-            </form>
+                
+                {status === "error" && (
+                  <div style={{ padding: "1rem", background: "rgba(239, 68, 68, 0.1)", border: "1px solid rgba(239, 68, 68, 0.3)", borderRadius: "var(--radius)", color: "#b91c1c", fontSize: "0.875rem" }}>
+                    {errorMessage}
+                  </div>
+                )}
+
+                <button type="submit" className="btn-primary mt-2" style={{ padding: "1.25rem 3rem", fontSize: "1.125rem", width: "100%", height: "4rem", opacity: status === "loading" ? 0.7 : 1 }} disabled={status === "loading"}>
+                  {status === "loading" ? "Sending..." : "Submit Enquiry"}
+                </button>
+              </form>
+            )}
           </motion.div>
         </div>
       </section>
