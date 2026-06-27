@@ -146,21 +146,10 @@ export async function POST(req: Request) {
 
     // ─── Auto-reply to client ───
     await transporter.sendMail({
-      from: {
-        name: "Xelvant",
-        address: process.env.SMTP_USER as string,
-      },
-      replyTo: senderAddress,
+      from: `"Xelvant" <${process.env.SMTP_USER}>`,
       to: email,
       subject: `Your Inquiry is Under Review - Xelvant`,
-      messageId: `<reply-${Date.now()}-${Math.random().toString(36).substring(2)}@xelvant.dev>`,
-      headers: {
-        "X-Entity-Ref-ID": `xelvant-${Date.now()}`,
-        "Importance": "high",
-        "X-Priority": "1",
-        "List-Unsubscribe": `<mailto:${process.env.CONTACT_EMAIL || "hello@xelvant.dev"}?subject=unsubscribe>`,
-      },
-      text: `Hi ${firstName},\n\nThank you for reaching out to Xelvant.\n\nYour inquiry has been successfully received. Our intelligence team is currently reviewing your details and will follow up with you within 24 hours.\n\nBest regards,\nThe Xelvant Team\nhttps://xelvant.dev`,
+      text: `Hi ${firstName},\n\nThank you for reaching out to Xelvant.\n\nYour inquiry has been successfully received. Our intelligence team is currently reviewing your details and will follow up with you within 24 hours.\n\nSubmission Details:\nWebsite: ${store}\nRevenue Range: ${revenue}\n\nBest regards,\nThe Xelvant Team\nhttps://xelvant.dev`,
       html: `
 <!DOCTYPE html>
 <html lang="en">
