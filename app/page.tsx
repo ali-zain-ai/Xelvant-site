@@ -188,7 +188,7 @@ export default function Home() {
               <motion.div key={i} {...fadeUp(0.1 * (i + 1))}>
                 <div className="card-premium p-8 h-full flex flex-col justify-between">
                   <p className="text-base leading-relaxed text-muted mb-8">
-                    "{t.quote}"
+                    &quot;{t.quote}&quot;
                   </p>
                   <div>
                     <div style={{ fontWeight: 600, fontSize: "0.875rem", color: "var(--foreground)" }}>{t.author}</div>
@@ -216,7 +216,7 @@ export default function Home() {
               <span style={{ color: "var(--primary)", fontStyle: "italic" }}>E-Commerce Business?</span>
             </h2>
             <p className="text-lg text-muted leading-relaxed mb-12">
-              Tell us about your business, and we'll show you where your biggest growth opportunities are.
+              Tell us about your business, and we&apos;ll show you where your biggest growth opportunities are.
             </p>
 
             <form className="flex flex-col gap-6 text-left" onSubmit={(e) => e.preventDefault()}>

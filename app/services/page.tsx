@@ -104,7 +104,7 @@ export default function ServicesPage() {
             Our Services
           </h1>
           <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-            We turn your store's data into a clear plan for growth. Explore exactly how we stop revenue leaks and increase your bottom line.
+            We turn your store&apos;s data into a clear plan for growth. Explore exactly how we stop revenue leaks and increase your bottom line.
           </p>
         </motion.div>
       </section>
