@@ -13,12 +13,66 @@ const fadeUp = (delay = 0) => ({
 });
 
 const services = [
-  { Icon: UserX,        title: "Stop Losing Customers",        desc: "Know who's about to leave — and what to do to keep them." },
-  { Icon: Users,        title: "Know Your Best Buyers",        desc: "See exactly which customers drive the most revenue and why." },
-  { Icon: SearchX,      title: "Find Lost Revenue",            desc: "Find where money is quietly disappearing every month." },
-  { Icon: FileBarChart, title: "Performance at a Glance",      desc: "Get clear performance reports delivered — no spreadsheets needed." },
-  { Icon: Map,          title: "Find Your Next Growth Move",   desc: "We find the fastest way to increase your revenue." },
-  { Icon: Cog,          title: "Workflow Automation",          desc: "Eliminate repetitive tasks so your team focuses on growth." },
+  {
+    Icon: UserX,
+    title: "Stop Losing Customers",
+    desc: "Know who's about to leave — and what to do to keep them.",
+    hoverDetails: [
+      "Problem: Customers quietly leave and never return.",
+      "Solution: We identify churn signals in your purchase data.",
+      "Outcome: Keep more buyers and increase lifetime value.",
+    ],
+  },
+  {
+    Icon: Users,
+    title: "Know Your Best Buyers",
+    desc: "See exactly which customers drive the most revenue and why.",
+    hoverDetails: [
+      "Problem: Treating all customers the same wastes marketing spend.",
+      "Solution: We segment buyers by true behavior and value.",
+      "Outcome: Higher ROI on ads and retention campaigns.",
+    ],
+  },
+  {
+    Icon: SearchX,
+    title: "Find Lost Revenue",
+    desc: "Find where money is quietly disappearing every month.",
+    hoverDetails: [
+      "Problem: Hidden leaks in pricing, carts, and subscriptions.",
+      "Solution: We audit your operations to find missing margin.",
+      "Outcome: Immediate cash recovered back to your bottom line.",
+    ],
+  },
+  {
+    Icon: FileBarChart,
+    title: "Performance at a Glance",
+    desc: "Get clear performance reports delivered — no spreadsheets needed.",
+    hoverDetails: [
+      "Problem: Wasting hours building messy, confusing reports.",
+      "Solution: We set up automated, easy-to-read dashboards.",
+      "Outcome: Make confident decisions faster with clear data.",
+    ],
+  },
+  {
+    Icon: Map,
+    title: "Find Your Next Growth Move",
+    desc: "We find the fastest way to increase your revenue.",
+    hoverDetails: [
+      "Problem: Unsure what to focus on next to drive growth.",
+      "Solution: We analyze your data to find the highest-impact actions.",
+      "Outcome: A prioritized roadmap to scale revenue predictably.",
+    ],
+  },
+  {
+    Icon: Cog,
+    title: "Workflow Automation",
+    desc: "Eliminate repetitive tasks so your team focuses on growth.",
+    hoverDetails: [
+      "Problem: Manual tasks slowing down your team and operations.",
+      "Solution: We build intelligent workflows to automate the busywork.",
+      "Outcome: More time for strategy and less human error.",
+    ],
+  },
 ];
 
 export default function ServicesPreviewSection() {
@@ -59,32 +113,60 @@ export default function ServicesPreviewSection() {
             <motion.div key={i} {...fadeUp(0.05 * (i + 1))}>
               <Link href="/services" className="block h-full">
                 <div
-                  className="card-premium h-full p-6 group cursor-pointer"
+                  className="card-premium relative h-full p-6 group cursor-pointer overflow-hidden"
                   style={{ transition: "border-color 0.4s" }}
                 >
-                  <div
-                    className="grid place-items-center h-10 w-10 rounded-xl mb-5"
-                    style={{
-                      background: "rgba(238,188,74,0.1)",
-                      boxShadow: "0 0 0 1px rgba(238,188,74,0.2)",
-                      color: "var(--primary)",
-                    }}
-                  >
-                    <s.Icon size={18} aria-hidden />
+                  {/* Default State */}
+                  <div className="transition-all duration-300 ease-out group-hover:-translate-y-4 group-hover:opacity-0 group-hover:invisible">
+                    <div
+                      className="grid place-items-center h-10 w-10 rounded-xl mb-5"
+                      style={{
+                        background: "rgba(238,188,74,0.1)",
+                        boxShadow: "0 0 0 1px rgba(238,188,74,0.2)",
+                        color: "var(--primary)",
+                      }}
+                    >
+                      <s.Icon size={18} aria-hidden />
+                    </div>
+                    <h3
+                      className="font-display leading-tight mb-1.5"
+                      style={{
+                        fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+                        fontSize: "clamp(18px, 2vw, 22px)",
+                        fontWeight: 700,
+                      }}
+                    >
+                      {s.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
+                      {s.desc}
+                    </p>
                   </div>
-                  <h3
-                    className="font-display leading-tight mb-1.5"
-                    style={{
-                      fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-                      fontSize: "clamp(18px, 2vw, 22px)",
-                      fontWeight: 700,
-                    }}
-                  >
-                    {s.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
-                    {s.desc}
-                  </p>
+
+                  {/* Hover State */}
+                  <div className="absolute inset-0 p-6 flex flex-col justify-center opacity-0 translate-y-4 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible invisible pointer-events-none">
+                    <h3
+                      className="font-display leading-tight mb-4"
+                      style={{
+                        fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+                        fontSize: "clamp(16px, 1.8vw, 20px)",
+                        fontWeight: 700,
+                      }}
+                    >
+                      {s.title}
+                    </h3>
+                    <ul className="space-y-2.5 text-[13px] leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
+                      {s.hoverDetails.map((detail, idx) => {
+                        const [bold, ...rest] = detail.split(": ");
+                        return (
+                          <li key={idx} className="flex gap-2.5 items-start">
+                            <div className="mt-1.5 h-1.5 w-1.5 rounded-full shrink-0" style={{ background: "var(--primary)" }} />
+                            <span><strong className="text-white font-medium">{bold}:</strong> {rest.join(": ")}</span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
                 </div>
               </Link>
             </motion.div>
