@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
+// Force Node.js runtime (required for Nodemailer on Vercel)
+export const runtime = "nodejs";
 export const maxDuration = 30;
 
 export async function POST(req: Request) {
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
     const body = await req.json();
     const { name, email, store, revenue, challenge } = body;
 
@@ -17,16 +18,36 @@ export async function POST(req: Request) {
       );
     }
 
+    // Create SMTP transporter
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+      tls: {
+        rejectUnauthorized: false,
+      },
+    });
+
+    await transporter.verify();
+
     const firstName = name.split(" ")[0];
     const senderAddress = process.env.CONTACT_EMAIL || "hello@xelvant.dev";
-    const fromAddress = "Xelvant <hello@xelvant.dev>";
 
     // ─── Email to Xelvant team ───
-    await resend.emails.send({
-      from: fromAddress,
+    await transporter.sendMail({
+      from: {
+        name: "Xelvant System",
+        address: process.env.SMTP_USER as string,
+      },
       to: senderAddress,
       replyTo: email,
       subject: `New Inquiry from ${name}`,
+      messageId: `<${Date.now()}-${Math.random().toString(36).substring(2)}@xelvant.dev>`,
+      headers: {
+        "X-Mailer": "Xelvant Contact System",
+      },
       text: `New Inquiry\n\nName: ${name}\nEmail: ${email}\nWebsite: ${store}\nMonthly Revenue: ${revenue}\n${challenge ? `Challenge: ${challenge}\n` : ""}\n\nReply to this email to respond directly to ${name}.`,
       html: `
 <!DOCTYPE html>
@@ -124,11 +145,18 @@ export async function POST(req: Request) {
     });
 
     // ─── Auto-reply to client ───
-    await resend.emails.send({
-      from: fromAddress,
+    await transporter.sendMail({
+      from: {
+        name: "Xelvant",
+        address: process.env.SMTP_USER as string,
+      },
       replyTo: senderAddress,
       to: email,
       subject: `Your Inquiry is Under Review - Xelvant`,
+      messageId: `<reply-${Date.now()}-${Math.random().toString(36).substring(2)}@xelvant.dev>`,
+      headers: {
+        "X-Entity-Ref-ID": `xelvant-${Date.now()}`,
+      },
       text: `Hi ${firstName},\n\nThank you for reaching out to Xelvant.\n\nYour inquiry has been successfully received. Our intelligence team is currently reviewing your details and will follow up with you within 24 hours.\n\nBest regards,\nThe Xelvant Team\nhttps://xelvant.dev`,
       html: `
 <!DOCTYPE html>
