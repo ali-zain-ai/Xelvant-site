@@ -38,12 +38,13 @@ export async function POST(req: Request) {
     // ─── Email to Xelvant team ───
     await transporter.sendMail({
       from: {
-        name: "Xelvant",
-        address: senderAddress,
+        name: "Xelvant System",
+        address: process.env.SMTP_USER as string,
       },
       to: senderAddress,
       replyTo: email,
       subject: `New Inquiry from ${name}`,
+      messageId: `<${Date.now()}-${Math.random().toString(36).substring(2)}@xelvant.dev>`,
       headers: {
         "X-Mailer": "Xelvant Contact System",
       },
@@ -147,151 +148,76 @@ export async function POST(req: Request) {
     await transporter.sendMail({
       from: {
         name: "Xelvant",
-        address: senderAddress,
+        address: process.env.SMTP_USER as string,
       },
       replyTo: senderAddress,
       to: email,
-      subject: `${firstName}, your request has been received`,
+      subject: `Your Inquiry is Under Review - Xelvant`,
+      messageId: `<reply-${Date.now()}-${Math.random().toString(36).substring(2)}@xelvant.dev>`,
       headers: {
         "X-Entity-Ref-ID": `xelvant-${Date.now()}`,
-        "Auto-Submitted": "auto-replied",
       },
-      text: `Hi ${firstName},\n\nThank you for reaching out to Xelvant.\n\nWe have received your details and our team will review them within 24 hours. You will hear from us soon with next steps.\n\nWhat happens next:\n1. We review your business details\n2. We identify revenue opportunities and areas for improvement\n3. We send you a clear, actionable plan\n\nIf you have any questions in the meantime, simply reply to this email.\n\nBest regards,\nThe Xelvant Team\nhttps://xelvant.dev`,
+      text: `Hi ${firstName},\n\nThank you for reaching out to Xelvant.\n\nYour inquiry has been successfully received. Our intelligence team is currently reviewing your details and will follow up with you within 24 hours.\n\nBest regards,\nThe Xelvant Team\nhttps://xelvant.dev`,
       html: `
 <!DOCTYPE html>
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
-<body style="margin:0;padding:0;background:#f7f7f8;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;">
-<table width="100%" cellpadding="0" cellspacing="0" style="background:#f7f7f8;padding:40px 20px;">
+<body style="margin:0;padding:0;background-color:#F0EDE5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background-color:#F0EDE5;padding:60px 20px;">
 <tr><td align="center">
-<table width="560" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
+<table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 20px 40px -10px rgba(0,70,67,0.1);border:1px solid rgba(0,70,67,0.08);">
 
-  <!-- Header with logo -->
-  <tr><td style="background:#09090b;padding:36px 40px;text-align:center;">
-    <span style="font-size:28px;font-weight:800;color:#eebc4a;letter-spacing:-0.5px;">X</span><span style="font-size:28px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;">elvant</span>
-    <p style="margin:8px 0 0;font-size:12px;text-transform:uppercase;letter-spacing:3px;color:#6b7280;">E-Commerce Intelligence</p>
+  <!-- Header -->
+  <tr><td style="background-color:#002221;padding:48px 40px;text-align:center;">
+    <span style="font-size:32px;font-weight:800;color:#F0EDE5;letter-spacing:-1px;">Xelvant</span>
+    <div style="margin-top:12px;font-size:11px;text-transform:uppercase;letter-spacing:4px;color:#4A6361;font-weight:600;">E-Commerce Intelligence</div>
   </td></tr>
 
-  <!-- Gold accent bar -->
-  <tr><td><div style="height:3px;background:linear-gradient(90deg,#b37903,#eebc4a,#b37903);"></div></td></tr>
+  <!-- Gold Accent Line -->
+  <tr><td><div style="height:4px;background-color:#004643;"></div></td></tr>
 
-  <!-- Greeting -->
-  <tr><td style="padding:40px 40px 8px;">
-    <h1 style="margin:0;font-size:26px;font-weight:700;color:#09090b;line-height:1.3;">
-      Thank you, ${firstName}
+  <!-- Body Content -->
+  <tr><td style="padding:48px 48px 16px;">
+    <h1 style="margin:0;font-size:24px;font-weight:700;color:#002221;letter-spacing:-0.5px;line-height:1.3;">
+      Inquiry Received, ${firstName}.
     </h1>
-    <p style="margin:12px 0 0;font-size:15px;color:#4b5563;line-height:1.7;">
-      We have received your request and our team is reviewing your details. You will hear from us within <strong style="color:#09090b;">24 hours</strong> with next steps.
+    <p style="margin:24px 0 0;font-size:16px;color:#4A6361;line-height:1.8;">
+      Thank you for contacting Xelvant. Your details have been successfully secured in our system. Our intelligence team is currently reviewing your e-commerce profile and revenue data.
+    </p>
+    <p style="margin:24px 0 0;font-size:16px;color:#4A6361;line-height:1.8;">
+      You can expect a direct response from our strategy team within <strong>24 hours</strong> regarding your next steps.
     </p>
   </td></tr>
 
-  <!-- Divider -->
-  <tr><td style="padding:24px 40px 0;"><div style="height:1px;background:#e5e7eb;"></div></td></tr>
-
-  <!-- What happens next -->
-  <tr><td style="padding:28px 40px 0;">
-    <h2 style="margin:0 0 20px;font-size:14px;text-transform:uppercase;letter-spacing:2px;color:#9ca3af;font-weight:700;">What happens next</h2>
-    
-    <table width="100%" cellpadding="0" cellspacing="0">
-      <!-- Step 1 -->
-      <tr>
-        <td style="width:48px;vertical-align:top;padding:0 0 20px;">
-          <div style="width:36px;height:36px;border-radius:10px;background:#fef9ee;text-align:center;line-height:36px;">
-            <span style="font-size:16px;font-weight:800;color:#b37903;">1</span>
-          </div>
-        </td>
-        <td style="vertical-align:top;padding:2px 0 20px;">
-          <p style="margin:0;font-size:15px;font-weight:600;color:#111827;">Business Review</p>
-          <p style="margin:4px 0 0;font-size:13px;color:#6b7280;line-height:1.5;">We review your business details and identify key areas of focus. Your data stays private and secure.</p>
-        </td>
-      </tr>
-      <!-- Step 2 -->
-      <tr>
-        <td style="width:48px;vertical-align:top;padding:0 0 20px;">
-          <div style="width:36px;height:36px;border-radius:10px;background:#fef9ee;text-align:center;line-height:36px;">
-            <span style="font-size:16px;font-weight:800;color:#b37903;">2</span>
-          </div>
-        </td>
-        <td style="vertical-align:top;padding:2px 0 20px;">
-          <p style="margin:0;font-size:15px;font-weight:600;color:#111827;">Identify Opportunities</p>
-          <p style="margin:4px 0 0;font-size:13px;color:#6b7280;line-height:1.5;">We find revenue opportunities, operational gaps, and growth strategies specific to your business.</p>
-        </td>
-      </tr>
-      <!-- Step 3 -->
-      <tr>
-        <td style="width:48px;vertical-align:top;padding:0 0 4px;">
-          <div style="width:36px;height:36px;border-radius:10px;background:#fef9ee;text-align:center;line-height:36px;">
-            <span style="font-size:16px;font-weight:800;color:#b37903;">3</span>
-          </div>
-        </td>
-        <td style="vertical-align:top;padding:2px 0 4px;">
-          <p style="margin:0;font-size:15px;font-weight:600;color:#111827;">Actionable Plan</p>
-          <p style="margin:4px 0 0;font-size:13px;color:#6b7280;line-height:1.5;">You receive a clear, prioritized action plan to boost your revenue and streamline operations.</p>
-        </td>
-      </tr>
-    </table>
-  </td></tr>
-
-  <!-- Divider -->
-  <tr><td style="padding:24px 40px 0;"><div style="height:1px;background:#e5e7eb;"></div></td></tr>
-
-  <!-- Your details summary -->
-  <tr><td style="padding:28px 40px 0;">
-    <h2 style="margin:0 0 16px;font-size:14px;text-transform:uppercase;letter-spacing:2px;color:#9ca3af;font-weight:700;">Your Submission</h2>
-    <table width="100%" cellpadding="0" cellspacing="0" style="background:#f9fafb;border-radius:12px;overflow:hidden;">
-      <tr>
-        <td style="padding:14px 20px;font-size:13px;color:#6b7280;border-bottom:1px solid #e5e7eb;">Website</td>
-        <td style="padding:14px 20px;font-size:14px;font-weight:600;color:#111827;text-align:right;border-bottom:1px solid #e5e7eb;">${store}</td>
-      </tr>
-      <tr>
-        <td style="padding:14px 20px;font-size:13px;color:#6b7280;">Revenue</td>
-        <td style="padding:14px 20px;font-size:14px;font-weight:600;color:#b37903;text-align:right;">${revenue}</td>
-      </tr>
-    </table>
-  </td></tr>
-
-  <!-- CTA -->
-  <tr><td style="padding:32px 40px;">
-    <table width="100%" cellpadding="0" cellspacing="0">
-      <tr><td align="center">
-        <a href="https://xelvant.dev" style="display:inline-block;background:#09090b;color:#ffffff;font-size:14px;font-weight:600;text-decoration:none;padding:14px 32px;border-radius:10px;letter-spacing:0.3px;">
-          Visit Xelvant &rarr;
-        </a>
-      </td></tr>
-    </table>
+  <!-- Submission Details -->
+  <tr><td style="padding:32px 48px;">
+    <div style="background-color:#F0EDE5;border-radius:8px;padding:24px;">
+      <h2 style="margin:0 0 16px;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:#004643;font-weight:700;">Submission Summary</h2>
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:12px 0;font-size:14px;color:#4A6361;border-bottom:1px solid rgba(0,70,67,0.1);">Website</td>
+          <td style="padding:12px 0;font-size:14px;font-weight:600;color:#002221;text-align:right;border-bottom:1px solid rgba(0,70,67,0.1);">${store}</td>
+        </tr>
+        <tr>
+          <td style="padding:12px 0;font-size:14px;color:#4A6361;">Revenue Range</td>
+          <td style="padding:12px 0;font-size:14px;font-weight:600;color:#004643;text-align:right;">${revenue}</td>
+        </tr>
+      </table>
+    </div>
   </td></tr>
 
   <!-- Footer -->
-  <tr><td style="background:#f9fafb;padding:24px 40px;border-top:1px solid #e5e7eb;">
-    <table width="100%" cellpadding="0" cellspacing="0">
-      <tr>
-        <td>
-          <p style="margin:0;font-size:12px;color:#9ca3af;">
-            &copy; ${new Date().getFullYear()} Xelvant. All rights reserved.
-          </p>
-          <p style="margin:4px 0 0;font-size:12px;color:#9ca3af;">
-            E-Commerce Intelligence
-          </p>
-        </td>
-        <td align="right" style="vertical-align:top;">
-          <a href="https://xelvant.dev" style="font-size:12px;color:#b37903;text-decoration:none;font-weight:500;">xelvant.dev</a>
-        </td>
-      </tr>
-    </table>
-  </td></tr>
-
-</table>
-
-<!-- Sub-footer -->
-<table width="560" cellpadding="0" cellspacing="0">
-  <tr><td style="padding:20px 0;text-align:center;">
-    <p style="margin:0;font-size:11px;color:#9ca3af;">
-      You are receiving this email because you submitted an inquiry on xelvant.dev.
-      <br>Questions? Reply to this email or contact us at <a href="mailto:hello@xelvant.dev" style="color:#b37903;text-decoration:none;">hello@xelvant.dev</a>
+  <tr><td style="padding:48px;background-color:#ffffff;border-top:1px solid rgba(0,70,67,0.08);text-align:center;">
+    <p style="margin:0;font-size:13px;color:#4A6361;">
+      If you have any urgent questions, simply reply directly to this email.
+    </p>
+    <p style="margin:24px 0 0;font-size:12px;color:#8E9A99;">
+      &copy; ${new Date().getFullYear()} Xelvant. All rights reserved.<br>
+      E-Commerce Intelligence &bull; <a href="https://xelvant.dev" style="color:#004643;text-decoration:none;font-weight:600;">xelvant.dev</a>
     </p>
   </td></tr>
-</table>
 
+</table>
 </td></tr>
 </table>
 </body>
