@@ -21,68 +21,68 @@ const fadeUp = (delay = 0) => ({
 const services = [
   {
     Icon: UserX,
-    title: "Churn Prediction",
-    desc: "Spot exit signals before customers leave. Act early to retain revenue you already earned.",
+    title: "Stop Losing Customers",
+    desc: "Know who's about to leave — and what to do to keep them.",
     deliverables: [
-      "At-risk customer list with churn probability scores",
-      "Behavioral trigger map (what predicts churn in your business)",
-      "Retention playbook with timing recommendations",
-      "Monthly churn trend dashboard",
+      "List of high-value customers at risk of leaving",
+      "Breakdown of exactly what causes your buyers to drop off",
+      "Step-by-step retention playbook to win them back",
+      "Monthly tracking to measure saved revenue",
     ],
   },
   {
     Icon: Users,
-    title: "Customer Segmentation",
-    desc: "Group buyers by real behavior, not guesswork. Know who your best buyers are and what makes them different.",
+    title: "Know Your Best Buyers",
+    desc: "See exactly which customers drive the most revenue and why.",
     deliverables: [
-      "RFM-based customer segments with dollar values",
-      "High-LTV buyer profile and acquisition source breakdown",
-      "Segment migration analysis (who's upgrading or downgrading)",
-      "Targeted campaign recommendations per segment",
+      "Customer segments ranked by actual dollar value",
+      "Deep dive into where your most profitable buyers come from",
+      "Tracking of customers moving from low-value to high-value",
+      "Targeted campaign strategies for your top spenders",
     ],
   },
   {
     Icon: SearchX,
     title: "Find Lost Revenue",
-    desc: "Find where money quietly disappears. Prioritized by dollar impact so you fix the biggest leaks first.",
+    desc: "Find where money is quietly disappearing every month.",
     deliverables: [
-      "Full-funnel revenue leak audit with dollar estimates",
-      "Cart abandonment pattern analysis",
-      "Underperforming product identification",
-      "Discount and promotion ROI breakdown",
+      "Full-funnel audit highlighting exactly where cash is leaking",
+      "Analysis of abandoned carts and failed subscriptions",
+      "Identification of products dragging down your margins",
+      "Clear breakdown of discount and promotion ROI",
     ],
   },
   {
     Icon: FileBarChart,
-    title: "Automated Business Insights",
-    desc: "Clear performance reports without manual work. See what matters without digging through spreadsheets.",
+    title: "Performance at a Glance",
+    desc: "Get clear performance reports delivered — no spreadsheets needed.",
     deliverables: [
-      "Custom daily/weekly KPI dashboard",
-      "Automated email digest with key metrics",
-      "Cohort retention tracking (auto-updated)",
-      "Ad spend vs. revenue attribution report",
+      "Custom dashboards showing only the metrics that matter",
+      "Automated daily or weekly performance emails",
+      "Real-time tracking of customer retention and repeat rates",
+      "Clear attribution showing exactly how ad spend drives revenue",
     ],
   },
   {
     Icon: Map,
     title: "Find Your Next Growth Move",
-    desc: "Discover the highest-impact opportunities to grow revenue. Know exactly where your next dollar of profit is coming from.",
+    desc: "We find the fastest way to increase your revenue.",
     deliverables: [
-      "Ranked growth opportunity matrix with projected ROI",
-      "Cross-sell and upsell opportunity identification",
-      "Repeat purchase window analysis",
-      "Underserved customer segment recommendations",
+      "Ranked list of growth opportunities based on revenue impact",
+      "Clear roadmap for cross-selling and up-selling",
+      "Analysis of the exact window when buyers are ready to purchase again",
+      "Identification of profitable customer groups you aren't targeting yet",
     ],
   },
   {
     Icon: Cog,
-    title: "AI-Powered Automation",
-    desc: "Replace repetitive tasks with intelligent workflows. Systems that run without you watching.",
+    title: "Workflow Automation",
+    desc: "Eliminate repetitive tasks so your team focuses on growth.",
     deliverables: [
-      "Inventory reorder alert system",
-      "Customer lifecycle email automation setup",
-      "Return/refund pattern detection and alerts",
-      "Custom workflow automations for your stack",
+      "Automated alerts for low inventory and reordering",
+      "Smart email triggers based on real customer lifecycle events",
+      "Automatic detection of unusual return or refund patterns",
+      "Custom workflows connecting your e-commerce tools together",
     ],
   },
 ];
@@ -130,9 +130,8 @@ export default function ServicesPage() {
                 lineHeight: 1.05,
               }}
             >
-              We build the intelligence layer that shows you{" "}
-              <span className="text-gradient-gold italic">where revenue is going</span>{" "}
-              and why.
+              We Turn Your Store&apos;s Data Into a{" "}
+              <span className="text-gradient-gold italic">Clear Plan for Growth.</span>
             </motion.h1>
 
             <motion.p
@@ -140,7 +139,7 @@ export default function ServicesPage() {
               className="mx-auto mt-6 max-w-2xl text-base sm:text-lg leading-relaxed"
               style={{ color: "var(--muted-foreground)" }}
             >
-              From churn prediction to automated reporting, every service is designed to turn your raw data into clear, revenue-focused action.
+              From stopping customer churn to finding hidden leaks, every service we offer is designed to do one thing: increase your bottom line.
             </motion.p>
           </div>
         </section>
