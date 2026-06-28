@@ -185,7 +185,7 @@ export default function Home() {
 
           <div className="relative max-w-5xl mx-auto">
             {/* The Hand-Drawn Annotation */}
-            <div className="absolute z-30 pointer-events-none hidden md:block" style={{ top: "-110px", left: "-60px" }}>
+            <div className="absolute z-30 pointer-events-none" style={{ top: "-110px", left: "-30px" }}>
               <HandDrawnNote text="Click any card to see Case Studies!" />
             </div>
 
