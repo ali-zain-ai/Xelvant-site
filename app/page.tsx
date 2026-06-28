@@ -189,7 +189,7 @@ export default function Home() {
                 <div key={i} className="relative h-full">
                   {/* The Hand-Drawn Annotation exactly above the first card */}
                   {i === 0 && (
-                    <div className="absolute z-30 pointer-events-none" style={{ bottom: "calc(100% + 25px)", left: "-15%" }}>
+                    <div className="absolute z-30 pointer-events-none sticky-note-wrapper">
                       <HandDrawnNote text="Click any card to see Case Studies!" />
                     </div>
                   )}
