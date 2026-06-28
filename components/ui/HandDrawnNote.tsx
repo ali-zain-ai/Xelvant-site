@@ -66,11 +66,11 @@ export function HandDrawnNote({ text, className = "" }: HandDrawnNoteProps) {
         transition={{ duration: 0.5, ease: "easeOut", type: "spring", stiffness: 200, damping: 15 }}
         style={{
           backgroundColor: "#e2def8",
-          padding: "12px 24px",
+          padding: "8px 16px",
           boxShadow: "0 8px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
           display: "inline-block",
           whiteSpace: "nowrap",
-          fontSize: "1.75rem",
+          fontSize: "1.3rem",
           color: "#1f1f1f",
           transformOrigin: "center",
           borderRadius: "14px",
