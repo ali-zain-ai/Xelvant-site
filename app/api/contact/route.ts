@@ -146,9 +146,17 @@ export async function POST(req: Request) {
 
     // ─── Auto-reply to client ───
     await transporter.sendMail({
-      from: `"Xelvant" <${process.env.SMTP_USER}>`,
+      from: {
+        name: "Xelvant",
+        address: senderAddress,
+      },
+      replyTo: senderAddress,
       to: email,
-      subject: `Your Inquiry is Under Review - Xelvant`,
+      subject: `${firstName}, your request has been received`,
+      headers: {
+        "X-Entity-Ref-ID": `xelvant-${Date.now()}`,
+        "Auto-Submitted": "auto-replied",
+      },
       text: `Hi ${firstName},\n\nThank you for reaching out to Xelvant.\n\nYour inquiry has been successfully received. Our intelligence team is currently reviewing your details and will follow up with you within 24 hours.\n\nSubmission Details:\nWebsite: ${store}\nRevenue Range: ${revenue}\n\nBest regards,\nThe Xelvant Team\nhttps://xelvant.dev`,
       html: `
 <!DOCTYPE html>
