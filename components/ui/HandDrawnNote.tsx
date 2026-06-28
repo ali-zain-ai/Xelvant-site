@@ -13,7 +13,7 @@ export function HandDrawnNote({ text, className = "" }: HandDrawnNoteProps) {
       <motion.svg
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-50px" }}
+        viewport={{ once: true }}
         transition={{ duration: 0.2 }}
         className="absolute w-24 h-24 sm:w-32 sm:h-32 text-black"
         style={{ 
@@ -35,7 +35,7 @@ export function HandDrawnNote({ text, className = "" }: HandDrawnNoteProps) {
           fill="transparent"
           initial={{ pathLength: 0 }}
           whileInView={{ pathLength: 1 }}
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
         />
         {/* Arrow head */}
@@ -48,7 +48,7 @@ export function HandDrawnNote({ text, className = "" }: HandDrawnNoteProps) {
           fill="transparent"
           initial={{ pathLength: 0, opacity: 0 }}
           whileInView={{ pathLength: 1, opacity: 1 }}
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true }}
           transition={{ duration: 0.3, ease: "easeOut", delay: 1.1 }}
         />
       </motion.svg>
