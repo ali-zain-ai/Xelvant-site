@@ -15,22 +15,23 @@ export function HandDrawnNote({ text, className = "" }: HandDrawnNoteProps) {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.2 }}
-        className="absolute w-24 h-24 sm:w-32 sm:h-32 text-black"
+        className="absolute text-black"
         style={{ 
-          top: "-50px", 
-          right: "-30px",
-          transform: "rotate(15deg)",
+          top: "100%", 
+          left: "20%",
+          width: "60px",
+          height: "60px",
           zIndex: 10 
         }}
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* The swooping arrow path */}
+        {/* The swooping arrow path pointing down */}
         <motion.path
-          d="M 10,80 Q 40,60 60,30 T 90,10"
-          stroke="currentColor"
-          strokeWidth="3.5"
+          d="M 30,0 Q 40,50 30,90"
+          stroke="#1f1f1f"
+          strokeWidth="4"
           strokeLinecap="round"
           fill="transparent"
           initial={{ pathLength: 0 }}
@@ -40,9 +41,9 @@ export function HandDrawnNote({ text, className = "" }: HandDrawnNoteProps) {
         />
         {/* Arrow head */}
         <motion.path
-          d="M 70,10 L 90,10 L 85,30"
-          stroke="currentColor"
-          strokeWidth="3.5"
+          d="M 10,70 L 30,90 L 45,65"
+          stroke="#1f1f1f"
+          strokeWidth="4"
           strokeLinecap="round"
           strokeLinejoin="round"
           fill="transparent"
@@ -57,10 +58,14 @@ export function HandDrawnNote({ text, className = "" }: HandDrawnNoteProps) {
       <motion.div
         initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
         whileInView={{ opacity: 1, scale: 1, rotate: -4 }}
-        viewport={{ once: true, margin: "-50px" }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5, ease: "easeOut", type: "spring", stiffness: 200, damping: 15 }}
-        className="bg-[#e4e2fa] px-6 py-4 shadow-sm inline-block whitespace-nowrap"
         style={{
+          backgroundColor: "#e2def8",
+          padding: "12px 24px",
+          boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+          display: "inline-block",
+          whiteSpace: "nowrap",
           fontFamily: "var(--font-patrick-hand)",
           fontSize: "1.35rem",
           color: "#1f1f1f",

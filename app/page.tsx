@@ -175,11 +175,6 @@ export default function Home() {
       <section className="section px-6" style={{ background: "rgba(0, 70, 67, 0.03)" }}>
         <div className="container">
           <motion.div {...fadeUp(0)} className="text-center mb-16 relative max-w-3xl mx-auto">
-            {/* The Hand-Drawn Annotation */}
-            <div className="absolute -top-10 -right-10 md:-right-20 lg:-right-32 z-30 pointer-events-none transform scale-75 md:scale-100">
-              <HandDrawnNote text="Click any card to see Case Studies!" />
-            </div>
-
             <h2 className="font-display tracking-tight mb-4" style={{ fontSize: "clamp(32px, 4vw, 48px)", color: "var(--primary)", fontWeight: 700 }}>
               Six Ways to Grow
             </h2>
@@ -189,7 +184,12 @@ export default function Home() {
           </motion.div>
 
           <div className="relative max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 relative z-0">
+            {/* The Hand-Drawn Annotation */}
+            <div className="absolute z-30 pointer-events-none" style={{ top: "-60px", left: "20px" }}>
+              <HandDrawnNote text="Click any card to see Case Studies!" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 relative z-0 mt-8">
               {services.map((s, i) => (
                 <motion.div key={i} {...fadeUp(0.1 * (i + 1))} className="h-full">
                   <Link href="#" className="block h-full group">
