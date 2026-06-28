@@ -183,9 +183,9 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="relative">
+          <div className="relative max-w-5xl mx-auto">
             {/* The Hand-Drawn Annotation */}
-            <div className="hidden xl:block absolute -top-12 -right-32 z-10">
+            <div className="hidden md:block absolute -top-16 right-4 z-20 pointer-events-none">
               <HandDrawnNote text="Click any card to see Case Studies!" />
             </div>
 
