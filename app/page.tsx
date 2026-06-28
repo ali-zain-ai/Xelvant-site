@@ -3,6 +3,7 @@ import { useState } from "react";import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, UserX, Users, SearchX, FileBarChart, Map, Cog, ArrowLeft } from "lucide-react";
+import { HandDrawnNote } from "@/components/ui/HandDrawnNote";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const fadeUp = (delay = 0) => ({
@@ -182,18 +183,27 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            {services.map((s, i) => (
-              <motion.div key={i} {...fadeUp(0.1 * (i + 1))}>
-                <div className="card-premium p-8 h-full flex flex-col items-start text-left">
-                  <div className="mb-6" style={{ color: "var(--primary)" }}>
-                    <s.Icon size={28} strokeWidth={1.5} />
-                  </div>
-                  <h3 className="font-display text-lg mb-3" style={{ fontWeight: 600, color: "var(--foreground)" }}>{s.title}</h3>
-                  <p className="text-sm text-muted leading-relaxed">{s.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="relative">
+            {/* The Hand-Drawn Annotation */}
+            <div className="hidden xl:block absolute -top-12 -right-32 z-10">
+              <HandDrawnNote text="Click any card to see Case Studies!" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 relative z-0">
+              {services.map((s, i) => (
+                <motion.div key={i} {...fadeUp(0.1 * (i + 1))} className="h-full">
+                  <Link href="#" className="block h-full group">
+                    <div className="card-premium p-8 h-full flex flex-col items-start text-left transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_-10px_rgba(0,70,67,0.15)] group-hover:border-[var(--primary)]">
+                      <div className="mb-6 transition-transform duration-300 group-hover:scale-110" style={{ color: "var(--primary)" }}>
+                        <s.Icon size={28} strokeWidth={1.5} />
+                      </div>
+                      <h3 className="font-display text-lg mb-3" style={{ fontWeight: 600, color: "var(--foreground)" }}>{s.title}</h3>
+                      <p className="text-sm text-muted leading-relaxed">{s.desc}</p>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           <motion.div {...fadeUp(0.4)} className="flex justify-center">
