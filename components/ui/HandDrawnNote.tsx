@@ -1,5 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
+import { Caveat } from "next/font/google";
+
+const caveat = Caveat({ subsets: ["latin"], display: "swap" });
 
 interface HandDrawnNoteProps {
   text: string;
@@ -20,16 +23,16 @@ export function HandDrawnNote({ text, className = "" }: HandDrawnNoteProps) {
           top: "100%", 
           left: "20%",
           width: "60px",
-          height: "60px",
+          height: "80px",
           zIndex: 10 
         }}
-        viewBox="0 0 100 100"
+        viewBox="0 0 100 120"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         {/* The swooping arrow path pointing down */}
         <motion.path
-          d="M 30,0 Q 40,50 30,90"
+          d="M 30,0 Q 50,60 30,110"
           stroke="#1f1f1f"
           strokeWidth="4"
           strokeLinecap="round"
@@ -41,7 +44,7 @@ export function HandDrawnNote({ text, className = "" }: HandDrawnNoteProps) {
         />
         {/* Arrow head */}
         <motion.path
-          d="M 10,70 L 30,90 L 45,65"
+          d="M 10,85 L 30,110 L 45,85"
           stroke="#1f1f1f"
           strokeWidth="4"
           strokeLinecap="round"
@@ -56,6 +59,7 @@ export function HandDrawnNote({ text, className = "" }: HandDrawnNoteProps) {
 
       {/* The Sticky Note */}
       <motion.div
+        className={caveat.className}
         initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
         whileInView={{ opacity: 1, scale: 1, rotate: -4 }}
         viewport={{ once: true }}
@@ -63,14 +67,13 @@ export function HandDrawnNote({ text, className = "" }: HandDrawnNoteProps) {
         style={{
           backgroundColor: "#e2def8",
           padding: "12px 24px",
-          boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+          boxShadow: "0 8px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
           display: "inline-block",
           whiteSpace: "nowrap",
-          fontFamily: "var(--font-patrick-hand)",
-          fontSize: "1.35rem",
+          fontSize: "1.75rem",
           color: "#1f1f1f",
           transformOrigin: "center",
-          borderRadius: "2px",
+          borderRadius: "14px",
         }}
       >
         {text}
