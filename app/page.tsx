@@ -184,24 +184,27 @@ export default function Home() {
           </motion.div>
 
           <div className="relative max-w-5xl mx-auto">
-            {/* The Hand-Drawn Annotation */}
-            <div className="absolute z-30 pointer-events-none" style={{ top: "-110px", left: "-30px" }}>
-              <HandDrawnNote text="Click any card to see Case Studies!" />
-            </div>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 relative z-0 mt-8">
               {services.map((s, i) => (
-                <motion.div key={i} {...fadeUp(0.1 * (i + 1))} className="h-full">
-                  <Link href="#" className="block h-full group">
-                    <div className="card-premium p-8 h-full flex flex-col items-start text-left transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_-10px_rgba(0,70,67,0.15)] group-hover:border-[var(--primary)]">
-                      <div className="mb-6 transition-transform duration-300 group-hover:scale-110" style={{ color: "var(--primary)" }}>
-                        <s.Icon size={28} strokeWidth={1.5} />
-                      </div>
-                      <h3 className="font-display text-lg mb-3" style={{ fontWeight: 600, color: "var(--foreground)" }}>{s.title}</h3>
-                      <p className="text-sm text-muted leading-relaxed">{s.desc}</p>
+                <div key={i} className="relative h-full">
+                  {/* The Hand-Drawn Annotation exactly above the first card */}
+                  {i === 0 && (
+                    <div className="absolute z-30 pointer-events-none w-full" style={{ bottom: "100%", left: "0px", paddingBottom: "10px" }}>
+                      <HandDrawnNote text="Click any card to see Case Studies!" />
                     </div>
-                  </Link>
-                </motion.div>
+                  )}
+                  <motion.div {...fadeUp(0.1 * (i + 1))} className="h-full">
+                    <Link href="#" className="block h-full group">
+                      <div className="card-premium p-8 h-full flex flex-col items-start text-left transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_-10px_rgba(0,70,67,0.15)] group-hover:border-[var(--primary)]">
+                        <div className="mb-6 transition-transform duration-300 group-hover:scale-110" style={{ color: "var(--primary)" }}>
+                          <s.Icon size={28} strokeWidth={1.5} />
+                        </div>
+                        <h3 className="font-display text-lg mb-3" style={{ fontWeight: 600, color: "var(--foreground)" }}>{s.title}</h3>
+                        <p className="text-sm text-muted leading-relaxed">{s.desc}</p>
+                      </div>
+                    </Link>
+                  </motion.div>
+                </div>
               ))}
             </div>
           </div>

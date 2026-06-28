@@ -21,18 +21,18 @@ export function HandDrawnNote({ text, className = "" }: HandDrawnNoteProps) {
         className="absolute text-black"
         style={{ 
           top: "80%", 
-          left: "15%",
-          width: "40px",
-          height: "40px",
+          left: "20%",
+          width: "50px",
+          height: "120px",
           zIndex: 10 
         }}
-        viewBox="0 0 100 100"
+        viewBox="0 0 100 160"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         {/* The swooping arrow path pointing down */}
         <motion.path
-          d="M 30,0 Q 60,30 30,80"
+          d="M 30,0 Q 60,70 30,140"
           stroke="#1f1f1f"
           strokeWidth="4"
           strokeLinecap="round"
@@ -44,7 +44,7 @@ export function HandDrawnNote({ text, className = "" }: HandDrawnNoteProps) {
         />
         {/* Arrow head */}
         <motion.path
-          d="M 15,60 L 30,80 L 45,60"
+          d="M 15,115 L 30,140 L 45,115"
           stroke="#1f1f1f"
           strokeWidth="4"
           strokeLinecap="round"
