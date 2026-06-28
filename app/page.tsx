@@ -256,16 +256,16 @@ export default function Home() {
       </section>
 
       {/* ─── 4. Premium Contact CTA & Form ─── */}
-      <section id="contact" className="relative section px-6 text-center" style={{ borderTop: "1px solid var(--border)" }}>
+      <section id="contact" className="relative pt-16 pb-24 px-6 text-center" style={{ borderTop: "1px solid var(--border)" }}>
         <div
           className="absolute inset-0 -z-10 pointer-events-none"
           style={{
             background: "radial-gradient(ellipse 50% 50% at 50% 100%, rgba(0, 70, 67, 0.06) 0%, transparent 80%)",
           }}
         />
-        <div className="container max-w-3xl">
-          <motion.div {...fadeUp(0)}>
-            <h2 className="font-display tracking-tight mb-6" style={{ fontSize: "clamp(40px, 6vw, 64px)", lineHeight: 1.1, color: "var(--foreground)", fontWeight: 700 }}>
+        <div className="container max-w-4xl">
+          <motion.div {...fadeUp(0)} className="max-w-2xl mx-auto">
+            <h2 className="font-display tracking-tight mb-8" style={{ fontSize: "clamp(40px, 6vw, 64px)", lineHeight: 1.1, color: "var(--foreground)", fontWeight: 700 }}>
               Ready to Grow Your <br />
               <span style={{ color: "var(--primary)", fontStyle: "italic" }}>E-Commerce Business?</span>
             </h2>
@@ -319,8 +319,8 @@ export default function Home() {
                 </button>
               </motion.div>
             ) : (
-              <form className="flex flex-col gap-6 text-left" onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form className="flex flex-col gap-8 text-left mt-8" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
                     <label htmlFor="name" className="label-premium">Name</label>
                     <input type="text" id="name" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} placeholder="John Doe" className="input-premium" required disabled={status === "loading"} />
@@ -330,7 +330,7 @@ export default function Home() {
                     <input type="email" id="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} placeholder="john@example.com" className="input-premium" required disabled={status === "loading"} />
                   </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
                     <label htmlFor="store" className="label-premium">Website URL</label>
                     <input type="url" id="store" value={formData.store} onChange={(e) => setFormData({...formData, store: e.target.value})} placeholder="https://yourstore.com" className="input-premium" required disabled={status === "loading"} />
@@ -357,24 +357,32 @@ export default function Home() {
                   </div>
                 )}
 
-                <button type="submit" className="btn-primary mt-2" style={{ padding: "1.25rem 3rem", fontSize: "1.125rem", width: "100%", height: "4rem", opacity: status === "loading" ? 0.7 : 1 }} disabled={status === "loading"}>
+                <button type="submit" className="btn-primary mt-4 font-bold tracking-wide" style={{ padding: "1.25rem 3rem", fontSize: "1.125rem", width: "100%", height: "4.5rem", opacity: status === "loading" ? 0.7 : 1 }} disabled={status === "loading"}>
                   {status === "loading" ? "Sending..." : "Submit Enquiry"}
                 </button>
               </form>
             )}
 
             {/* Social Media Links */}
-            <div className="mt-12 pt-8 border-t border-[var(--border)] text-center">
-              <h3 className="font-display text-lg mb-6" style={{ fontWeight: 600, color: "var(--foreground)" }}>Or Connect With Us Directly</h3>
-              <div className="flex items-center justify-center gap-6">
-                <a href="https://www.facebook.com/share/1EYLAkwSYE/" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 group">
-                  <Facebook size={24} className="group-hover:scale-110 transition-transform duration-300" />
+            <div className="mt-20 pt-16 flex flex-col items-center text-center relative">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-px bg-[var(--primary)] opacity-20"></div>
+              
+              <h3 className="font-display text-xl mb-2" style={{ fontWeight: 600, color: "var(--foreground)" }}>
+                Or Connect With Us Directly
+              </h3>
+              <p className="text-sm mb-8" style={{ color: "var(--muted-foreground)" }}>
+                Prefer to chat? Reach us on your favorite platform.
+              </p>
+              
+              <div className="flex items-center justify-center gap-8">
+                <a href="https://www.facebook.com/share/1EYLAkwSYE/" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 group">
+                  <Facebook size={28} className="group-hover:scale-110 transition-transform duration-300" />
                 </a>
-                <a href="https://www.instagram.com/xelvant.dev?igsh=MWxnNWN5d3E0NWx2cA==&utm_source=ig_contact_invite" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 group">
-                  <Instagram size={24} className="group-hover:scale-110 transition-transform duration-300" />
+                <a href="https://www.instagram.com/xelvant.dev?igsh=MWxnNWN5d3E0NWx2cA==&utm_source=ig_contact_invite" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 group">
+                  <Instagram size={28} className="group-hover:scale-110 transition-transform duration-300" />
                 </a>
-                <a href="#" onClick={(e) => {e.preventDefault(); alert('Please provide your WhatsApp number so we can link it!');}} className="p-3 rounded-full border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 group" title="WhatsApp">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:scale-110 transition-transform duration-300">
+                <a href="#" onClick={(e) => {e.preventDefault(); alert('Please provide your WhatsApp number so we can link it!');}} className="p-4 rounded-full border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 group" title="WhatsApp">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:scale-110 transition-transform duration-300">
                     <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
                     <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
                   </svg>
