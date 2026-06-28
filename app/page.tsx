@@ -17,7 +17,7 @@ const services = [
   {
     Icon: UserX,
     title: "Stop Losing Customers",
-    desc: "Know who's about to leave — and what to do to keep them.",
+    desc: "Know who's about to leave and what to do to keep them.",
   },
   {
     Icon: Users,
@@ -32,7 +32,7 @@ const services = [
   {
     Icon: FileBarChart,
     title: "Performance at a Glance",
-    desc: "Get clear performance reports delivered — no spreadsheets needed.",
+    desc: "Get clear performance reports delivered no spreadsheets needed.",
   },
   {
     Icon: Map,
