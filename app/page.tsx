@@ -256,140 +256,152 @@ export default function Home() {
       </section>
 
       {/* ─── 4. Premium Contact CTA & Form ─── */}
-      <section id="contact" className="relative pt-16 pb-24 px-6 text-center" style={{ borderTop: "1px solid var(--border)" }}>
+      <section id="contact" className="relative pt-16 pb-24 px-6" style={{ borderTop: "1px solid var(--border)" }}>
         <div
           className="absolute inset-0 -z-10 pointer-events-none"
           style={{
-            background: "radial-gradient(ellipse 50% 50% at 50% 100%, rgba(0, 70, 67, 0.06) 0%, transparent 80%)",
+            background: "radial-gradient(ellipse 40% 50% at 0% 50%, rgba(0, 70, 67, 0.05) 0%, transparent 80%)",
           }}
         />
-        <div className="container max-w-4xl">
-          <motion.div {...fadeUp(0)} className="max-w-2xl mx-auto">
-            <h2 className="font-display tracking-tight mb-8" style={{ fontSize: "clamp(40px, 6vw, 64px)", lineHeight: 1.1, color: "var(--foreground)", fontWeight: 700 }}>
-              Ready to Grow Your <br />
-              <span style={{ color: "var(--primary)", fontStyle: "italic" }}>E-Commerce Business?</span>
-            </h2>
-            <p className="text-lg text-muted leading-relaxed mb-12">
-              Tell us about your business, and we&apos;ll show you where your biggest growth opportunities are.
-            </p>
-
-            {status === "success" ? (
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} 
-                className="card-premium p-10 md:p-14 text-center relative overflow-hidden"
-                style={{ 
-                  backgroundColor: "var(--foreground)", 
-                  borderColor: "var(--primary)", 
-                  boxShadow: "0 25px 50px -12px rgba(0, 70, 67, 0.3)" 
-                }}
-              >
-                <div 
-                  className="absolute inset-0 pointer-events-none" 
-                  style={{ background: "radial-gradient(ellipse at top, rgba(0, 70, 67, 0.3), transparent 70%)" }}
-                />
-                
-                <motion.div 
-                  initial={{ scale: 0.5, opacity: 0 }} 
-                  animate={{ scale: 1, opacity: 1 }} 
-                  transition={{ delay: 0.2, type: "spring", stiffness: 200, damping: 20 }}
-                  className="mx-auto flex items-center justify-center shadow-lg"
-                  style={{ width: "5rem", height: "5rem", backgroundColor: "var(--primary)", color: "var(--primary-foreground)", marginBottom: "2rem", borderRadius: "50%" }}
-                >
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                </motion.div>
-                
-                <h3 className="font-display text-3xl font-bold mb-4 tracking-tight" style={{ color: "var(--primary-foreground)" }}>
-                  Inquiry Received
-                </h3>
-                
-                <p className="text-lg leading-relaxed mb-10 max-w-lg mx-auto" style={{ color: "rgba(240, 237, 229, 0.8)" }}>
-                  Thank you for reaching out. We have sent a confirmation email to <strong style={{ color: "var(--primary-foreground)", fontWeight: 600 }}>{formData.email || "your inbox"}</strong>. Our intelligence team will review your details and respond within 24 hours.
-                </p>
-
-                <button 
-                  onClick={() => { setStatus("idle"); setFormData({ name: "", email: "", store: "", revenue: "", challenge: "" }); }}
-                  className="text-sm font-semibold uppercase tracking-widest transition-colors duration-300 flex items-center justify-center mx-auto gap-2"
-                  style={{ color: "var(--primary-foreground)", backgroundColor: "var(--primary)", padding: "0.75rem 1.5rem", borderRadius: "9999px", border: "1px solid rgba(240, 237, 229, 0.2)" }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "rgba(0, 70, 67, 0.8)"}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "var(--primary)"}
-                >
-                  <ArrowLeft size={16} /> Send Another Inquiry
-                </button>
-              </motion.div>
-            ) : (
-              <form className="flex flex-col gap-8 text-left mt-8" onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <label htmlFor="name" className="label-premium">Name</label>
-                    <input type="text" id="name" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} placeholder="John Doe" className="input-premium" required disabled={status === "loading"} />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="label-premium">Email</label>
-                    <input type="email" id="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} placeholder="john@example.com" className="input-premium" required disabled={status === "loading"} />
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <label htmlFor="store" className="label-premium">Website URL</label>
-                    <input type="url" id="store" value={formData.store} onChange={(e) => setFormData({...formData, store: e.target.value})} placeholder="https://yourstore.com" className="input-premium" required disabled={status === "loading"} />
-                  </div>
-                  <div>
-                    <label htmlFor="revenue" className="label-premium">Monthly Revenue</label>
-                    <select id="revenue" value={formData.revenue} onChange={(e) => setFormData({...formData, revenue: e.target.value})} className="input-premium" required disabled={status === "loading"} style={{ appearance: "none", cursor: "pointer" }}>
-                      <option value="" disabled>Select revenue range</option>
-                      <option value="Under $10k">Under $10k</option>
-                      <option value="$10k - $50k">$10k - $50k</option>
-                      <option value="$50k - $250k">$50k - $250k</option>
-                      <option value="$250k+">$250k+</option>
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="challenge" className="label-premium">Biggest Challenge (Optional)</label>
-                  <textarea id="challenge" value={formData.challenge} onChange={(e) => setFormData({...formData, challenge: e.target.value})} rows={4} placeholder="What is the biggest hurdle preventing your growth?" className="input-premium resize-none" disabled={status === "loading"}></textarea>
-                </div>
-                
-                {status === "error" && (
-                  <div style={{ padding: "1rem", background: "rgba(239, 68, 68, 0.1)", border: "1px solid rgba(239, 68, 68, 0.3)", borderRadius: "var(--radius)", color: "#b91c1c", fontSize: "0.875rem" }}>
-                    {errorMessage}
-                  </div>
-                )}
-
-                <button type="submit" className="btn-primary mt-4 font-bold tracking-wide" style={{ padding: "1.25rem 3rem", fontSize: "1.125rem", width: "100%", height: "4.5rem", opacity: status === "loading" ? 0.7 : 1 }} disabled={status === "loading"}>
-                  {status === "loading" ? "Sending..." : "Submit Enquiry"}
-                </button>
-              </form>
-            )}
-
-            {/* Social Media Links */}
-            <div className="mt-20 pt-16 flex flex-col items-center text-center relative">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-px bg-[var(--primary)] opacity-20"></div>
-              
-              <h3 className="font-display text-xl mb-2" style={{ fontWeight: 600, color: "var(--foreground)" }}>
-                Or Connect With Us Directly
-              </h3>
-              <p className="text-sm mb-8" style={{ color: "var(--muted-foreground)" }}>
-                Prefer to chat? Reach us on your favorite platform.
+        <div className="container max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            
+            {/* ─── LEFT COLUMN ─── */}
+            <motion.div {...fadeUp(0)} className="flex flex-col h-full text-left">
+              <h2 className="font-display tracking-tight mb-8" style={{ fontSize: "clamp(40px, 5vw, 64px)", lineHeight: 1.1, color: "var(--foreground)", fontWeight: 700 }}>
+                Ready to Grow Your <br />
+                <span style={{ color: "var(--primary)", fontStyle: "italic" }}>E-Commerce Business?</span>
+              </h2>
+              <p className="text-lg text-muted leading-relaxed mb-12 max-w-md">
+                Tell us about your business, and we&apos;ll show you where your biggest growth opportunities are.
               </p>
-              
-              <div className="flex items-center justify-center gap-8">
-                <a href="https://www.facebook.com/share/1EYLAkwSYE/" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 group">
-                  <Facebook size={28} className="group-hover:scale-110 transition-transform duration-300" />
-                </a>
-                <a href="https://www.instagram.com/xelvant.dev?igsh=MWxnNWN5d3E0NWx2cA==&utm_source=ig_contact_invite" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 group">
-                  <Instagram size={28} className="group-hover:scale-110 transition-transform duration-300" />
-                </a>
-                <a href="#" onClick={(e) => {e.preventDefault(); alert('Please provide your WhatsApp number so we can link it!');}} className="p-4 rounded-full border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 group" title="WhatsApp">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:scale-110 transition-transform duration-300">
-                    <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
-                    <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
-                  </svg>
-                </a>
+
+              <div className="mt-auto lg:pt-20 pt-10 border-t border-[var(--border)] relative">
+                {/* X/v Logo */}
+                <div className="mb-10 w-20 h-20 bg-[var(--primary)] text-white rounded-2xl flex items-center justify-center font-display text-3xl font-bold italic shadow-lg">
+                  X/v
+                </div>
+                
+                <h3 className="font-display text-xl mb-2" style={{ fontWeight: 600, color: "var(--foreground)" }}>
+                  Or Connect With Us Directly
+                </h3>
+                <p className="text-sm mb-8" style={{ color: "var(--muted-foreground)" }}>
+                  Prefer to chat? Reach us on your favorite platform.
+                </p>
+                
+                <div className="flex items-center justify-start gap-8">
+                  <a href="https://www.facebook.com/share/1EYLAkwSYE/" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 group">
+                    <Facebook size={28} className="group-hover:scale-110 transition-transform duration-300" />
+                  </a>
+                  <a href="https://www.instagram.com/xelvant.dev?igsh=MWxnNWN5d3E0NWx2cA==&utm_source=ig_contact_invite" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 group">
+                    <Instagram size={28} className="group-hover:scale-110 transition-transform duration-300" />
+                  </a>
+                  <a href="#" onClick={(e) => {e.preventDefault(); alert('Please provide your WhatsApp number so we can link it!');}} className="p-4 rounded-full border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white transition-all duration-300 group" title="WhatsApp">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:scale-110 transition-transform duration-300">
+                      <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
+                      <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
+                    </svg>
+                  </a>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+
+            {/* ─── RIGHT COLUMN (FORM) ─── */}
+            <motion.div {...fadeUp(1)}>
+              {status === "success" ? (
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }} 
+                  animate={{ opacity: 1, y: 0 }} 
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} 
+                  className="card-premium p-10 md:p-12 text-center relative overflow-hidden h-full flex flex-col justify-center"
+                  style={{ 
+                    backgroundColor: "var(--foreground)", 
+                    borderColor: "var(--primary)", 
+                    boxShadow: "0 25px 50px -12px rgba(0, 70, 67, 0.3)" 
+                  }}
+                >
+                  <div 
+                    className="absolute inset-0 pointer-events-none" 
+                    style={{ background: "radial-gradient(ellipse at top, rgba(0, 70, 67, 0.3), transparent 70%)" }}
+                  />
+                  
+                  <motion.div 
+                    initial={{ scale: 0.5, opacity: 0 }} 
+                    animate={{ scale: 1, opacity: 1 }} 
+                    transition={{ delay: 0.2, type: "spring", stiffness: 200, damping: 20 }}
+                    className="mx-auto flex items-center justify-center shadow-lg"
+                    style={{ width: "5rem", height: "5rem", backgroundColor: "var(--primary)", color: "var(--primary-foreground)", marginBottom: "2rem", borderRadius: "50%" }}
+                  >
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </motion.div>
+                  
+                  <h3 className="font-display text-3xl font-bold mb-4 tracking-tight" style={{ color: "var(--primary-foreground)" }}>
+                    Inquiry Received
+                  </h3>
+                  
+                  <p className="text-lg leading-relaxed mb-10 max-w-lg mx-auto" style={{ color: "rgba(240, 237, 229, 0.8)" }}>
+                    Thank you for reaching out. We have sent a confirmation email to <strong style={{ color: "var(--primary-foreground)", fontWeight: 600 }}>{formData.email || "your inbox"}</strong>. Our intelligence team will review your details and respond within 24 hours.
+                  </p>
+
+                  <button 
+                    onClick={() => { setStatus("idle"); setFormData({ name: "", email: "", store: "", revenue: "", challenge: "" }); }}
+                    className="text-sm font-semibold uppercase tracking-widest transition-colors duration-300 flex items-center justify-center mx-auto gap-2"
+                    style={{ color: "var(--primary-foreground)", backgroundColor: "var(--primary)", padding: "0.75rem 1.5rem", borderRadius: "9999px", border: "1px solid rgba(240, 237, 229, 0.2)" }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "rgba(0, 70, 67, 0.8)"}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "var(--primary)"}
+                  >
+                    <ArrowLeft size={16} /> Send Another Inquiry
+                  </button>
+                </motion.div>
+              ) : (
+                <div className="bg-white/40 backdrop-blur-md border border-[var(--border)] p-8 md:p-10 rounded-3xl shadow-xl relative">
+                  <div className="absolute inset-0 bg-white/20 rounded-3xl pointer-events-none" style={{ boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.5)" }} />
+                  <form className="relative z-10 flex flex-col gap-8 text-left" onSubmit={handleSubmit}>
+                    <div className="grid grid-cols-1 gap-8">
+                      <div>
+                        <label htmlFor="name" className="label-premium">Name</label>
+                        <input type="text" id="name" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} placeholder="John Doe" className="input-premium" required disabled={status === "loading"} />
+                      </div>
+                      <div>
+                        <label htmlFor="email" className="label-premium">Email</label>
+                        <input type="email" id="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} placeholder="john@example.com" className="input-premium" required disabled={status === "loading"} />
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div>
+                        <label htmlFor="store" className="label-premium">Website URL</label>
+                        <input type="url" id="store" value={formData.store} onChange={(e) => setFormData({...formData, store: e.target.value})} placeholder="https://yourstore.com" className="input-premium" required disabled={status === "loading"} />
+                      </div>
+                      <div>
+                        <label htmlFor="revenue" className="label-premium">Monthly Revenue</label>
+                        <select id="revenue" value={formData.revenue} onChange={(e) => setFormData({...formData, revenue: e.target.value})} className="input-premium" required disabled={status === "loading"} style={{ appearance: "none", cursor: "pointer" }}>
+                          <option value="" disabled>Select revenue range</option>
+                          <option value="Under $10k">Under $10k</option>
+                          <option value="$10k - $50k">$10k - $50k</option>
+                          <option value="$50k - $250k">$50k - $250k</option>
+                          <option value="$250k+">$250k+</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div>
+                      <label htmlFor="challenge" className="label-premium">Biggest Challenge (Optional)</label>
+                      <textarea id="challenge" value={formData.challenge} onChange={(e) => setFormData({...formData, challenge: e.target.value})} rows={4} placeholder="What is the biggest hurdle preventing your growth?" className="input-premium resize-none" disabled={status === "loading"}></textarea>
+                    </div>
+                    
+                    {status === "error" && (
+                      <div style={{ padding: "1rem", background: "rgba(239, 68, 68, 0.1)", border: "1px solid rgba(239, 68, 68, 0.3)", borderRadius: "var(--radius)", color: "#b91c1c", fontSize: "0.875rem" }}>
+                        {errorMessage}
+                      </div>
+                    )}
+
+                    <button type="submit" className="btn-primary mt-4 font-bold tracking-wide" style={{ padding: "1.25rem 3rem", fontSize: "1.125rem", width: "100%", height: "4.5rem", opacity: status === "loading" ? 0.7 : 1 }} disabled={status === "loading"}>
+                      {status === "loading" ? "Sending..." : "Submit Enquiry"}
+                    </button>
+                  </form>
+                </div>
+              )}
+            </motion.div>
+          </div>
         </div>
       </section>
 
